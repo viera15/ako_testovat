@@ -44,6 +44,3 @@ Keď hovoríme o “skrytých bielych znakoch” (medzery, tabulátory, nezlomit
 - Vstupy pozostávajúce výhradne z bielych znakov a diakritiky (napr. č ) – validátor by mal najprv trimovať a potom kontrolovať, či zostáva nejaký platný text.<br><br>
 
 Tým, že tieto scenáre otestujete, zabezpečíte, že formulár neakceptuje “prázdne” ale technicky ne-null vstupy, a zároveň správne spracuje legitímne údaje s okrajovými znakmi.<br>
-
-
-[\u0009\u000A\u000B\u000C\u000D\u0020\u00A0\u1680\u180E\u2000-\u200A\u2028\u2029\u202F\u205F\u3000\uFEFF]
