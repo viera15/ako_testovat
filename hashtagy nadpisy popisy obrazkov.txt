@@ -1,0 +1,14 @@
+Ilustračný obrázok k Testerskému slovníku. Názov Testerský slovník a ikonky kód, checklist, bug, odfajknuté, chemické banky.
+
+Testerský slovník časť 1:
+(postupne budem zverejňovať pojmy, ktoré som nazbierala)
+
+Týmto nekončíme, len začíname. Dajte do komentov termíny alebo slovné spojenia, s ktorými ste sa pri testovaní stretli. Tie, ktoré vás zaujali, nevedeli ste, čo znamenajú a pod. 
+#tester #testovacislovnik #manualnytester #automatizovanytester #ITtester #QA #ITkariera
+
+
+--------
+
+Ilustračný obrázok k sérii Ako testovať ... Na obrázku je tester s ceruzkou v ruke a checklistom. Ukazuje na monitor a okolo su v kruhoch ikonky lupa, checklist, kalendar, zeleny a cerveny chrobák (bug)
+
+#testing #qa #reporting #filtertest #manualtesting #teststrategy #checklist
