@@ -406,3 +406,18 @@ Reflexia sprintu – čo išlo dobre, čo nie, čo zlepšiť nabudúce. Cieľ: z
 
 **Velocity**<br>
 Miera, koľko práce tím zvládne za sprint. Sleduje sa napr. počet story points. Pomáha odhadnúť kapacitu tímu do budúcna.<br><br>
+
+**AI-under-test**
+Testujeme samotnú umelú inteligenciu – teda model, algoritmus alebo systém, ktorý sa správa „inteligentne“.
+Napr. testujeme, či chatbot odpovedá správne, či ML model klasifikuje e-maily dobre, alebo či odporúčací systém neponúka nezmysly.
+Tester sa tu zameriava na presnosť, spravodlivosť, stabilitu a chovanie pri rôznych vstupoch.
+
+**AI-assisted testing**
+Tester používa AI ako pomocníka pri testovaní – napr. na generovanie testovacích dát, návrh testov, analýzu logov, písanie skriptov alebo odhaľovanie vzorov.
+AI = testovací kolega (ktorý nepije kávu a píše rýchlejšie než ty).
+Je to ako mať „copilota“ – ty riadiš, AI navrhuje.
+
+**AI-driven testing**
+AI automaticky riadi testovanie – sama analyzuje aplikáciu, rozhoduje, čo testovať, generuje a spúšťa testy, vyhodnocuje výsledky.
+Cieľ: maximálna automatizácia pomocou AI – najmä pri komplexných systémoch, ktoré sa často menia.
+Nie vždy ide o úplne samostatné testovanie, ale AI tu hrá hlavnú rolu v rozhodovaní.
