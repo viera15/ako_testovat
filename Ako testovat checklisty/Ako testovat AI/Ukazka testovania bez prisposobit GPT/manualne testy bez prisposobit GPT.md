@@ -30,3 +30,5 @@ Pritvrdiť tón pri ospravedlnení, vyjadriť ľútosť a požiadať o konkrétn
 **Na testovanie bol použitý profil bez nastavenia v Prispôsobiť ChatGPT (neplatená verzia)**<br><br>
 
 **Na každý testovací scenár/prompt bol založený nový chat.**
+
+**Použitý model - pravdepodobne ChatGPT 4o**

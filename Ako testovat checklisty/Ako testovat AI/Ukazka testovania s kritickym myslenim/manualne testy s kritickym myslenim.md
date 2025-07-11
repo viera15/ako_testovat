@@ -49,3 +49,5 @@ Pred odoslaním odpovede ju prehodnoť a skontroluj.<br>
 Po odpovedi neponúkaj doplnkové návrhy ani služby (napr. „môžem pripraviť PDF“, „chceš zhrnutie?“). Nezdržuj závermi či výzvami. Odpoveď ukonči poslednou podstatnou informáciou. Viera si takéto ponuky neželá – spomaľujú konverzáciu, rušia a míňajú tokeny.<br><br>
 
 **Na každý testovací scenár/prompt bol založený nový chat.**
+
+**Použitý model - ChatGPT 4o**
