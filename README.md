@@ -5,4 +5,7 @@ Samostatnou kapitolou je **testovanie AI**. Vytvorila som pár manuálnych testo
 
 | Markdown súbor | Word súbor na stiahnutie |
 | --- | --- |
-| [Ako_testovať.md](Ako_testovať.md) | [Ako_testovať.docx](Ako_testovať.docx) |
+| [ako_testovat_sablonu_emailu.md](Ako_testovat_checklisty\ako_testovat_sablonu_emailu.md) | [Ako_testovat_sablonu_emailu.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_sablonu_emailu.docx) |
+| [ako_testovat_pdf.md](Ako_testovat_checklisty\ako_testovat_pdf.md) | [Ako_testovat_pdf.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_pdf.docx) |
+| [ako_testovat_export_do_excelu.md](Ako_testovat_checklisty\ako_testovat_export_do_excelu.md) | [Ako_testovat_export_do_excelu.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_export_do_excelu.docx) |
+| [ako_testovat_naplanovane_cron_ulohy.md](Ako_testovat_checklisty\ako_testovat_naplanovane_cron_ulohy.md) | [Ako_testovat_naplanovane_cron_ulohy.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_naplanovane_cron_ulohy.docx) |
