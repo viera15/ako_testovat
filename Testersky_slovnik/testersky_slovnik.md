@@ -421,3 +421,25 @@ Je to ako mať „copilota“ – ty riadiš, AI navrhuje.
 AI automaticky riadi testovanie – sama analyzuje aplikáciu, rozhoduje, čo testovať, generuje a spúšťa testy, vyhodnocuje výsledky.
 Cieľ: maximálna automatizácia pomocou AI – najmä pri komplexných systémoch, ktoré sa často menia.
 Nie vždy ide o úplne samostatné testovanie, ale AI tu hrá hlavnú rolu v rozhodovaní.
+
+**Bias (zaujatosť)**
+Nežiaduca systematická odchýlka v správaní AI modelu, ktorá vedie k nerovnakému zaobchádzaniu s rôznymi skupinami vstupov (napr. demografickými, jazykovými, kontextovými).
+
+**Hlavné metriky Machine Learning a AI**
+Krátky prehľad najpoužívanejších metrík na hodnotenie kvality modelov a AI systémov:
+- **Accuracy (presnosť)**
+Podiel správnych predikcií na všetkých prípadoch. Vhodná, keď sú triedy vyvážené.
+- **Precision (presnosť)**
+Podiel správne označených pozitívnych prípadov na všetkých prípadoch, ktoré model označil za pozitívne. Kritická pri vysokých nákladoch falošne pozitívnych.
+- **Recall (Citlivosť)**
+Podiel správne zachytených pozitívnych prípadov na všetkých skutočných pozitívnych. Dôležitá, keď je nevyhnutné nájsť čo najviac reálnych pozitív.
+- **F1-score**
+Harmonický priemer precision a recall. Vhodný pre vyvážené hodnotenie tam, kde ani jedna metrika nestačí.
+- **ROC-AUC**
+Plocha pod krivkou Receiver Operating Characteristic (True Positive Rate vs. False Positive Rate). Ukazuje celkovú schopnosť modelu rozlišovať triedy pri rôznych prahových hodnotách.
+- **Confusion Matrix**
+Dvojrozmerná tabuľka TP (true positive), FP (false positive), FN (false negative), TN (true negative) pre detailný pohľad na typy chýb.
+- **Log Loss (Cross-entropy loss)**
+Penalizuje neisté predikcie, vhodná pre pravdepodobnostné výstupy.
+- **Mean Absolute Error (MAE) / Mean Squared Error (MSE)**
+Štandardné metriky pre regresiu – priemer absolútnych alebo kvadratických odchýlok od skutočných hodnôt.
