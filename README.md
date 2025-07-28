@@ -18,5 +18,5 @@ Samostatnou kapitolou je **testovanie AI**. Vytvorila som pár manuálnych testo
 | [ako_testovat_logovanie_audit.md](Ako_testovat_checklisty\ako_testovat_logovanie_audit.md)| [Ako_testovat_logovanie_audit.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_logovanie_audit.docx) |
 | [ako_testovat_lokalizaciu_aplikacie.md](Ako_testovat_checklisty\ako_testovat_lokalizaciu_aplikacie.md) | [Ako_testovat_lokalizaciu_aplikacie.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_lokalizaciu_aplikacie.docx) |
 | [ako_testovat_soft_delete_zaznam.md](Ako_testovat_checklisty\Ako_testovat_soft_delete_zaznam.md)| [Ako_testovat_soft_delete_zaznam.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_soft_delete_zaznam.docx)|
-| [ako_testovat_reporty_podla_filtrov.md](Ako_testovat_checklisty\ako_testovat_reporty_podla_filtrov.md)| [Ako_testovat_reporty_podla_filtrov.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_reporty_podla_filtrov.docx) |
-
+| [ako_testovat_autocomplete.md](Ako_testovat_checklisty\ako_testovat_autocomplete.md)| [Ako_testovat_autocomplete.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_autocomplete.docx)|
+| [ako_testovat_reporty_podla_filtrov.md](Ako_testovat_checklisty\ako_testovat_reporty_podla_filtrov.md)| [Ako_testovat_reporty_podla_filtrov.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_reporty_podla_filtrov.docx)|
