@@ -1,0 +1,1982 @@
+Prompt1: Máme nápad na mobilnú aplikáciu pre zdieľanie receptov. Kto bude cieľová skupina a aké základné funkcie by mala mať?
+
+Odpoveď1:
+
+Viera, môžeme sa na to pozrieť systematicky – najprv si určíme **cieľovú skupinu** (fakty a predpoklady) a potom **základné funkcie**.
+
+---
+
+## 1. Cieľová skupina
+
+### Potvrdené fakty z trhu (viac ako 2 zdroje)
+
+* **Food & cooking apps** majú globálne veľký záber, ale úspešné projekty cielia na konkrétnu komunitu, nie na „všetkých“.
+* Najaktívnejší používatelia podobných aplikácií sú vo veku **18–45 rokov** – kombinácia mladých dospelých, rodičov a hobby kuchárov.
+* Veľmi silná skupina sú **ľudia, ktorí zdieľajú obsah na sociálnych sieťach** (Instagram, TikTok) – radi pridajú fotku a krátky popis.
+
+### Predpoklady (nutné overiť prieskumom)
+
+* Začiatočníci v kuchyni hľadajú rýchle a jednoduché recepty → ocenia video-návody a krátke tipy.
+* Skúsení kuchári hľadajú priestor na prezentáciu a budovanie reputácie (hodnotenia, „followeri“).
+* Ľudia s diétami alebo intoleranciami chcú možnosť filtrovať recepty podľa ingrediencií (bez lepku, vegánske, nízkokalorické).
+* Komunita môže byť lokálne orientovaná (recepty podľa regiónu) alebo globálna.
+
+---
+
+## 2. Základné funkcie aplikácie
+
+Rozdelené podľa priorít **MVP (Minimum Viable Product)** a **rozšírené funkcie**.
+
+### MVP – funkcie, bez ktorých to neodštartuje
+
+1. **Registrácia a profil používateľa**
+
+   * Možnosť pridať profilovú fotku, bio, prípadne kuchárske zameranie.
+2. **Pridanie receptu**
+
+   * Text, fotky (viac krokov), kategórie (predjedlo, dezert…).
+3. **Vyhľadávanie a filtrovanie**
+
+   * Podľa názvu, ingrediencií, typu jedla, času prípravy.
+4. **Hodnotenie a komentáre**
+
+   * Hviezdičky alebo „like“, sekcia na otázky a rady.
+5. **Záložky / Uloženie receptu**
+
+   * Používateľ si vie uložiť recept do svojho zoznamu.
+
+### Rozšírené funkcie (fáza 2+)
+
+6. **Video-recepty**
+
+   * Krátke klipy alebo celé postupy.
+7. **Nákupný zoznam**
+
+   * Automaticky vygenerovaný z ingrediencií receptu.
+8. **Personalizované odporúčania**
+
+   * Na základe obľúbených receptov a histórie hľadania.
+9. **Režim „čo mám doma“**
+
+   * Zadáš ingrediencie a aplikácia navrhne recepty.
+10. **Tematické výzvy a súťaže**
+
+    * Napr. „Letné dezerty“, „Bez mäsa týždeň“.
+
+---
+
+## 3. Kognitívne skreslenia, na ktoré si dať pozor
+
+* **Efekt vlastného vkusu** – hrozí, že budete robiť appku podľa toho, čo chutí vám, nie cieľovej skupine.
+* **Potvrdzovacie skreslenie** – vyhľadávanie len dôkazov, že nápad je dobrý, namiesto aktívneho hľadania slabín.
+* **Efekt „viac je lepšie“** – snaha pridať veľa funkcií hneď na začiatku, čo môže spomaliť spustenie MVP.
+
+---
+
+Ak chceš, môžeme hneď pripraviť **matricu cieľových skupín vs. funkcií**, aby bolo jasné, ktoré funkcie sú pre koho kľúčové a ktorými nezačať.
+Chceš, aby som ju rovno pripravil?
+
+--------------
+
+Prompt2: Ako by si navrhol architektúru tejto aplikácie?
+
+Odpoveď2:
+
+Viera, zoberiem to systematicky: najprv **predpoklady**, potom **architektúra na úrovni blokov**, **dátový model**, **kľúčové toky**, **varianty stacku** a **nefunkčné požiadavky + testovanie**. Pri každom kroku rozlíšim **fakty vs. predpoklady** a upozorním na možné skreslenia.
+
+# 0) Východiská
+
+* **Fakty:** mobilná appka na zdieľanie receptov potrebuje autentifikáciu, správu obsahu (CRUD receptov), vyhľadávanie/filter, média (fotky/videá), hodnotenia/komentáre, notifikácie, moderovanie obsahu, analytiku.
+* **Predpoklady (overiť prieskumom):** cieľom je MVP do 3–4 mesiacov; štart s jedným regiónom/jazykom; veľkosť komunity do 50k MAU v 1. roku; rozumný rozpočet → preferencia managed služieb a PaaS.
+
+# 1) High-level architektúra (logické bloky)
+
+**Klienty**
+
+* Mobil: **Flutter/React Native** (jeden kód → iOS/Android).
+* Web (neskôr): read-only pre SEO a zdieľanie odkazov.
+
+**Backend**
+
+* **API Gateway / BFF (Backend for Frontend)**: jedna tenká vrstva pre mobil (verzionovaná API, rate-limit, auth).
+* **Aplikačná vrstva:** štart ako **modulárny monolit** (nižšie latencie, jednoduchší DevOps); pripravené hranice pre neskoré vyčlenenie do mikroslužieb.
+
+  * Modul **Users & Auth**
+  * Modul **Recipes (CRUD, formátovanie krokov, tagy, kategórie)**
+  * Modul **Media** (upload orchestration, podpisy na priamy upload do objektového storage)
+  * Modul **Search & Feed** (full-text, filtre, „čo mám doma“)
+  * Modul **Social** (likes, komentáre, follow, reporty obsahu)
+  * Modul **Notifications** (push/e-mail, digesty)
+  * Modul **Moderation** (flagy, jednoduchá ML pipeline na NSFW/duplikáty)
+  * Modul **Analytics** (eventy, funnel, cohorty)
+
+**Dáta a infra**
+
+* **Primárna DB:** relačná (PostgreSQL) pre transakcie a referenčnú integritu.
+* **Vyhľadávanie:** Elasticsearch/OpenSearch/Meilisearch (indexy na názov, ingrediencie, tagy).
+* **Objektové úložisko médií:** S3-kompatibilné + **CDN**.
+* **Cache:** Redis (sessions, cache feedov, hot recepty).
+* **Fronty/úlohy:** RabbitMQ/SQS (+ worker na generovanie náhľadov, transkód videí, reindex).
+* **Feature flags / Remote config:** LaunchDarkly / open-source alternatíva.
+* **Observabilita:** centralizované logy, metrics, traces.
+
+**Bezpečnosť**
+
+* OAuth 2.1 / OIDC (Sign-in Apple/Google), krátke JWT + refresh tokeny v secure úložisku klienta.
+* Signed URLs pre upload/download médií, WAF, rate-limit, audit logy.
+
+> **Varianty:**
+>
+> * **Modulárny monolit (MVP)**: rýchlejšie doručenie, jednoduchšie transakcie.
+> * **Mikroslužby (scale-out)**: oddelené nasadzovanie/škálovanie; vyššia komplexita (komunikácia, konzistencia).
+
+# 2) Minimálny dátový model (jadro)
+
+* **User**(id, handle, bio, avatar\_url, roles, created\_at)
+* **Recipe**(id, author\_id→User, title, slug, description, servings, prep\_time, cook\_time, difficulty, visibility, created\_at, updated\_at)
+* **Ingredient**(id, name, normalized\_name, allergens\[])
+* **RecipeIngredient**(recipe\_id→Recipe, ingredient\_id→Ingredient, quantity, unit, note)
+* **Step**(id, recipe\_id→Recipe, order, text, media\_refs\[])
+* **Tag**(id, name, type: {cuisine, method, diet…})
+* **RecipeTag**(recipe\_id→Recipe, tag\_id→Tag)
+* **Like**(user\_id, recipe\_id, created\_at)
+* **Comment**(id, recipe\_id, user\_id, parent\_id?, text, created\_at, status)
+* **Follow**(follower\_id, followee\_id, created\_at)
+* **Media**(id, owner\_user\_id, recipe\_id?, type: {image, video}, storage\_key, status, width, height, duration)
+* **Report**(id, reporter\_id, target\_type, target\_id, reason, status)
+* **SearchIndex**(recipe\_id, tokens, lang, boosts) – materializované pre full-text.
+
+> **Poznámka:** jednotky (g, ml, ks) ukladať normalizovane; podporiť i množiny (napr. „½ lyžičky“) – interné uloženie ako frakcie/float + formátovacia vrstva.
+
+# 3) Kľúčové toky (sekvencie)
+
+**Upload receptu**
+
+1. Klient vyžiada **signed URL** na obrázky/video.
+2. Klient nahrá média priamo do objektového úložiska (šetrí backend).
+3. Klient odošle metadáta receptu na **/recipes**.
+4. Worker spustí: generovanie thumbnailov, transkód videa, extrakciu textu z krokov pre index.
+5. Po dokončení → update stavu + reindex do vyhľadávača.
+
+**Vyhľadávanie/„čo mám doma“**
+
+1. Klient odošle zoznam ingrediencií + filtre.
+2. **Search service** kombinuje: full-text (boost presných zhôd), filtračné polia (dieta, čas), prípadne vektorový index pre podobnosť.
+3. Vráti zoradený feed (cacheované v Redis pre „hot queries“).
+
+**Notifikácie**
+
+* Event „new\_recipe\_by\_followee“ → fronta → Notification worker → APNs/FCM.
+* Agregácie (denné digesty) generovať CRON jobom.
+
+# 4) Tech stack – 3 realistické varianty
+
+### Variant A (rýchle MVP, silný JS ekosystém)
+
+* **Klient:** React Native + Expo
+* **BFF/Backend:** Node.js (NestJS)
+* **DB:** PostgreSQL (RDS/Cloud SQL)
+* **Search:** OpenSearch/Meilisearch
+* **Cache/Queue:** Redis + BullMQ
+* **Media:** S3 + CloudFront (CDN)
+* **Auth:** Auth0/Cognito (OIDC)
+* **Výhody:** produktivita, bohaté knižnice, dobré DX
+* **Riziká:** vysoká pozornosť na performance pri videu
+
+### Variant B (stabilný JVM svet)
+
+* **Klient:** Kotlin Multiplatform Mobile (KMM) + SwiftUI Compose bridge
+* **Backend:** Java/Kotlin (Spring Boot)
+* **DB/Search/Cache:** PostgreSQL + OpenSearch + Redis
+* **Queue:** Kafka (ak čakáš väčší objem udalostí)
+* **Media/CDN/Auth:** S3 + CDN + Keycloak
+* **Výhody:** robustné typy, výkon, enterprise tooling
+* **Riziká:** vyšší time-to-market
+
+### Variant C (Python first, silné údaje/ML)
+
+* **Klient:** Flutter
+* **Backend:** FastAPI
+* **DB:** PostgreSQL
+* **Search:** Meilisearch/Elasticsearch
+* **Queue:** Celery + Redis/SQS
+* **Media/CDN/Auth:** S3 + CDN + Ory/Kratos alebo Auth0
+* **Výhody:** rýchly vývoj, skvelé ML integrácie (moderácia/odporúčania)
+* **Riziká:** disciplína v architektúre pri väčšom tíme
+
+# 5) Ne­funkčné požiadavky (NFR) a škálovanie
+
+* **Výkon:** P95 < 300 ms pre čítanie feedu; obrázky cez CDN; uploady priamo do storage.
+* **Škálovanie:** horizontálne (stateless app pods), autoscaling podla CPU/RPS; separátne škálovať vyhľadávanie a workerov.
+* **Dostupnosť:** 99.9% (MVP), DB s HA replikou, zálohy + PITR.
+* **Bezpečnosť:** OWASP MASVS pre mobil, OWASP ASVS pre backend, CSP, obrázkové sanitizácie, antivírus scan pri uploade.
+* **Súkromie:** GDPR – dátové mapy, DPA s poskytovateľmi, právo na výmaz, minimizácia údajov.
+* **Moderovanie:** kombinácia pravidiel (regEx, blocklist) + ľahký model (NSFW detekcia), možnosť „shadow ban“.
+* **i18n/l10n:** od začiatku oddeliť texty, normalizovať jednotky/merné sústavy.
+* **Observabilita:** tracing (OpenTelemetry), metriky (latencie, chybovosť, dĺžky front), alerty SLO-driven.
+
+# 6) CI/CD, infra a prevádzka
+
+* **Repo:** monorepo (app + backend + infra kód) alebo polyrepo s jasnými rozhraniami.
+* **CI:** lint, testy, build, SAST (CodeQL/semgrep).
+* **CD:** canary/blue-green nasadenia; migrácie DB (Flyway).
+* **Infra ako kód:** Terraform + modulárne stacky (dev/test/prod).
+* **Secrets:** Vault/SM, rotácia kľúčov.
+* **Feature flags:** guardrail na postupné rollouty.
+
+# 7) Testovanie (primerané tvojmu fokusu)
+
+* **Jednotkové testy:** doménová logika (recepty, validácie ingrediencií, jednotiek).
+* **Contract testy:** BFF ↔️ app (OpenAPI, Pact).
+* **Integračné testy:** DB, search, media upload (signed URL scenáre).
+* **E2E scénáre:** registrácia, publikácia receptu s fotkou, vyhľadávanie, uloženie, komentár, nahlásenie obsahu.
+* **Výkonnostné testy:** feed a search (RPS, latencie, cold/warm cache).
+* **Bezpečnostné testy:** DAST (OWASP ZAP), mobilné MASVS checky.
+* **Experimenty/A-B:** napr. poradie kariet vo feede.
+
+# 8) Najčastejšie kognitívne pasce
+
+* **Potvrdzovacie skreslenie:** „naša komunita určite chce video“ → over A-B testom/analytikou.
+* **Ukotvenie na technológii:** výber stacku podľa preferencie tímu namiesto potrieb (napr. zbytočne Kafka v MVP).
+* **Scope creep:** tlačiť všetky „nice-to-have“ do MVP – spomalí to spustenie.
+
+# 9) Fázovanie (pragmatické)
+
+1. **MVP (T0–T1):** Auth, Recipes, Media (foto), Search (text + ingrediencie), Likes/Bookmarks, základné komentáre, moderácia v1, push notifikácie v1, analytika eventov.
+2. **T1–T2:** „Čo mám doma“, playlist krokov, nákupný zoznam, odporúčania (heuristiky + jednoduché embeddings).
+3. **T2+:** Video recepty s transkódovaním, komunitné výzvy, tvorcovské dashboardy, web publikačné rozhranie.
+
+---
+
+**Limity a neistoty:** Bez prieskumu nevieme potvrdiť prioritu videa, sociálnych prvkov a regionálnej expanzie. Výber medzi modulárnym monolitom a mikroslužbami závisí od očakávaného rastu a veľkosti tímu (predpoklad).
+
+**Ako si to overiť:** 10–20 rozhovorov s cieľovou skupinou + klikací prototyp; meraj záujem o funkcie (wishlist, smoke test landing page), následne validuj v MVP cez analytiku a A-B.
+
+------------------
+
+Prompt3: Ktoré technológie by sme mohli použiť pre backend a prečo?  
+
+Odpoveď3: 
+
+Viera, zoberiem to kriticky a po vrstvách: **kritériá → runtime/framework varianty → dáta/vyhľadávanie/fronty → médiá/autentifikácia → infra/CI/CD → odporúčané kombinácie**. Pri každom bode rozlíšim **Fakty** (široko zdokumentované, overiteľné v oficiálnej dokumentácii a benchmarkoch) vs. **Predpoklady** (čo tipujem a treba overiť).
+
+# 1) Výberové kritériá (čo má backend spĺňať)
+
+* **Fakty:** Potrebujeme nízkolatenčné API, bezpečný upload médií, pozdejšie škálovanie čítačiek (feed/search), moderovanie a odporúčania, GDPR/EÚ rezidenciu dát.
+* **Predpoklady:** MVP tím 2–5 ľudí; go-live do 3–4 mesiacov; 1. rok ≤ 50k MAU → najprv modulárny monolit, neskôr oddeliteľné moduly.
+
+# 2) Kandidáti – runtime + framework (pre API vrstvu)
+
+## Node.js (NestJS / Express)
+
+* **Prečo áno:** rýchly vývoj, bohatý ekosystém, jedna „JS/TS“ doména (zdieľané typy), dobré na IO-bound požiadavky, veľa SDK na média a push.
+* **Fakty:** Node má event-loop, neblokujúce IO; NestJS prináša DI, moduly, dekorátory; TypeScript zvyšuje typovú bezpečnosť; široká podpora OpenAPI/Swagger.
+* **Riziká:** CPU-ťažké úlohy (transkód videí) presúvať do workerov; disciplína okolo typov a architektúry.
+
+## Python (FastAPI)
+
+* **Prečo áno:** veľmi rýchla tvorba API, výborná integrácia s ML (moderácia/odporúčania), asynchrónny model, čisté typy (Pydantic).
+* **Fakty:** FastAPI generuje OpenAPI, podporuje async/await, má vysokú produktivitu; Python ekosystém je štandard pre DS/ML.
+* **Riziká:** surový výkon pre extrémny RPS horší než Go/Java; treba pozorne návrhovať concurrency (uvicorn/gunicorn workers).
+
+## Java/Kotlin (Spring Boot)
+
+* **Prečo áno:** robustnosť, stabilita, vysoký výkon, bohatý enterprise tooling, skvelé na veľké tímy a dlhú životnosť.
+* **Fakty:** Spring Boot je de-facto štandard v enterprise; JVM má výborný throughput; prvotriedne nástroje pre observabilitu a security.
+* **Riziká:** dlhší time-to-market oproti FastAPI/NestJS; vyššia komplexita pre malý tím.
+
+## Go (Gin/Fiber)
+
+* **Prečo áno:** veľmi dobrý výkon a paralelizmus, malý runtime, jednoduchá distribúcia (single binary).
+* **Fakty:** Go má gorutiny a kanály, výborná latencia; používa sa pre služby s vysokým RPS.
+* **Riziká:** menej „batérií v balení“ pre rýchle CRUD/bohaté API; chudobnejšie ORM nástroje vs. Spring/TS/Python.
+
+## .NET (ASP.NET Core)
+
+* **Prečo áno:** veľmi dobrý výkon, moderný framework, skvelý na Windows aj Linux; C# má silnú typovosť.
+* **Fakty:** ASP.NET Core patrí medzi najrýchlejšie webové frameworky v syntetických benchmarkoch; prvotriedna podpora EF Core, gRPC.
+* **Riziká:** hiring v našom regióne môže byť ťažšie podľa komunity tímu; menší ekosystém SDK pre niektoré cloud služby než JS/Python.
+
+## Ruby on Rails
+
+* **Prečo áno:** extrémne rýchle MVP, konvencie, scaffoldy.
+* **Fakty:** Rails urýchľuje CRUD a admin rozhrania.
+* **Riziká:** výkon pre veľmi veľké RPS a concurrency môže vyžadovať výraznejší horizontálny scale; menej vhodné pre mediálne pipeline/ML.
+
+### Rýchla porovnávacia tabuľka (pre náš use-case)
+
+| Kritérium         | NestJS (Node) | FastAPI (Py)     | Spring (Kotlin/Java) | Go (Gin) | ASP.NET Core |
+| ----------------- | ------------- | ---------------- | -------------------- | -------- | ------------ |
+| Rýchlosť vývoja   | vysoká        | veľmi vysoká     | stredná              | stredná  | stredná      |
+| Výkon IO-bound    | veľmi dobrý   | dobrý            | veľmi dobrý          | výborný  | výborný      |
+| ML integrácia     | dobrá         | výborná          | dobrá                | slabšia  | dobrá        |
+| Typová bezpečnosť | vysoká (TS)   | dobrá (pydantic) | veľmi vysoká         | stredná  | veľmi vysoká |
+| Ekosystém SDK     | výborný       | výborný          | výborný              | dobrý    | dobrý        |
+| Krivka učenia     | nízka-stredná | nízka            | stredná-vyššia       | stredná  | stredná      |
+| Dlhodobá údržba   | dobrá         | dobrá            | výborná              | dobrá    | výborná      |
+
+**Fakty:** vyššie výhody/limity sú všeobecne známe a zodpovedajú oficiálnej dokumentácii a komunitnej praxi.
+**Predpoklady:** pri reálnom RPS do 2–5k a typickom „mix-e“ požiadaviek bude rozdiel medzi Node/FastAPI/Spring sekundárny oproti kvalite návrhu cache a vyhľadávania.
+
+# 3) Dáta, vyhľadávanie, fronty
+
+## Databáza
+
+* **Voľba:** **PostgreSQL**
+* **Fakty:** ACID, MVCC, JSONB, uložené procedúry, full-text, bohaté indexy; široká podpora ORM (TypeORM/Prisma, SQLAlchemy, JPA/Hibernate). Replikácia, PITR, rozšírenia (pg\_trgm) sú štandard.
+* **Alternatívy (predpoklady k zváženiu):** MySQL/MariaDB (ak tím má prax), **CockroachDB** (ak by sme chceli horizontálne škálovanie s „SQL-like“).
+
+## ORM/Migrácie
+
+* **Node:** Prisma alebo TypeORM; **Python:** SQLAlchemy + Alembic; **Spring:** JPA/Hibernate + Flyway/Liquibase.
+* **Fakt:** migrácie ako kód sú nevyhnutné (repo, verzovanie, rollback).
+
+## Vyhľadávanie
+
+* **MVP:** **Meilisearch** (jednoduchý, rýchly, skvelý DX)
+* **Scale:** **Elasticsearch/OpenSearch** (bohaté dotazy, agregácie, horizontálne škálovanie)
+* **Fakty:** plnotextové vyhľadávanie nad ingredienciami/tagmi sa rieši mimo primárnej DB pre lepší relevance scoring a rýchlosť.
+
+## Cache & Fronty
+
+* **Cache:** **Redis** (session, hot feedy, rate-limit, locking) – faktický priemyselný štandard.
+* **Fronty/úlohy:**
+
+  * **Redis/BullMQ** (Node), **Celery** (Python), **Spring + SQS/RabbitMQ** (JVM) – osvedčené.
+  * **Kafka** až keď budú silné streaming scenáre (predpoklad).
+* **Fakty:** oddelenie „write path“ (API) a „heavy jobs“ (transkód, thumbnails, reindex) zvyšuje spoľahlivosť a UX.
+
+# 4) Médiá, CDN, moderovanie
+
+* **Úložisko:** S3-kompatibilné (AWS S3/Cloudflare R2/MinIO) + **Signed URL** upload priamo z mobilu.
+* **CDN:** CloudFront/Fastly/Cloudflare pre obrázky a prípadné video segmenty.
+* **Transkód/thumbnail:** workers s **ffmpeg**; pri videu neskôr HLS/DASH segmentácia.
+* **Moderovanie:** jednoduché pravidlá + ľahká ML pipeline (napr. NSFW klasifikátor, near-duplicate detekcia).
+* **Fakty:** priame uploady do objektového storage výrazne šetria backend a znižujú latenciu.
+
+# 5) Autentifikácia a autorizácia
+
+* **OIDC/OAuth 2.1:** **Auth0**, **AWS Cognito**, **Ory/Keycloak** (self-host).
+* **Fakty:** krátkožijúce access tokeny (JWT) + refresh, device-viazané secure storage, rate-limit, audit logy.
+* **Predpoklad:** sociálne prihlásenia (Apple/Google) zvýšia konverziu registrácií.
+
+# 6) Infra, nasadzovanie, observabilita
+
+* **Kontajnery:** Docker + orchestrácia (ECS/Fargate pre rýchly štart; neskôr EKS/GKE/AKS ak treba multi-service scale).
+* **CI/CD:** GitHub Actions/GitLab CI; canary/blue-green; DB migrácie automaticky (Flyway/Alembic).
+* **Monitoring:** OpenTelemetry + Prometheus/Grafana, centralizované logy (ELK/OpenSearch), alerty podľa SLO.
+* **GDPR/EÚ:** hosting v EÚ regiónoch, DPA s poskytovateľmi, právo na výmaz, minimizácia PII.
+* **Fakty:** izolácia tajomstiev (Secrets Manager/Vault) a rotácia kľúčov je nevyhnutná.
+
+# 7) Odporúčané kombinácie (podľa cieľov a tímu)
+
+## Variant A – **TypeScript first (rýchly MVP, silný ekosystém)**
+
+* **Backend:** NestJS
+* **DB/ORM:** PostgreSQL + Prisma
+* **Search/Cache/Queue:** Meilisearch → (neskôr OpenSearch), Redis, BullMQ
+* **Auth/Media:** Auth0 (alebo Cognito), S3 + CDN
+* **Prečo:** najrýchlejší štart, zdieľané typy s RN/Expo, bohaté SDK na push a média.
+* **Predpoklad:** tím ovláda TS a JS tooling.
+
+## Variant B – **Python/ML ready (moderovanie a odporúčania skoro)**
+
+* **Backend:** FastAPI
+* **DB/ORM:** PostgreSQL + SQLAlchemy
+* **Search/Cache/Queue:** Meilisearch, Redis, Celery (SQS/RabbitMQ)
+* **Auth/Media:** Ory/Keycloak alebo Auth0, S3 + CDN
+* **Prečo:** lacný vstup do ML (embeddings, klasifikácia), veľmi rýchly vývoj.
+* **Predpoklad:** aspoň 1 človek s DS/ML skúsenosťou.
+
+## Variant C – **JVM stabilita (dlhá životnosť, vyššie nároky)**
+
+* **Backend:** Spring Boot (Kotlin)
+* **DB/ORM:** PostgreSQL + JPA/Hibernate + Flyway
+* **Search/Cache/Queue:** OpenSearch, Redis, SQS/RabbitMQ (alebo Kafka neskôr)
+* **Auth/Media:** Keycloak, S3 + CDN
+* **Prečo:** robustnosť, výkon, ľahšie zvládne prudký rast.
+* **Predpoklad:** tím má skúsenosť s JVM/Spring.
+
+# 8) Kognitívne skreslenia, na ktoré si dať pozor
+
+* **Ukotvenie na obľúbenej technológii:** vyberať podľa preferencií tímu namiesto potrieb (napr. nasadiť Kafku v MVP „pre istotu“).
+* **Potvrdzovacie skreslenie:** hľadať články, ktoré chvália zvolený stack, a ignorovať slabé miesta (napr. správa videa).
+* **Zámene príčin a následkov:** výkonnostné problémy často spôsobí nevhodný dátový model/cache, nie „pomalý framework“.
+
+# 9) Zhrnutie – pragmatická voľba
+
+* **Fakty:** pre náš typ aplikácie je „úzke hrdlo“ skôr **vyhľadávanie, cache a práca s médiami** než samotné REST API.
+* **Predpoklad – odporúčanie pre MVP:** **NestJS + PostgreSQL + Meilisearch + Redis + BullMQ + S3/CDN** (Variant A), ak chcete rýchlo iterovať a máte JS/TS kompetenciu.
+* **Alternatíva, ak plánujete skoro ML odporúčania a automatické moderovanie:** **FastAPI** (Variant B).
+* **Ak cielite na korporátne partnerstvá a dlhý životný cyklus:** **Spring Boot (Kotlin)** (Variant C).
+
+---------------------
+
+Prompt4: Aké databázové riešenie by bolo vhodné a z akého dôvodu? 
+
+Odpoveď4:
+
+Viera, poďme rozhodnúť pragmaticky: **primárna transakčná DB + vyhľadávací index + cache + objektové úložisko**. Hlavný kandidát na „source of truth“ je **PostgreSQL**. Nižšie vysvetlím „prečo“ a kedy (nie) siahať po alternatívach.
+
+# Odporúčaná skladba (MVP → scale)
+
+1. **PostgreSQL (relačná DB)** – hlavná databáza
+2. **Meilisearch/OpenSearch (full-text)** – rýchle hľadanie v názvoch, ingredienciách, tagoch
+3. **Redis (cache / fronty)** – sessions, rate-limit, hot feedy, job queue
+4. **S3-kompatibilné úložisko + CDN** – obrázky/videá receptov
+5. (voliteľné neskôr) **ClickHouse** – analytika udalostí a rýchle agregácie
+
+---
+
+# Prečo PostgreSQL pre jadro
+
+**Fakty (široko zdokumentované):**
+
+* **ACID transakcie a referenčná integrita** – potrebuješ konzistenciu pri receptoch, ingredienciách, komentároch, follow vzťahoch.
+* **Silný model dát** – bohaté indexy (BTREE, GIN/GIST), **JSONB** pre flexibilné polia, **pg\_trgm** pre „fuzzy“ match (napr. preklepy v ingredienciách).
+* **Mierka a spoľahlivosť** – replikácie, point-in-time recovery, partície; overené pri veľkých produkčných nasadeniach.
+* **Ekosystém** – kvalitné ORM/migrácie (Prisma/TypeORM, SQLAlchemy, JPA + Flyway/Liquibase).
+* **Lokalizácia** – podpora ICU kolácií; dôležité pre slovenské/české zoradenie a porovnávanie.
+
+**Predpoklady (treba overiť na vzorke dát):**
+
+* Jednotky/porcie/čas prípravy zvládneme v relačnom modeli + formátovacej vrstve (frakcie → float + prezentácia).
+* Väčšina dotazov je „čítanie zoznamov“ a „feed“ – to zrýchlime cache a vyhľadávačom, DB ostane autoritatívna.
+
+---
+
+# Kedy čo pridať alebo vymeniť (alternatívy)
+
+## MySQL/MariaDB
+
+* **Kedy:** ak má tím silnú prax v MySQL a nepotrebuje špeciality Postgresu (JSONB, trigram).
+* **Riziko/predpoklad:** o niečo slabšie full-text možnosti vs. kombinácia Postgres+search engine.
+
+## CockroachDB / YugabyteDB (distribuované „Postgres-like“)
+
+* **Kedy:** potrebuješ **globálnu** vysokú dostupnosť a horizontálne škálovanie už v prvom roku.
+* **Riziko:** vyššia komplexita prevádzky a nákladov v MVP.
+
+## MongoDB (dokumentová NoSQL)
+
+* **Kedy:** extrémne variabilné schémy bez rigidných vzťahov, nízka potreba JOINov.
+* **Prečo nie ako primárna tu:** recepty majú prirodzené **vzťahy** (autor, tagy, ingrediencie, komentáre). JOINy a konzistencia sú kľúčové – relačná DB je vhodnejšia. Mongo je fajn sekundárne (napr. pre denormalizované view), nie ako core.
+
+## DynamoDB / Firestore (serverless NoSQL)
+
+* **Kedy:** vyložene serverless stratégia na cloude s masívnym RPS a jednoduchými prístupovými vzormi.
+* **Riziko:** **modelovanie okolo prístupových vzorov** (ťažké zmeny), zložité dotazovanie naprieč entitami.
+
+## Neo4j (grafová)
+
+* **Kedy:** ak by sa dôraz presunul na **social graph** (odporúčania z follow/like siete, „friends-of-friends“).
+* **Prístup:** skôr ako **doplňkový** engine pre špecifické grafové dotazy.
+
+## ClickHouse (kolumnová / analytika)
+
+* **Kedy:** ak začneš zbierať **udalosťové logy** (view, like, share) vo veľkom a potrebuješ lacné a rýchle agregácie.
+* **Pozícia:** sekundárna „data warehouse/analytics“ DB, nie transakčná.
+
+## Vyhľadávanie: Meilisearch vs. OpenSearch
+
+* **Meilisearch (MVP):** jednoduchý, rýchly onboarding, dobré relevančné výsledky „out-of-the-box“.
+* **OpenSearch/Elasticsearch (scale):** bohaté dotazy, agregácie, tuning relevancie a horizontálne škálovanie.
+
+---
+
+# Ako škálovať Postgres bez bolesti
+
+* **Krátkodobo (MVP):** správny indexing, connection pool, read-replica na reporty, caching (Redis).
+* **Strednodobo:** **particionovanie** veľkých tabuliek (napr. eventy, komentáre), dedikovaný writer + viac readerov, logical replication.
+* **Dlhodobo:** **Citus** (sharding pre Postgres) alebo migrácia vybraných workloadov (napr. analytika do ClickHouse, vyhľadávanie do OpenSearch).
+
+---
+
+# Návrh dátového rozvrstvenia (prakticky)
+
+* **PostgreSQL** – Users, Recipes, Ingredients, Steps, Tags, Comments, Follows, Reports (pravda)
+* **Search index** – denormalizovaný dokument receptu (názov, popis, ingrediencie, tagy, boosty)
+* **Redis** – cache feedov, top recepty, rate-limit, krátke zámky, job queue metadáta
+* **S3 + CDN** – obrázky/videá; DB drží len metadáta a kľúče
+* **(Neskôr) ClickHouse** – eventy: zobrazenia, ukladania, CTR feedu, A/B metriky
+
+---
+
+# Kvalita dát a lokalizácia
+
+* **Normalizácia ingrediencií** (synonymá, spisovné tvary, cudzie názvy) – master tabuľka + mapovanie aliasov.
+* **Merné jednotky** – ukladať v normalizovanej „základnej“ forme + formátovať pri zobrazovaní (g, ml, ks, frakcie).
+* **Jazyky/kolácie** – ICU kolácie pre správne poradie v slovenčine/češtine; vyhľadávač rieši diakritiku a stemming.
+
+---
+
+# Testovateľnosť a prevádzka
+
+* **Migrácie ako kód** (Flyway/Liquibase/Alembic/Prisma Migrate) – verzovanie, rollbacky, review v PR.
+* **Seed/fixtures** pre integračné testy (publikácia receptu, vyhľadávanie, komentáre).
+* **Zálohy + PITR** a obnova pravidelne testovaná.
+* **GDPR** – minimizácia PII, jasné retention politiky (mazanie účtov/obsahu, audit log).
+
+---
+
+# Kognitívne skreslenia (na čo si dať pozor)
+
+* **„Viac databáz = lepšie“**: každá technológia znamená ďalšiu komplexitu a on-call povinnosti. Začni jednou relačnou DB + vyhľadávač + cache.
+* **Potvrdzovacie skreslenie**: vyberať NoSQL „lebo flexibilita“ – tu prevažujú vzťahy a konzistencia.
+* **Ukotvenie na benchmarkoch**: syntetické TPS grafy z internetu nezohľadňujú tvoje prístupové vzory a indexy.
+
+---
+
+## Zhrnutie
+
+* **Primárne odporúčanie:** **PostgreSQL** ako transakčné jadro, **Meilisearch/OpenSearch** na hľadanie, **Redis** na cache, **S3+CDN** na médiá.
+* **Dôvod:** konzistencia, jasné vzťahy, bohaté indexy a jednoduchý scale-up; hľadanie a cache odľahčia DB; médiá mimo DB.
+* **Cesta rastu:** read-repliky + cache → partície → Citus alebo rozštiepenie workloadov (search/analytics) mimo Postgres.
+
+
+---------------------
+
+Prompt5: Ako by sme mohli implementovať systém hodnotenia receptov používateľmi?  
+
+Odpoveď5:
+
+Viera, vezmem to „end-to-end“: **ciele → model hodnotenia → schéma a tok dát → agregácie a poradie → anti-abuse → UX → testovanie → analytika → riziká a skreslenia**. Fakty vs. predpoklady vždy označím.
+
+# 1) Ciele systému
+
+* **Fakty:** potrebujeme spoľahlivo zoradiť recepty, motivovať spätnú väzbu a odolať zneužívaniu.
+* **Predpoklady:** MVP si vystačí s 1–5 hviezdičkami + voliteľnou recenziou; neskôr doplníme „užitočné/neuži točné“ pri recenziách.
+
+# 2) Model hodnotenia
+
+* **MVP (jednoduché, zrozumiteľné) – Fakty:**
+
+  * **Skóre 1–5** (celé čísla).
+  * **Textová recenzia** (nepovinná), max. \~2 000 znakov.
+  * 1 používateľ = najviac 1 hodnotenie na recept (editovateľné; ukladáme históriu).
+* **Rozšírenia – Predpoklady:**
+
+  * „Užitočné“ pri recenzii (hlasovanie typu upvote/downvote).
+  * Voliteľné dimenzie (napr. **chuť**, **zrozumiteľnosť postupu**, **zhoda s časom**). Do MVP neodporúčam – zložitejšie UI, slabší objem dát.
+
+# 3) Schéma dát (PostgreSQL)
+
+**Fakty:** relačné väzby a indexy sú kľúčové; recenzie/hlasovania sa menia často → samostatné tabuľky.
+
+```text
+Recipe(id, author_id, ...)
+
+Rating(
+  id, recipe_id→Recipe, user_id→User,
+  score SMALLINT CHECK (score BETWEEN 1 AND 5),
+  review_text TEXT NULL,
+  status ENUM('visible','hidden','removed'), -- moderácia
+  created_at, updated_at
+)
+UNIQUE (recipe_id, user_id)
+INDEX (recipe_id), INDEX (user_id)
+
+RatingHelpful(
+  id, rating_id→Rating, voter_user_id→User,
+  vote SMALLINT CHECK (vote IN (-1,1)), created_at
+)
+UNIQUE (rating_id, voter_user_id)
+INDEX (rating_id)
+
+RecipeAggregate(
+  recipe_id PK,
+  rating_count INT,
+  avg_raw FLOAT,         -- obyčajný priemer
+  avg_bayes FLOAT,       -- „shrinknutý“ priemer (nižšie)
+  helpful_score FLOAT,   -- agregát „užitočnosti“ recenzií
+  controversy FLOAT,     -- rozptyl/štandardná odchýlka
+  last_recalc TIMESTAMP
+)
+```
+
+# 4) Toky a API
+
+**Fakty:** ťažké výpočty mimo requestu (worker). Pri každom zápise spúšťame úlohu na prepočet agregátov.
+
+* **POST** `/recipes/{id}/rating` → vytvorí/aktualizuje hodnotenie (idempotentné per user+recipe).
+* **GET** `/recipes/{id}/ratings?sort={top|new|controversial}` → stránkované recenzie.
+* **POST** `/ratings/{id}/helpful` body `{vote: 1|-1}`.
+* **GET** `/recipes/{id}/rating-aggregate` → vracia `count, avg_raw, avg_bayes, distribution`.
+
+**Worker (queue):**
+
+1. Po zmene hodnotenia/review → načítaj všetky ratingy daného receptu (alebo inkrementálne rozdiely).
+2. Spočítaj **distribúciu 1–5**, **avg\_raw**, **avg\_bayes**, **variance/controversy**, **helpful\_score**.
+3. Ulož do `RecipeAggregate` a (re)indexuj do vyhľadávača pre poradie vo feede.
+
+# 5) Agregácie a poradie (ranking)
+
+## 5.1 Priemer s Bayesovou korekciou (Fakty)
+
+Pri nízkom počte hlasov „nafúknuté“ priemery stabilizujeme:
+
+* Globálny priemer všetkých receptov: `μ`
+* „Sila prioru“ (pseudo-počet hlasov): `C` (napr. 10–20)
+
+**Vzorec:**
+`avg_bayes = (C*μ + Σscore_i) / (C + n)`
+
+* **Efekt:** nový recept s 2×5★ nebude na vrchu rebríčka, kým nezíska viac hlasov.
+
+## 5.2 Interval spoľahlivosti pre „Top recenzie“ (Fakty)
+
+Ak zviditeľňujeme **recenzie** (nie recepty), na zoradenie podľa „užitočnosti“ používaj **Wilsonovo skóre** pre binárne hlasy (užitočné/neuži točné).
+
+* Zabezpečí, že krátkodobé „brigády“ menej ovplyvnia poradie recenzií.
+
+## 5.3 „Trending“ s časovým útlmom – Predpoklady
+
+Pre domovský feed kombinuj:
+
+* `score_content = avg_bayes`
+* **časový útlm:** `decay = exp(-λ * age_hours)` (napr. λ \~ 0.03–0.07)
+* **výsledok:** `rank = w1*score_content + w2*decayBoost + w3*helpful_signal`
+  Váhy `w1..w3` doladíš A/B testom.
+
+## 5.4 Kontroverznosť (Fakty)
+
+`controversy = stddev(scores)` alebo Gini. Recepty s vysokou kontroverziou môžu dostať samostatnú sekciu („Rozdeľujúce recepty“) alebo ísť nižšie v „Top“.
+
+# 6) Anti-abuse, kvalita a GDPR
+
+**Fakty:**
+
+* Overuj **1 hlas per user**; povoliť edit, logovať históriu.
+* **Rate-limit** na vytváranie/úpravu (napr. 10/min na účet).
+* **Min. vek účtu** (napr. 24–72 h) alebo min. reputácia pred možnosťou hodnotiť.
+* **Shadow-bany / váženie hlasov**: interné „trust score“ (váha 0–1) – nevystavuj verejne.
+* Moderácia textov (pravidlá + ľahký model) → `status` recenzie „hidden“ kým neprejde.
+* GDPR: na vymazanie účtu **soft-delete** recenzií alebo anonymizácia (zachovať skóre, odstrániť identitu).
+
+**Predpoklady:**
+
+* Device-level signály (fingerprint) pre odhalenie klonovaných účtov – citlivé z pohľadu súkromia, použiť s mierou.
+
+# 7) UX zásady (Fakty)
+
+* Zobraziť **rozloženie 1–5** (bar chart), **počet hlasov**, **avg\_bayes** (zaokrúhlený).
+* **Neskrývať** priemery, ale: kým `n < T` (napr. 5–10), označiť „málo hodnotení“.
+* Povoliť **„Upraviť hodnotenie“**; zvýši to kvalitu (užívateľ dopíše po opakovanej príprave).
+* Triedenia recenzií: „Najužitočnejšie“, „Najnovšie“, „S najvyšším hodnotením“, „Kontroverzné“.
+
+# 8) Testovanie (čo by si ako testerka určite chcela)
+
+* **Jednotkové:**
+
+  * Výpočty `avg_bayes`, Wilson, decay, variance (hraničné prípady: n=0, n=1, extrémy).
+  * Validácie (1–5, dĺžky textu, XSS sanitizácia).
+* **Integračné:**
+
+  * Idempotentnosť (opakovaný POST upravuje existujúci záznam).
+  * Re-compute job po batchi zmien (n paralelných hodnotení).
+  * Indexácia do vyhľadávača a konzistencia agregátu.
+* **E2E:**
+
+  * Nový recept → 2 rýchle 5★ → poradie vo feede je stále pod etablovanými receptmi (Bayes).
+  * Úprava hodnotenia 5★→2★ sa prejaví v agregáte a vo feede.
+  * Report/hidden recenzia sa nezapočítava do helpful.
+* **Výkonnostné:**
+
+  * Storm 100 RPS na `POST /rating` + fronta prepočtov.
+  * Čítanie feedu s cache vs. bez cache (P95).
+
+# 9) Analytika (Fakty)
+
+* Eventy: `rating_created`, `rating_updated`, `review_flagged`, `helpful_voted`.
+* Metriky: miera hodnotení na DAU, rozdelenie skóre, čas do 1. hodnotenia po publikácii, korelácia hodnotení s CTR/uložením.
+* A/B: váhy rankingu, prah T pre „málo hodnotení“, zobrazovanie priemeru pred prvým vlastným hlasom (pozor na ukotvenie).
+
+# 10) Riziká a kognitívne skreslenia
+
+* **Ukotvenie (anchoring):** zobrazenie priemeru pred vlastným hlasom ťahá užívateľa k priemeru. *Mitigácia:* pri prvom vstupe zobraziť rozloženie bez konkrétneho čísla, alebo priemer jemným štýlom.
+* **Potvrdzovacie skreslenie:** „5★ recepty sú najlepšie pre všetkých“ – nie; sleduj segmenty (začiatočníci vs. pokročilí).
+* **Survivorship bias:** favorizovanie starších receptov s veľa hlasmi. *Mitigácia:* časový útlm a „novinky“.
+* **Hráčsky efekt:** tvorcovia vyzývajú známych na 5★ v deň publikácie. *Mitigácia:* Bayes + min. vek účtu pred hlasovaním + limity.
+
+---
+
+## Rýchle rozhodnutie pre MVP
+
+* **Schéma vyššie**, **Bayesov priemer** s `C=10..20`, **Wilson** pre „užitočnosť“ recenzií, **Redis cache** agregátov a **worker** na prepočet.
+* **Poradie:** `rank = 0.8*avg_bayes + 0.2*decay` (predpoklad, doladiť A/B).
+* **Antimissuse:** min. vek účtu 48 h, rate-limit, moderácia textov, 1 hlas/user/recept s možnosťou editovať.
+
+
+----------------
+
+Prompt6: Aké API by bolo vhodné na vyhľadávanie receptov podľa ingrediencií? 
+
+Odpoveď6:
+Viera, navrhnem to po vrstvách: **(1) čo má vyhľadávanie zvládnuť → (2) vhodné technológie → (3) REST/GraphQL API návrh → (4) indexácia a normalizácia ingrediencií → (5) triedenie a ranking → (6) výkon, cache, testovanie → (7) fakty vs. predpoklady a typické skreslenia.**
+
+# 1) Čo má vyhľadávanie vedieť
+
+* **Fakty:** kombinácia ingrediencií (INCLUDE), vylúčenia (EXCLUDE), filter podľa času/diéty/typu jedla, tolerancia preklepov, diakritika, stránkovanie, facetové štatistiky (koľko receptov spĺňa daný filter).
+* **Predpoklady:** potrebná aj varianta „čo mám doma“ (AND logika) a „inšpirácia s touto ingredienciou“ (OR + boosting).
+
+# 2) Vhodné technológie
+
+* **Primárne odporúčanie (MVP):** **Meilisearch** (jednoduché, rýchle, dobrá relevancia, typotolerancia, facetové filtre).
+* **Alternatíva pre väčšiu mierku a zložité dotazy:** **OpenSearch/Elasticsearch** (bohatšie query DSL, agregácie, vlastné analyzéry).
+* **Fallback (len pre úplné minimum):** PostgreSQL s `pg_trgm` a JSONB – stačí na „contains“, ale slabé na relevanciu a typo-toleranciu.
+
+# 3) Návrh API (BFF/REST; GraphQL je nižšie)
+
+## 3.1 REST – endpointy
+
+### Vyhľadanie receptov podľa ingrediencií
+
+`GET /search/recipes`
+
+* **Query parametre:**
+
+  * `include[]=…` – ingrediencie, ktoré musia byť prítomné (AND).
+  * `exclude[]=…` – ingrediencie, ktoré nesmú byť prítomné.
+  * `mode=all|any` – „all“ = všetky z `include` (AND), „any“ = aspoň jedna (OR).
+  * `q=` – voľný text (názov, popis).
+  * Filtre: `diet=vegan|vegetarian|gluten_free|...`, `time_max=30`, `difficulty=easy|...`, `tag[]=dezert|…`
+  * Triedenie: `sort=rank|rating|time|new`, `order=desc|asc`
+  * Stránkovanie: `page=1`, `per_page=20`
+  * Lokalizácia: `lang=sk` (na analyzér/normalizáciu)
+* **200 Response (skrátené):**
+
+```json
+{
+  "page": 1,
+  "per_page": 20,
+  "total": 482,
+  "facets": {
+    "diet": {"vegan": 53, "vegetarian": 121, "gluten_free": 77},
+    "difficulty": {"easy": 240, "medium": 176, "hard": 66},
+    "time_bucket": {"<=15": 88, "16-30": 190, "31-60": 156, "60+": 48}
+  },
+  "results": [
+    {
+      "id": "r_123",
+      "title": "Špagety aglio e olio",
+      "ingredients": ["špagety", "cesnak", "olivový olej", "čili", "petržlen"],
+      "missing_ingredients": [],
+      "match": {"included": ["cesnak","olivový olej"], "excluded_blocked": []},
+      "score": 0.86,
+      "avg_rating": 4.6,
+      "cook_time_min": 15,
+      "thumbnail_url": "https://cdn/...",
+      "highlights": {"ingredients": ["… cesnak … olivový olej …"]}
+    }
+  ]
+}
+```
+
+### Návrhy ingrediencií (autocomplete)
+
+`GET /search/suggest/ingredients?q=ces`
+Vracia normalizované názvy + aliasy (napr. „cesnak“ \~ „česnek“ \~ „garlic“).
+
+### „Čo mám doma“
+
+`POST /search/pantry`
+
+```json
+{
+  "include": ["vajcia", "múka hladká", "mlieko"],
+  "exclude": ["orechy"],
+  "allow_missing": 1,
+  "max_time": 30
+}
+```
+
+* **Logika:** AND na „include“, povoliť do `allow_missing` chýbajúcich surovín; vracať aj pole `missing_ingredients` a generovať **nákupný doplnok**.
+
+## 3.2 GraphQL (alternatíva)
+
+Jeden field `searchRecipes(input: SearchInput): SearchResult!` s typmi `facets`, `results`, `pagination`. Výhoda: klient si pýta presne polia, ktoré potrebuje. Nevýhoda: zložitejšie cachovanie na CDN.
+
+# 4) Indexácia a normalizácia ingrediencií
+
+**Kľúčové fakty:**
+
+* **Normalizovať** ingrediencie do master tabuľky (napr. `Ingredient{id, name, normalized_name, aliases[]}`).
+* **Synonymá/aliasy:** „cuketa“ \~ „cuketka“ \~ „zucchini“, „šľahačka“ \~ „šľahačková smotana“ \~ „smotana na šľahanie“.
+* **Diakritika a jazyky:** analyzér bez diakritiky (folding), case-insensitive; stemming pre SK/CZ nie je kľúčový, dôležitejšia je synonymia.
+* **Merné jednotky:** do indexu ukladať **len názvy surovín**; množstvá (g, ml) nech zostanú v DB.
+
+### Mapa, ktorá ide do indexa (Meilisearch/OpenSearch)
+
+```json
+{
+  "id": "r_123",
+  "title": "Špagety aglio e olio",
+  "ingredients": ["špagety","cesnak","olivový olej","čili","petržlen"],
+  "ingredients_normalized": ["spagety","cesnak","olivovy_olej","chilli","petrzlen"],
+  "tags": ["talianska","cestoviny","bez_mäsa"],
+  "diet": ["vegetarian"],
+  "cook_time_min": 15,
+  "avg_bayes": 4.5,
+  "likes": 320,
+  "created_at": "2025-08-01T10:00:00Z"
+}
+```
+
+* **Filterable fields:** `diet`, `tags`, `cook_time_min` (bucketované), `difficulty`.
+* **Searchable fields:** `title`, `ingredients`, `ingredients_normalized`, `tags`.
+* **Ranking rules (Meilisearch):** custom poradie po fulltexte: `words → typo → proximity → attribute → exactness → custom(score)`.
+
+# 5) Triedenie a ranking
+
+* **Základ (MVP):** kombinácia **textovej zhody** (koľko „include“ sa trafí) + **obsahové signály**:
+
+  * `match_coverage` = podiel z `include`, ktoré recept obsahuje (AND/OR podľa `mode`).
+  * `missing_penalty` = penalizácia za chýbajúce suroviny.
+  * `popularity` = transformácia `avg_bayes`, `likes`.
+  * `recency_boost` = preferuj novšie (s miernym útlmom).
+* **Príklad skóre:**
+  `rank = 0.5*match_coverage - 0.2*missing_penalty + 0.2*popularity + 0.1*recency_boost`
+* **Predpoklad:** na „čo mám doma“ uprednostniť 100% pokrytie ingrediencií a krátky čas prípravy.
+
+# 6) Výkon, cache, testovanie
+
+* **Výkon/škálovanie:** requesty na BFF → preklad do dotazu pre Meilisearch/OpenSearch; výsledky **cache** v Redis pre hot dotazy (`include` malé sady ako „vajcia+múka“).
+* **Stránkovanie:** stabilné poradie cez `search_after` (OpenSearch) pri hlbokých stránkach.
+* **Bezpečnosť:** limit dĺžky vstupov, allowlist filtrov/parametrov, rate-limit podľa IP/účtu.
+* **Testovanie (ako testerka oceníš):**
+
+  * Jednotkové: normalizácia aliasov („mliečna čok.“ → „mliečna čokoláda“), diakritika („česnak“ vs. „cesnak“).
+  * Integračné: kombinácie `include/exclude`, AND/OR, preklepy („petržlen“ vs. „petrzlen“), časové filtre.
+  * Výkonnostné: P95 < 200–300 ms pre 20 výsledkov pri warm cache.
+  * Relevancia: zlatý dataset s očakávaným poradím pre 50–100 dotazov; A/B porovnanie ranking váh.
+
+# 7) Fakty vs. predpoklady a skreslenia
+
+* **Fakty:** plnotext pre ingrediencie je lepšie riešiť mimo relačnej DB; synonymá a diakritika zásadne zlepšujú UX; facetové filtre a stránkovanie sú nutnosť.
+* **Predpoklady:** Meilisearch vystačí na prvý rok; OpenSearch pridáme pri zložitejších agregáciách a väčšej návštevnosti.
+* **Skreslenia, na ktoré si dať pozor:** potvrdenie vlastného vkusu (testovať na reálnych dotazoch), efekt ukotvenia (prílišný dôraz na popularitu starých receptov → pridať recency boost), dostupnostná heuristika (optimalizovať pre „vajcia+múka“ a ignorovať dlhý chvost dopytov → udržiavať zlatý dataset dotazov).
+
+**Záver – stručná voľba pre MVP:** BFF endpoint `GET /search/recipes` nad **Meilisearch** s normalizovanými ingredienciami, aliasmi a typotoleranciou; filtre ako facetové; ranking kombinujúci pokrytie `include`, penalizáciu `missing`, Bayesov priemer hodnotení a jemný recency boost.
+
+
+---------------------
+
+Prompt7: Navrhni spôsob, ako zabezpečiť autentifikáciu používateľov.  
+
+Odpoveď7:
+Viera, zoberiem to „od politiky po kód“: **ciele → arch. rozhodnutie → tok autentifikácie → tokeny a uloženie → účty a prístup → bezpečnosť → API a schéma → testovanie → riziká a skreslenia**. Pri každom bode rozlíšim fakty vs. predpoklady.
+
+# 1) Ciele
+
+* **Fakty:** bezpečné prihlásenie na mobile (iOS/Android), sociálne loginy, krátke relácie, jednoduché odhlásenie zo všetkých zariadení, GDPR (výmaz, export), audit.
+* **Predpoklady:** MVP tím 2–5 ľudí; nechcete stavať IAM „na kolene“; prvý rok ≤ 50k MAU.
+
+# 2) Architektonické rozhodnutie
+
+* **Fakt:** najnižšie riziko a najrýchlejší štart je **OIDC (OpenID Connect)** s poskytovateľom identity (IdP) – Auth0 / AWS Cognito / Ory / Keycloak (self-host).
+* **Predpoklad – odporúčanie:** začať **managed IdP** (Auth0/Cognito). Self-host (Keycloak/Ory) zvážte až keď budete chcieť úplnú kontrolu (vyššia prevádzková záťaž).
+
+# 3) Tok autentifikácie (mobile-first)
+
+**Štandard:** **Authorization Code Flow + PKCE (S256)** cez natívny prehliadač (ASWebAuthenticationSession / CustomTabs).
+
+1. App → IdP (authorize? client\_id, scope, code\_challenge, redirect\_uri).
+2. Používateľ sa prihlási (Apple/Google/email+heslo).
+3. IdP → `code` do `redirect_uri` (deep link/app scheme).
+4. App → IdP token endpoint (code + code\_verifier) → **krátkožijúci access token (JWT)** + **refresh token**.
+5. App volá naše API s **Bearer access tokenom** v hlavičke.
+
+* **Fakty:** PKCE chráni kód pred odcudzením; social loginy skrátia registráciu; OIDC poskytuje štandardizované `id_token` s minimom identity claimov.
+* **Predpoklady:** na webe použijete rovnaký flow, ale s **httpOnly Secure SameSite=strict cookie** namiesto `localStorage`.
+
+# 4) Tokeny, rotácia a uloženie
+
+* **Access token (JWT, RS256/ES256):** TTL 5–15 min; obsahuje `sub` (user id), `scope`, `iat/exp`, prípadne ľahké claimy (jazyk). Overuje sa podpisom proti **JWKS** IdP (cache + `kid`).
+
+* **Refresh token:** rotovaný (one-time-use) s **reuse detekciou**. Pri pokuse použiť starý RT → zrušiť celú reťaz.
+
+* **Uloženie na mobile:** OS **secure storage** (Keychain/Keystore). Nikdy nie plain storage.
+
+* **Logout zo všetkých zariadení:** server uloží **hash RT** (nie samotný token), pri „revoke all“ invaliduje všetky aktívne RT hashe danej `sub`.
+
+* **Fakty:** krátke access tokeny minimalizujú dopad úniku; rotované RT výrazne ťažšie zneužijete.
+
+* **Predpoklady:** `scope`/`roles` voľte minimalisticky (principle of least privilege).
+
+# 5) Účty a prístup
+
+* **Registrácia:** e-mail + heslo (overenie e-mailu), alebo **passwordless** (magic link / passkeys).
+* **Sociálne loginy:** Apple/Google (nárast konverzie).
+* **Heslá:** **Argon2id** ( alebo bcrypt s costom ), unikátne salting, minimá + haveibeenpwned kontrola reťazcov.
+* **MFA:** TOTP a **passkeys (WebAuthn)** ako voliteľné; povinné pre adminov.
+* **Autorizácia:** **RBAC** (role `user`, `moderator`, `admin`) + prípadné **ABAC** (vlastník zdroja). Claimy do access tokenu iba nevyhnutné (napr. `roles`), ostatné dohľadávať v DB.
+
+# 6) Ochrany a compliance
+
+* **Rate-limit** (napr. 5–10/min) a **exponenciálny backoff** na login/password reset.
+* **Device/trust signály**: viazanie RT na zariadenie (user-agent/os, prípadne device key) – len pre internú heuristiku.
+* **Bezpečnosť API:** WAF, IP allow/deny list pre admin endpoints, audit log (login, logout, reset).
+* **Kľúče:** rotácia signing keys v IdP, `kid` v JWT, sledovať expiráciu.
+* **GDPR:** minimalizácia PII (drž len e-mail/meno, nie dátumy narodenia), **právo na výmaz** (anonymizuj obsah, zachovaj agregácie), export údajov.
+* **Logy:** bez PII; korelačné ID; failed vs. successful loginy oddelene.
+
+# 7) API a schéma (ak robíte self-managed)
+
+**Tabuľky (PostgreSQL)** – zjednodušené:
+
+```
+User(id, email UNIQUE, email_verified BOOL, password_hash?, created_at, deleted_at?)
+UserIdentity(id, user_id→User, provider ENUM('password','google','apple'), provider_sub, created_at)
+Session(id, user_id→User, refresh_token_hash, device_info, last_rotated_at, revoked_at)
+Role(user_id→User, role ENUM('user','moderator','admin'))
+AuditLog(id, user_id?, event, ip, ua, created_at, metadata JSONB)
+```
+
+**Endpointy (BFF)**
+
+* `POST /auth/login` (ak nepoužijete úplne externé UI IdP) – prijíma OIDC `code`, vráti access+refresh (len mobile).
+* `POST /auth/refresh` – rotačný refresh; vráti nový pár; starý RT označí ako použitý.
+* `POST /auth/logout` – zruší aktuálnu session.
+* `POST /auth/logout-all` – zruší všetky RT hashe daného používateľa.
+* `POST /auth/password-reset` (request) → e-mail s jednorazovým tokenom; `POST /auth/password-reset/confirm`.
+* **Pozn.:** pri plnom IdP väčšinu flow rieši IdP; vy implementujete iba „škatľu“ pre refresh/odhlásenie a autorizáciu vo vlastných endpointoch.
+
+# 8) Testovanie (čo určite zahrnúť)
+
+* **Jednotkové:** verifikácia JWT (exp, nbf, aud, iss), kontrola `kid` a JWKS podpisu; validácie hesiel; rate-limit logiku.
+* **Integračné:** celý PKCE flow v simulácii (authorize → code → token); rotácia RT vrátane „reuse detection“; logout-all.
+* **Bezpečnostné:** MASVS/ASVS checklist, bruteforce scenáre, CSRF (web: same-site, anti-CSRF tokeny ak treba), SSRF/redirect hijack (striktná allowlist `redirect_uri`).
+* **E2E:** social login (Apple/Google), zmena e-mailu, reset hesla, výmaz účtu a anonymizácia obsahu.
+* **Výkonnostné:** P95 na `refresh` < 150 ms; JWKS cache miss → fallback na re-fetch; rate-limit pod náporom.
+
+# 9) Časté riziká a kognitívne skreslenia
+
+* **„Postačí dlhý JWT bez refreshu“ (omyl):** dlhé TTL zvyšuje dopad úniku. Krátke access + rotovaný refresh je bezpečnejšie.
+* **Ukotvenie na vlastný login formulár:** IdP UI je nudné, ale bezpečnejšie (správna ochrana, bot-defense).
+* **Potvrdzovacie skreslenie:** ignorovanie edge prípadov (logout-all, zmena hesla na jednom zariadení). Otestuj „reuse detection“ a revokácie.
+* **Zamieňanie identity a autorizácie:** overený ≠ oprávnený. Držte jasné roly a kontroly vlastníctva zdrojov.
+
+---
+
+## Stručný návrh pre MVP (pragmatický)
+
+* **IdP:** Auth0 alebo Cognito (EÚ región), OIDC Authorization Code + **PKCE**.
+* **Tokeny:** JWT (RS256) 10 min + **rotovaný refresh** v secure storage; „reuse detection“ + „logout-all“.
+* **Web:** httpOnly Secure SameSite=strict cookies; anti-CSRF token, strict `redirect_uri` allowlist.
+* **Heslá:** Argon2id, e-mail-verify, voliteľné **passkeys**; MFA povinné pre adminov.
+* **Logy a GDPR:** audit udalostí, minimalizácia PII, právo na výmaz (anonymizácia obsahu).
+
+
+------------------------
+
+Prompt8: Ako riešiť ukladanie obrázkov jedál? 
+
+Odpoveď8:
+Viera, vezmem to od architektúry po testovanie. Pri každom bode rozlíšim fakty vs. predpoklady.
+
+# 1) Ciele a obmedzenia
+
+* **Fakty:** potrebujeme rýchly upload z mobilu, lacné a škálovateľné uloženie, rýchle doručovanie cez CDN, bezpečnosť (kontrola obsahu), GDPR (EÚ región, právo na výmaz).
+* **Predpoklady:** pre MVP stačia fotky (video až neskôr), cieľ do 10 MB/fotku, max. 10 fotiek na recept.
+
+# 2) Architektúra úložísk a doručovania
+
+* **Fakty:**
+
+  * **Objektové úložisko** (S3-kompatibilné) je štandard na veľké množstvá médií.
+  * **CDN** (CloudFront/Cloudflare/Fastly) dramaticky znižuje latenciu a náklady.
+  * **Priamy upload z mobilu** cez **pre-podpísané URL** šetrí backend (API nepretláča súbory).
+* **Odporúčaný tok (MVP):**
+
+  1. App zavolá backend `POST /media/sign-upload` s metadátami (MIME, plánovaný formát, cieľ „recipe”).
+  2. Backend vygeneruje **signed URL** (putObject) + key (napr. `media/recipes/{recipeId}/{uuid_v4}_v{n}.jpg`).
+  3. App nahrá obrázok priamo do S3.
+  4. Backend dostane **S3 event** → fronta (SQS/RabbitMQ) → **worker**:
+
+     * validácia MIME/hlavičiek, antivírusové skenovanie,
+     * spracovanie (thumbnail, konverzie, strip EXIF),
+     * zápis metadát do DB a indexácia do vyhľadávača,
+     * invalidácia/priming CDN.
+* **Predpoklady:** hostovať v EÚ regióne (kvôli GDPR a latencii).
+
+# 3) Spracovanie obrázkov (pipeline)
+
+* **Fakty:**
+
+  * Odstránenie **EXIF (hlavne GPS)** je dôležité pre súkromie.
+  * iOS často uploaduje **HEIC** → treba konvertovať (napr. **AVIF/WebP** pre web, **JPEG** ako fallback).
+  * **Orientácia** sa spolieha na EXIF flagy; po odstránení je nutné obrázok fyzicky otočiť.
+  * Pre UX a náklady je vhodné generovať **viac veľkostí** (napr. 1280, 960, 480, 240 px na dlhšej strane).
+* **Odporúčanie (MVP):**
+
+  * Povolené vstupy: `image/jpeg`, `image/png`, `image/heic`.
+  * Konverzia: ulož originál (ak treba), plus deriváty: **AVIF** a **WebP**; fallback **JPEG**.
+  * Kvalita: AVIF/WebP \~65–75; JPEG \~80.
+  * Bezpečnosť: knižnica na sanitizáciu obrázkov, zákaz SVG od používateľov.
+* **Predpoklady:** pre mobil stačí dlhšia strana do 1280 px (šetrenie dát).
+
+# 4) Metadáta v DB (nie v úložisku)
+
+* **Fakty:** úložisko je „blbé“; hľadať a riadiť stav sa má v DB.
+* **Schéma (skrátene):**
+
+  * `Media(id, owner_user_id, recipe_id, storage_key, ext, mime, width, height, bytes, status: {processing, ready, rejected}, variants JSONB, created_at)`
+  * `Recipe(media_count, cover_media_id, ...)`
+* **Predpoklady:** `variants` drží URL a rozmery (napr. `{ "480w": "...", "960w": "..." }`).
+
+# 5) Doručovanie a cache
+
+* **Fakty:**
+
+  * **CDN cache-control**: `public, max-age=31536000, immutable` pre verziované kľúče.
+  * **Cache-busting** cez verziovanie súborov (`_v2` v key) namiesto menenia hlavičiek.
+  * **Signed GET URL** len ak treba obmedziť prístup (súkromné profily); inak nech to ide cez CDN anonymne.
+* **Predpoklady:** väčšina fotiek je verejná (recepty), profilovky môžu byť verejné.
+
+# 6) Bezpečnosť a zneužitie
+
+* **Fakty:**
+
+  * **Veľkostné limity** (napr. ≤10 MB, ≤8000×8000 px).
+  * **Rate-limit** na podpisy uploadov a počet médií za deň.
+  * **AV sken** (ClamAV alebo managed AV) + odmietnutie podozrivých súborov.
+  * **Moderácia**: NSFW detektor + manuálny review na nahlásené.
+  * Presné **MIME overenie** (nepodliehať iba príponám).
+* **Predpoklady:** základné **perceptuálne hešovanie** (pHash) na detekciu duplikátov/kradnutého obsahu, ak sa to začne objavovať.
+
+# 7) Náklady a lifecycle
+
+* **Fakty:**
+
+  * Najväčšie položky: odchádzajúci prenos z CDN a počet requestov.
+  * **Lifecycle policies**: po 30–90 dňoch presun „originálov“ do lacnejšej triedy (napr. infrequent access), deriváty ponechať v hot storage.
+  * **On-the-fly transformácie** (lambda\@edge / image service) sú flexibilné, ale drahšie na requesty.
+* **Predpoklady:** pre MVP je lacnejšie generovať fixný set veľkostí po uploade.
+
+# 8) Názvoslovie a štruktúra kľúčov
+
+* **Fakty:** predvídateľná štruktúra zjednodušuje invalidácie a práva.
+* **Príklad:**
+
+  * `media/recipes/{recipeId}/{uuid}_orig.heic`
+  * `media/recipes/{recipeId}/{uuid}_v1_1280.avif`
+  * `media/recipes/{recipeId}/{uuid}_v1_960.webp`
+  * `media/users/{userId}/avatar_{uuid}_v3_480.webp`
+* **Predpoklady:** `vN` sa inkrementuje pri re-encode (napr. po oprave kvality).
+
+# 9) Alternatíva: správa obrázkov „ako služba“
+
+* **Fakty:** **Cloudinary / Imgix / ImageKit** ponúknu upload widgety, transformácie URL-parametrami, automatický formát (AVIF/WebP), CDN a optimalizácie.
+* **Výhody:** minimálny vlastný kód, ABR pre video, smart crop, detekcia tvárí.
+* **Nevýhody:** cena za transformácie a vendor lock-in, zložitejšie GDPR zmluvy.
+* **Predpoklad pre MVP:** ak tím nechce DevOps na médiá, toto zrýchli spustenie.
+
+# 10) GDPR a prístupové práva
+
+* **Fakty:**
+
+  * Hostovať v **EÚ regióne**, uzavrieť **DPA** s poskytovateľom.
+  * **Právo na výmaz:** zmazať súbory a deriváty; v DB označiť ako „deleted“, invalidovať CDN.
+  * **Minimalizácia PII:** stripnúť EXIF, hlavne GPS.
+* **Predpoklady:** ak budú súkromné recepty, GET cez **časovo obmedzené signed URL** alebo autorizované proxy.
+
+# 11) Testovanie (čo pokryť)
+
+* **Fakty:**
+
+  * Jednotkové: validácia MIME, rotácia EXIF, konverzia HEIC→AVIF/WebP/JPEG, strip EXIF.
+  * Integračné: pre-podpísaný upload, event→fronta→worker→deriváty, chybové stavy (zlyhaná transkód, AV karanténa).
+  * Výkonnostné: nahratie 10 súborov súčasne, P95 spracovania derivátov, priepustnosť CDN.
+  * Bezpečnostné: upload SVG/skriptov, veľké rozmery, falošné MIME.
+* **Predpoklady:** vizuálne dify pre kvalitu (SSIM/PSNR) pri ladení kompresie.
+
+# 12) Pragmatické rozhodnutie pre MVP
+
+* **Úložisko:** S3-kompatibilné v EÚ + CDN.
+* **Upload:** pre-podpísané PUT, limity 10 MB, 1280 px dlhšia strana.
+* **Pipeline:** worker s ffmpeg/imagemagick/libvips → AVIF/WebP/JPEG deriváty, strip EXIF, antivírus.
+* **DB:** `Media` tabuľka s `variants` a stavmi, `Recipe.cover_media_id`.
+* **Bezpečnosť:** rate-limit, MIME validácia, NSFW/AV, zákaz SVG.
+* **Náklady:** fixné veľkosti po uploade, lifecycle na „originál“, dlhé CDN TTL s verziovaním kľúčov.
+
+**Kognitívne skreslenia (pozor):**
+
+* „Uložíme obrázky priamo do DB“ – zbytočné náklady a latencia; binárky patria do objektového úložiska.
+* „Stačí JPEG navždy“ – ignoruje úspory dát s AVIF/WebP; otestovať vizuálnu kvalitu vs. veľkosť.
+* „EXIF si necháme“ – riziko úniku GPS údajov; EXIF treba stripnúť.
+
+
+--------------------
+
+Prompt9: Ako by si otestoval odporúčací algoritmus, ktorý navrhuje podobné recepty?
+
+Odpoveď9:
+Viera, poďme to otestovať „end-to-end“ – od definície úspechu cez offline metriky až po A/B testy a monitoring. Pri každom bode rozlíšim **Fakty** vs. **Predpoklady** a upozorním na typické kognitívne skreslenia.
+
+# 0) Východiská
+
+* **Fakty:** odporúčame „podobné recepty“ ku konkrétnemu receptu (item-to-item). Relevancia závisí od ingrediencií, postupu, času prípravy, diéty a správania používateľov (klik/uloženie/varenie).
+* **Predpoklady:** K=10 odporúčaní; na začiatku mix obsahových signálov (ingrediencie, tagy) + slabé kolaboračné (klik/uloženie), embeddings z textu.
+
+# 1) Čo je „dobrá“ odporúčanie (cieľové metriky)
+
+**Fakty (primárne biznis metriky, online):**
+
+* **Save-rate\@K** (podiel uložených zobrazených odporúčaní).
+* **CTR\@K** (dlhé kliky ≥ 5 s alebo 2+ scrolly v detaile).
+* **Cook-proxy\@K** (napr. otvorenie v režime krokov alebo pridanie na nákupný zoznam).
+* **Churn guardrails:** nezhoršiť bounce rate a čas do prvej akcie.
+
+**Fakty (sekundárne, offline):**
+
+* **Precision\@K, Recall\@K, nDCG\@K** (ranking kvalita).
+* **Coverage** (percento katalógu, ktoré sa vie dostať do odporúčaní).
+* **Intra-List Diversity (ILD)** a **novelty** (neodporúčaj stále to isté).
+* **Latency P95** (čas generovania).
+
+**Predpoklady:** sleduj **serendipity proxy** (ako veľmi odporúčania rozširujú horizont užívateľa) a **popularity-bias index** (podiel dlhého chvosta).
+
+# 2) Testovacie dáta a „zlatý štandard“
+
+* **Fakty:**
+
+  * **Temporal split** (train na dátach do T, test po T) – vyhneš sa úniku informácií.
+  * **Golden set** párov (recept → ručne vybrané podobné recepty) od interných kurátorov/šéfkuchára/testerov.
+* **Predpoklady:** 300–500 zlatých párov stačí na stabilné porovnania počas MVP.
+
+# 3) Offline testy (rýchle iterácie bez vplyvu na používateľov)
+
+1. **Jednotkové testy podobnosti (Fakty):**
+
+   * Skóre **cosine** embeddings je v \[−1,1], monotónne s uhlom.
+   * TF-IDF/Jaccard nad ingredienciami zodpovedá očakávaniam (zdieľané kľúčové suroviny ↑).
+   * Normalizácia diakritiky a aliasov („petržlen“ \~ „petrzlen“, „cuketa“ \~ „zucchini“).
+
+2. **Integračné testy pipeline (Fakty):**
+
+   * Pre recept s {vajcia, múka, mlieko} sa v top-K objavia aspoň 3 palacinkové/lievancové varianty.
+   * **Cold-start item** (nový recept): fallback na obsahové podobnosti funguje, latencia ≤ 200 ms.
+   * **Cold-start user**: odporúčania podľa aktívneho receptu, nie podľa histórie.
+
+3. **Offline metriky (Fakty):**
+
+   * **nDCG\@K** (poradie relevantných výsledkov – ideálne ≥ baseline).
+   * **Coverage** (napr. > 60 % katalógu je dostupných v top-N susedoch).
+   * **ILD** ≥ baseline (diverzita ingrediencií/tagov v zozname).
+   * **Popularity-penalty**: podiel veľmi populárnych receptov v top-K ≤ prah (predpoklad: ≤ 60 %).
+
+4. **Ablácie (Fakty):**
+
+   * Porovnaj **embeddings only** vs. **ingrediencie only** vs. **hybrid**.
+   * Vypni jednotlivé signály (čas, diéta, tagy) → dopad na metriky.
+
+5. **Kontrafaktuálne vyhodnocovanie (Predpoklad):**
+
+   * Ak máš historické logy so zobrazovanými alternatívami, použi **IPS/DR** odhad (odvažkované kliky) na zníženie biasu.
+
+# 4) Online testy (A/B a interleaving)
+
+1. **A/B test (Fakty):**
+
+   * **Primárne metriky:** Save-rate\@K, CTR\@K, Cook-proxy\@K.
+   * **Guardrails:** bounce, čas v app, hlásenia nevhodného obsahu.
+   * **Dizajn:** randomizácia na úrovni session; dĺžka min. 1–2 týždne (zachyti víkend/veľké varenia).
+   * **Štatistika:** fixný horizont, **CUPED** na zníženie variance (Predpoklad), sleduj **p-hacking** (limituj počet pohľadov).
+
+2. **Team-Draft Interleaving (Fakty):**
+
+   * Rýchle A/B pre poradie dvoch rankerov v jednom zozname; rozhoduje, ktorý výsledok získava viac „wins“.
+
+3. **Segmentácia (Fakty):**
+
+   * Začiatočníci vs. pokročilí, vegáni vs. všežravci, krátky čas vs. dlhý čas varenia – sleduj heterogénne efekty (pozor na **Simpsonov paradox**).
+
+# 5) Edge scenáre a adversariálne testy
+
+* **Fakty:**
+
+  * **Diéty a alergény** – nesmie odporučiť recept s orechmi, ak je filter „bez orechov“.
+  * **Jazyky/diakritika** – SK/CZ varianty, anglické aliasy ingrediencií.
+  * **Dlhý chvost** – malé, nové a lokálne recepty musia mať šancu (serendipity).
+* **Predpoklady:**
+
+  * **Shilling útoky** (skupina likov na vlastný recept) – odporúčania váž podľa **trust score** a **Bayes priemeru**, nie surového počtu likov.
+
+# 6) Výkon a spoľahlivosť
+
+* **Fakty:** P95 latencia pre top-K ≤ 200–300 ms; fallback keď vektorový vyhľadávač nedostupný (obsahové heuristiky).
+* **Predpoklady:** cache top-K susedov na populárne recepty (Redis, TTL \~ 5–15 min; invalidácia pri update).
+
+# 7) Monitoring v produkcii
+
+* **Fakty:** loguj `rec_id`, `source_rec_id`, `rank`, `score_parts`, `explanations`, `clicked/saved`.
+* **Drifty (Fakty):** **embedding drift**, **feature drift** (rozdiel distribúcií vs. tréning), alarmy pri anomálii.
+* **Predpoklady:** „explainer“ (aspoň textové vysvetlenie pre debug: „zdieľané ingrediencie: cesnak, olivový olej; podobný čas: 15 min“).
+
+# 8) Kvalita dát a validácie
+
+* **Fakty:** deduplikácia receptov, normalizácia ingrediencií (aliasy), odstránenie SPAM/NSFW, jazyková identifikácia.
+* **Predpoklady:** penalizuj roboticky generované duplicity (perceptuálne hashovanie obrázkov).
+
+# 9) Testovacie prípady (výber)
+
+* **Cold-start item:** nový recept s 3 fotkami, bez interakcií → aspoň 7/10 odporúčaní zdieľa ≥2 ingrediencie.
+* **Konflikt diét:** zdrojový recept „bez lepku“ → v top-K sa neobjaví „múka pšeničná“ (tvrdé pravidlo).
+* **Populárny vs. podobný:** ak existuje veľmi populárny, no málo podobný recept, musí byť nižšie ako stredne populárny, ale vysoko podobný (nDCG).
+* **Jazyk/diakritika:** „petržlen“ \~ „petrzlen“ \~ „parsley“ – zhodné výsledky.
+* **Časová konzistencia:** v 2 po sebe idúcich dňoch sa top-K nemení extrémne (stabilita pri nezmenenom katalógu).
+
+# 10) Riziká a kognitívne skreslenia (aktivne odhaľovať)
+
+* **Potvrdzovacie skreslenie:** vyberať len dotazy, kde nový model vyzerá lepšie. *Mitigácia:* fixný zlatý dataset + shadow test na náhodnej vzorke.
+* **Ukotvenie na CTR:** CTR rastie aj na „click-baity“, ale nevedie k vareniu. *Mitigácia:* optimalizuj na **Save** a **Cook-proxy**.
+* **Novelty bias:** preceňuješ novinky; *Mitigácia:* recency boost udržuj malý, kontroluj coverage.
+* **p-hacking:** opakované pohľady do A/B. *Mitigácia:* pred-registrovaný plán a hranice.
+
+---
+
+## Stručný plán na 4 týždne (predpoklad)
+
+1. **Týždeň 1:** golden set, temporal split, baseline (ingrediencie TF-IDF + heuristiky), unit/integr. testy podobnosti.
+2. **Týždeň 2:** embeddings + hybrid, offline metriky (nDCG, ILD, coverage), ablácie, výber kandidáta.
+3. **Týždeň 3:** A/B (alebo interleaving) na 20–30 % prevádzky, guardrails, logging.
+4. **Týždeň 4:** vyhodnotenie, rollback kritériá, tuning váh (coverage/diversity), postupný rollout.
+
+**Limity a neistoty:** Bez dostatočného logu správania je kolaboratívny signál slabý (predpoklad). V tom prípade klásť dôraz na kvalitnú normalizáciu ingrediencií, dobré embeddings a diverzitu.
+
+
+--------------------------
+
+Prompt10: Ako by sme mohli aplikáciu optimalizovať pre pomalé pripojenie na internet? 
+
+Odpoveď10: 
+Viera, poďme cielene: najskôr **ciele a obmedzenia**, potom **opatrenia na klientovi**, **na serveri/infra**, **sieťové protokoly a formáty**, **UX pre nízky dátový režim**, **offline sync**, **meranie a testovanie**, a na záver **MVP plán**. Označím **Fakty** (overiteľné, stabilné) a **Predpoklady** (treba overiť na vašom use-case). Priebežne upozorním na kognitívne skreslenia.
+
+# 1) Ciele a obmedzenia
+
+* **Fakty:** pri pomalom/nekvalitnom pripojení trpia latencia, priepustnosť a stabilita; najväčší náklad sú média (obrázky/video) a „chatty“ API.
+* **Predpoklady:** väčšina používateľov otvorí appku kvôli rýchlemu receptu → dôležitý je „Time-to-First-Recipe“ < 2 s aj na 3G.
+
+# 2) Klient (mobil) – najväčší prínos za málo
+
+* **Fakty:**
+
+  * **Low-data mód (prepínač v nastaveniach)**: globálne vypne autoplay videí, zníži kvalitu obrázkov, potlačí prefetch na mobile dáta.
+  * **Placeholders + BlurHash/ThumbHash**: najprv sa zobrazí malý „rozmazaný“ náhľad (pár bajtov), potom sa dotiahne ostrá verzia.
+  * **Lazy loading a priorita**: načítavať iba to, čo je na obrazovke (listy receptov), a to v poradí odhora; odložiť náhľady v karuseloch.
+  * **Škálovanie obrázkov na klientovi pred uploadom**: fotku z kamery downsamplovať (napr. dlhšia strana 1280 px) + kompresia pred odoslaním.
+  * **Batchovanie požiadaviek**: spojiť drobné volania do jedného (napr. inicializačný bootstrap).
+  * **Cache v zariadení**: recepty (JSON) aj obrázky (deriváty) ukladať do cache s TTL a ETag (If-None-Match), čítanie vždy z cache → „stale-while-revalidate“ na pozadí.
+  * **Backoff s jitterom**: pri výpadkoch exponenciálne backoff + náhodný posun; idempotentné opakovania.
+  * **Time-outs a rozumné limity**: krátke time-outs na menej dôležité dáta, vyššie na obsah; „cancel on scroll“ pre zbytočné dotazy.
+* **Predpoklady:**
+
+  * **Protobuf/MessagePack** pre feed (≈ menšie o 30–60 % vs. JSON). Overiť zisk vs. zložitosť.
+  * **Persisted Queries** (GraphQL) – namiesto posielania dlhých dotazov len hash.
+
+# 3) Server/infra
+
+* **Fakty:**
+
+  * **CDN** pre obrázky (dlhé `max-age`, verziované URL), edge kompresia (Brotli/Gzip).
+  * **Deriváty obrázkov**: 240/480/960/1280 px; posielaj najmenší možný variant podľa zariadenia/low-data módu.
+  * **Kompresia JSON**: Gzip/Brotli zapnutá; vynechať zbytočné polia (minifikované payloady).
+  * **Konzervatívne API**: stránkovanie *cursor-based* (nie `page=n`), selektívne polia (sparse fieldsets), 304 Not Modified cez ETag.
+  * **Aggressive edge caching**: feedy pre anonymných/nových používateľov; pre prihlásených aspoň „nad fold“ sekciu s krátkym TTL.
+* **Predpoklady:**
+
+  * **Pre-compute** „domovský feed light“ (bez ťažkých signálov) pre low-data mód, detail sa doťahuje neskôr.
+
+# 4) Sieť a formáty
+
+* **Fakty:**
+
+  * **HTTP/2/3**: multiplexing (menej „head-of-line“), priorita streamov; udržiavať spojenia.
+  * **Kompaktné ID a enumy** v payloadoch, žiadne nadbytočné stringy.
+  * **Delta-sync**: posielať iba zmeny od `lastSyncAt` (napr. nové komentáre/hodnotenia).
+  * **WebP/AVIF** pre obrázky, JPEG len fallback.
+* **Predpoklady:** kde sa oplatí, **server-driven UI** (napr. konfigurácia karty receptu), aby sa znížil počet „chodení“ na API.
+
+# 5) UX v nízkom dátovom režime
+
+* **Fakty:**
+
+  * Viditeľný **prepínač „Šetriť dáta“** + krátke vysvetlenie čo to vypne/obmedzí.
+  * **Indikátor offline/online** a „Zobrazené z cache – klepni pre obnovenie“.
+  * **Degradácia funkcií**: bez videa, bez gifov, obrázky „tap-to-load HD“.
+* **Predpoklady:**
+
+  * **Prednačítanie na Wi-Fi**: keď je zariadenie na Wi-Fi a nabíjačke, potichu predťahovať najbližšie obrazovky.
+
+# 6) Offline-first a synchronizácia
+
+* **Fakty:**
+
+  * **Read-through cache**: otvorenie appky funguje bez siete (posledné feedy/detail receptu).
+  * **Write-behind queue**: lajky, uloženia, hodnotenia sa radia do lokálnej fronty; pri pripojení idú s **idempotency-key**.
+  * **Konflikty**: posledný zápis vyhráva pri lajkoch/uloženiach; recenzie upraviteľné, verzované.
+* **Predpoklady:** CRDT by bol overkill; stačí lokálna fronta + idempotencia.
+
+# 7) Monitoring a metriky
+
+* **Fakty:**
+
+  * **TTFR (Time-to-First-Recipe)**, **bytes/session**, **cache hit rate**, **P95 latencia** na slabom profile, **offline success rate** (koľko akcií sa dokončí po návrate siete).
+  * **Percento fallbackov** (nižšia kvalita obrázkov), **error budget** pre sieťové chyby.
+* **Predpoklady:** kohorty podľa prenosovej rýchlosti (User-Agent network quality) a krajiny.
+
+# 8) Testovanie (ako testerka oceníš)
+
+* **Fakty:**
+
+  * **Simulácia siete**: Android Studio/ADB (`network_delay`, `network_speed`), iOS **Network Link Conditioner**, Chrome DevTools Throttling, Linux `tc netem` (latencia, jitter, packet loss).
+  * **Scenáre**: otvor appku na EDGE/3G, skroluj feed, otvor detail, ulož recept, vypni sieť → obnov → odošli frontu.
+  * **Perf test**: profil „3G fast“ a „Regular 4G“, limit CPU (staršie zariadenia).
+* **Predpoklady:** zlatý testovací skript s porovnaním TTFR a prenesených bajtov na build.
+
+# 9) Kognitívne skreslenia (na čo si dať pozor)
+
+* **Potvrdzovacie skreslenie:** testovanie iba na rýchlej Wi-Fi v kancelárii → výsledky neplatia pre reálny svet.
+* **Ukotvenie na obrázkoch:** optimalizuješ len obrázky, ale ignoruješ „chatty“ API a neefektívne JSONy.
+* **Dostupnostná heuristika:** optimalizuješ domovskú obrazovku a zabudneš na detaily receptov či upload.
+
+# 10) Pragmatický MVP plán (2–3 šprinty)
+
+1. **Prepínač „Šetriť dáta“** s default „zap.“ pre mobilné dáta; vypni autoplay videí; posielaj menšie deriváty obrázkov.
+2. **Cache-first načítanie** feedu a detailu (ETag, 304, stale-while-revalidate).
+3. **BlurHash** v liste + **lazy load**; server posiela 240/480/960 px; CDN s dlhým TTL.
+4. **Batch init požiadavka** (bootstrap) + **cursor pagination**; kompresia Brotli/Gzip.
+5. **Write queue** s idempotency-key; backoff + jitter; user-visible status „Uložené lokálne, odošlem neskôr“.
+6. **Merania**: TTFR, bytes/session, P95; testy na 3G/packet-loss; A/B porovnanie s plným režimom.
+
+**Limity a neistoty:** zisk z Protobuf/MessagePack a persisted queries závisí od konkrétnych payloadov (predpoklad); over na vzorke. Najväčší efekt spravidla prináša kombinácia CDN + menšie deriváty obrázkov + cache-first čítanie.
+
+
+---------------------
+
+Prompt11: Ktoré metriky by sme mali sledovať po spustení aplikácie, aby sme zistili jej úspešnosť? 
+
+Odpoveď11:
+Viera, rozdelím to na **produktové metriky (AARRR)**, **obsahové/komunitné**, **výkonnostné/spoľahlivosť**, **náklady** a **inštrumentáciu**. Pri každej skupine rozlíšim **Fakty** (štandardne používané definície) a **Predpoklady** (navrhované ciele/hranice – treba ich potvrdiť po 2–4 týždňoch dát).
+
+# 1) AARRR – akvizično-retenčný funnel
+
+**Fakty (definície):**
+
+* **Acquisition**
+
+  * **Installs / New sign-ups za deň**
+  * **Cost per Install (CPI)** (ak beží kampaň)
+* **Activation**
+
+  * **Activation Rate** = podiel nováčikov, čo v 1. session dokončia „aha moment“ (napr. uloženie prvého receptu alebo otvorenie 3 detailov)
+  * **Time-to-Activation** (medián minút od inštalácie po „aha moment“)
+* **Engagement**
+
+  * **DAU / WAU / MAU**, **DAU/MAU ratio** (lepivosť)
+  * **Session Frequency** (priemer sedení/deň), **Session Length (p50/p95)**
+* **Retention**
+
+  * **D-1/D-7/D-30 Retention** (kohorty podľa dňa registrácie)
+  * **Rolling Retention 7/30** (vrátil sa kedykoľvek do dňa 7/30)
+* **Revenue** (ak monetizujete)
+
+  * **ARPU / ARPPU**, **Conversion to Paid**, **Churn (platení)**
+
+**Predpoklady (počiatočné targety pre MVP komunity s receptami):**
+
+* Activation Rate ≥ **35–45 %** (ľudia okamžite nájdu a uložia recept)
+* D-7 Retention ≥ **15–20 %**; DAU/MAU **> 0.18**
+* Time-to-Activation **< 5 min**; ≥ **2** relácie/deň u aktívnych
+
+# 2) Obsah a vyhľadávanie/odporúčania
+
+**Fakty:**
+
+* **Content Supply**
+
+  * **New Recipes/Day**, **% s fotkou**, **% prejde moderáciou bez zásahu**
+* **Kvalita/Interakcie**
+
+  * **Save-Rate** (uloženia / zobrazenia detailu)
+  * **Cook-Proxy Rate** (otvorenie režimu krokov alebo pridanie na nákupný zoznam / zobrazenia)
+  * **Avg Bayes Rating** + **# Ratings/Recipe (p50/p90)**
+* **Search**
+
+  * **Search Success Rate** (klik na výsledok do 30 s / vyhľadávania)
+  * **Zero-Result Rate**, **Refine-Rate** (užívateľ upravil dotaz)
+* **Recommendations**
+
+  * **CTR\@K**, **Save-Rate\@K**, **Coverage** (koľko katalógu sa vie odporučiť), **Diversity (ILD)**
+
+**Predpoklady (MVP ciele):**
+
+* Save-Rate z detailu **≥ 25 %**, Cook-Proxy **≥ 10 %**
+* Search Success **≥ 60–70 %**, Zero-Result **< 8 %**
+
+# 3) Spoľahlivosť, výkon a sieť
+
+**Fakty:**
+
+* **App Stability:** **Crash-Free Sessions/Users**, **ANR Rate** (Android)
+* **API Reliability:** **Error Rate < 1 %**, **Availability ≥ 99.9 %**
+* **Performance:** **P95** latencia kľúčových endpointov (feed, detail, search) **< 300 ms**; **TTFR (Time-to-First-Recipe)** na 3G **< 2 s**
+* **Media:** obrazové hit-rate na CDN, priemerná veľkosť náhľadu, percento „tap-to-load HD“ v low-data režime
+
+**Predpoklady:** Crash-free **> 99.5 %**, P95 upload fotky (do S3) **< 1.5 s** na 4G
+
+# 4) Komunita a bezpečnosť
+
+**Fakty:**
+
+* **Abuse/Moderation:** **Report Rate** (reporty / zobrazenia), **Time-to-Action** moderátora, **False-Positive Rate** moderácie
+* **Health:** % receptov s flagom NSFW/SPAM, **Repeat Offender Rate**, **User Trust Score** rozdelenie
+
+**Predpoklady:** Report Rate **< 0.3 %**, Time-to-Action **< 12 h**
+
+# 5) Náklady a efektivita
+
+**Fakty:**
+
+* **Infra/Unit Economics:** **Cost per DAU**, **Cost per 1k API calls**, **CDN egress/GB**, **Storage/recipe**
+* **Marketing:** **CPI**, **CAC**, **Payback** (ak je monetizácia)
+* **Support Load:** ticky / 1k aktívnych
+
+**Predpoklady:** Cost per DAU **< 0.10 €** v MVP; CDN hit-rate **> 80 %**
+
+# 6) „North-Star“ + guardrails (pragmatická zostava na 1. dashboard)
+
+**Fakty (zmysluplná kombinácia pre kuchársku appku):**
+
+1. **Save-Rate z detailu** (North-Star – odráža vnímanú hodnotu)
+2. **Cook-Proxy Rate**
+3. **D-7 Retention** (kohorty)
+4. **DAU/MAU**
+5. **Activation Rate** a **Time-to-Activation**
+6. **Search Success** a **Zero-Result**
+7. **Recommendations Save-Rate\@K**
+8. **TTFR (3G) p95**
+9. **Crash-Free Users**
+10. **Cost per DAU** a **CDN hit-rate**
+
+**Predpoklady (hranice na „červenú“ pre rýchly zásah):**
+
+* D-7 spadne pod **12 %**, alebo Save-Rate pod **18 %** → rework onboarding/odporúčania
+* TTFR 3G p95 nad **2.5 s** → znížiť veľkosť payloadov/obrázkov, zvýšiť cache
+
+# 7) Inštrumentácia a kvalita meraní
+
+**Fakty:**
+
+* **Jednotná schéma eventov** (názvy, property, verzovanie), **server-side aj client-side** logy s korelačnými ID
+* **Kohorty podľa prvej akcie** (watcher vs. saver vs. cooker), **segmenty** (noví vs. vracajúci sa; diéta; low-data mód)
+* **A/B infra**: experiment ID v každom evente, CUPED/stratifikácia, fixný horizont
+* **Privacy by design:** minimalizovať PII, IP hash, DPA s vendormi, možnosť „opt-out z analytiky“
+
+**Predpoklady:** prvé 2–4 týždne zbierať „široko“, potom revidovať eventy a redukovať šum
+
+# 8) Kognitívne skreslenia (na čo si dávať pozor)
+
+* **Ukotvenie na CTR:** vysoké CTR neznamená varenie; sleduj Save-Rate a Cook-Proxy.
+* **Survivorship bias:** „len staré recepty sú top“ – kontroluj **recency boost** a **coverage** odporúčaní.
+* **Potvrdzovacie skreslenie:** vyberanie metriky, ktorá vyzerá pekne (napr. len inštalácie). Trvaj na pohľade cez **retenciu a aktiváciu**.
+* **Simpsonov paradox:** zlepšenie celkovo, zhoršenie u nováčikov – segmentuj.
+
+# 9) Interpretácia a akčné prahy (príklady)
+
+**Predpoklady (navrhované spúšťače):**
+
+* **Zero-Result Rate > 10 %** → doplniť synonymá ingrediencií, zlepšiť normalizáciu.
+* **Search Success < 55 %** → UI návrhy dotazu, „did-you-mean“, boosting „čo mám doma“.
+* **D-1 Retention < 30 %** → onboarding a odporúčania na domovskej obrazovke (personalizovaný „štartovací balík“).
+* **CDN hit-rate < 75 %** → dlhšie TTL a menšie deriváty obrázkov.
+
+---
+
+**Zhrnutie:** sleduj **Save-Rate, Cook-Proxy, Retenciu (D-7), Activation, Search Success, Rec-Save\@K, TTFR p95, Crash-Free, Cost per DAU**. Tieto metriky spolu pokrývajú „užitočnosť“ (ľudia si recepty ukladajú/varením používajú), „návratnosť“ (vracajú sa), „výkon/spoľahlivosť“ (appka je rýchla a stabilná) a „udržateľnosť nákladov“.
+
+
+-----------------------
+
+Prompt12: Aké sú najčastejšie bezpečnostné riziká pri podobných aplikáciách a ako im predísť? 
+
+Odpoveď12:
+Viera, rozdelím to podľa toho, **kde** v kuchárskej/komunitnej appke s používateľskými účtami, fotkami a receptami sa bezpečnostné riziká najčastejšie objavia. Pri každom bode uvediem **Fakty** (overené z praxe/OWASP) a **Prevenciu**. Na konci upozorním na typické kognitívne skreslenia pri hodnotení rizík.
+
+---
+
+## 1) Účty a autentifikácia
+
+**Fakty:**
+
+* Slabé heslá a chýbajúce MFA → ľahký brute force alebo credential stuffing.
+* Únik refresh tokenov alebo dlhé platnosti JWT → krádež identity.
+* Neoverené „social login“ integrácie môžu umožniť spoofing.
+
+**Prevencia:**
+
+* Heslá hashovať Argon2id (alebo bcrypt so silným costom), kontrola proti známym únikom (haveibeenpwned API).
+* Krátke TTL access tokenov (5–15 min) + rotované refresh tokeny s „reuse detection“.
+* MFA voliteľná pre bežných, povinná pre adminov.
+* Rate-limit a exponenciálny backoff na login/reset hesla.
+* Strict `redirect_uri` allowlist pri OAuth (Apple/Google).
+* Bezpečné uloženie tokenov: Secure Enclave/Keychain/Keystore.
+
+---
+
+## 2) Autorizácia a prístup k obsahu
+
+**Fakty:**
+
+* Chyby typu IDOR (Insecure Direct Object Reference) – niekto zmení ID receptu a dostane sa k cudzím draftom.
+* Chýbajúce kontroly vlastníctva pri úpravách/mazaní.
+
+**Prevencia:**
+
+* Kontrola vlastníctva a rolí pri každom API volaní (RBAC + ABAC).
+* Nepoužívať predvídateľné ID (UUID v4 alebo iné random).
+* Testy na horizontálnu eskaláciu (napr. meniť cudzí recept cez API).
+
+---
+
+## 3) Upload a správa médií
+
+**Fakty:**
+
+* Malicious file upload → XSS, malware, server-side request forgery (SSRF).
+* Únik GPS a iných citlivých EXIF metadát z fotiek.
+* Nesprávne nastavené S3 bucket permissions → verejný prístup k privátnym médiám.
+
+**Prevencia:**
+
+* MIME type a magic byte validácia (nie len prípona).
+* Strip EXIF (najmä GPS) pri spracovaní.
+* AV scan (ClamAV alebo cloud AV) pri uploade.
+* Ukladať do súkromného úložiska; prístup len cez signed URL s expiráciou (ak je obsah súkromný).
+* Limitovať veľkosť a rozmery súborov (napr. ≤ 10 MB, ≤ 8000 px).
+
+---
+
+## 4) API a sieťová komunikácia
+
+**Fakty:**
+
+* Nešifrovaný prenos (HTTP) → odpočúvanie, MITM útoky.
+* Chýbajúce rate-limity → DoS alebo credential stuffing.
+* Nadmerné dáta v odpovediach API → zbytočné odhalenie PII.
+
+**Prevencia:**
+
+* HTTPS/TLS 1.2+ všade, HSTS zapnuté.
+* API gateway s rate-limitom, WAF a IP blocklistom.
+* Minimalizácia PII v responsoch (napr. e-mail len používateľovi).
+* ETag/If-None-Match na zníženie prenosu a šancí na MITM.
+
+---
+
+## 5) Vstupy a obsah od používateľov
+
+**Fakty:**
+
+* XSS (vložený JavaScript v komentári alebo recenzii).
+* SQL Injection (ak ORM a query builder nesprávne používame).
+* SPAM, scam odkazy v recenziách.
+
+**Prevencia:**
+
+* HTML sanitizácia vstupov (allowlist značiek), escapovanie výstupu.
+* Prepared statements vo všetkých DB dotazoch.
+* Moderácia (kombinácia automat + manuál), blocklist domén.
+* Rate-limit a reputačné skóre na obsah.
+
+---
+
+## 6) Odporúčania a personalizácia
+
+**Fakty:**
+
+* „Model poisoning“ – útočník pridá veľa falošných interakcií, aby sa jeho recept odporúčal.
+* Únik preferencií (napr. diétne obmedzenia → zdravotné údaje).
+
+**Prevencia:**
+
+* Váž obsah interakcií podľa reputácie používateľa.
+* Detekcia anomálií (náhle vysoké CTR na nový recept od nového účtu).
+* Uložiť len nevyhnutné údaje na personalizáciu, anonymizovať identifikátory.
+
+---
+
+## 7) Integrácie tretích strán
+
+**Fakty:**
+
+* Nesprávne nastavené SDK (analytics, push) môžu zbierať nadmerné PII.
+* Zraniteľnosti v knižniciach (napr. staré verzia ffmpeg pri spracovaní obrázkov/videa).
+
+**Prevencia:**
+
+* Audit tretích strán a povolení, DPA zmluvy.
+* Dependabot/Snyk – pravidelné aktualizácie knižníc.
+* Špeciálne sandbox prostredie na spúšťanie ťažkých knižníc.
+
+---
+
+## 8) GDPR a súkromie
+
+**Fakty:**
+
+* Nejasné retention politiky → uchovávanie dát dlhšie než potrebné.
+* Nemožnosť exportu/vymazania účtu → porušenie legislatívy.
+
+**Prevencia:**
+
+* Retenčné pravidlá v DB (cron na mazanie starých logov).
+* Implementovať „právo na výmaz“ – anonymizácia obsahu, vymazanie PII.
+* Transparentná privacy policy, opt-in na tracking.
+
+---
+
+## 9) Monitoring a incident response
+
+**Fakty:**
+
+* Neskorá detekcia úniku alebo zneužitia → väčšie škody.
+* Chýbajúce logy → nemožnosť vyšetrovať incidenty.
+
+**Prevencia:**
+
+* Centralizované logovanie (bez PII) s alertmi na anomálie (veľký počet 401/403, prudký nárast uploadov).
+* Incident response plán: kontaktné osoby, kroky na mitigáciu, notifikácie používateľov.
+
+---
+
+## 10) Kognitívne skreslenia, na ktoré si dať pozor
+
+* **Potvrdzovacie skreslenie:** testovať len scenáre, o ktorých si myslíš, že sú rizikové, a ignorovať menej známe hrozby (napr. SSRF pri uploadoch).
+* **Efekt ukotvenia:** prílišné sústredenie na heslá, ale zanedbanie bezpečnosti API a médií.
+* **Dostupnostná heuristika:** hodnotiť riziko podľa toho, o ktorých útokoch sa píše v médiách, namiesto pravdepodobnosti v tvojom kontexte.
+* **„To sa nám nestane“ efekt:** ignorovanie GDPR rizík, lebo „sme malá appka“.
+
+---
+
+Ak chceš, môžem ti k tomu pripraviť **tabuľku riziko–dopad–pravdepodobnosť–opatrenia**, aby sme to mali ako bezpečnostný checklist pre vývoj appky.
+Chceš, aby som ju spravil?
+
+---------------------------
+
+Prompt13: Ako by sme mohli aplikáciu monetizovať bez toho, aby sme odradili používateľov? 
+
+Odpoveď13:
+Viera, dá sa to postaviť tak, aby monetizácia podporovala skúsenosť používateľa namiesto toho, aby mu prekážala.
+Rozoberiem to systematicky: **modely monetizácie → čo funguje v kuchárskych/komunitných appkách → UX zásady → meranie a optimalizácia → riziká a skreslenia**.
+
+---
+
+## 1) Možné modely monetizácie
+
+### **A. Freemium + prémiové funkcie**
+
+**Fakty:**
+
+* Základ zadarmo (prezeranie receptov, ukladanie, vyhľadávanie).
+* Platené rozšírenia:
+
+  * Pokročilé filtre (dieta, alergény, kalorické hodnoty).
+  * Tvorba nákupného zoznamu a jeho export do PDF/obchodu.
+  * Offline režim (stiahnutie receptov).
+  * Personalizované odporúčania alebo jedálničky.
+* Výhoda: používatelia si môžu appku „ohmatať“ bez rizika.
+
+**Predpoklad:** konverzia 2–5 % pri dobre nastavenom paywalli, vyššia u aktívnych „kuchárov“.
+
+---
+
+### **B. Predplatné (subscription)**
+
+**Fakty:**
+
+* Mesačný/ročný plán, napr. 2,99 €/mesiac.
+* Obsahuje všetky prémiové funkcie + exkluzívne recepty alebo kurzy.
+* Stabilný príjem → jednoduchšie plánovanie.
+* Potrebné jasne komunikovať hodnotu (nový obsah, šetrenie času, personalizácia).
+
+**Predpoklad:** ročný plán s miernou zľavou má vyššiu retenciu a nižší churn.
+
+---
+
+### **C. Mikrotransakcie / jednorazové nákupy**
+
+**Fakty:**
+
+* Predaj samostatných balíkov (napr. „100 receptov talianskej kuchyne“, „30-minútové večere“).
+* Doplnkové sady nálepiek, šablóny jedálničkov.
+* Funguje, ak máš kurátorovaný obsah s pridanou hodnotou.
+
+**Predpoklad:** nízka miera odporu, ak obsah presne trafí záujem používateľa.
+
+---
+
+### **D. Reklama (opatrne)**
+
+**Fakty:**
+
+* Nativne integrovaná: produkty v receptoch (ingrediencie od značiek), branded kolekcie receptov.
+* Bannery a videá v zoznamoch môžu byť rušivé, ak nie sú tematicky relevantné.
+* Lepšie funguje, ak reklama dopĺňa obsah (napr. výrobca olivového oleja pri stredomorských receptoch).
+
+**Predpoklad:** menej je viac – max. 1 nenásilná reklamná jednotka na obrazovku.
+
+---
+
+### **E. Partnerstvá a affiliate**
+
+**Fakty:**
+
+* Odkazy na nákup ingrediencií (Tesco, Lidl, Košík) – provízia za nákup.
+* Prepojenie s kuchynskými spotrebičmi alebo kurzami varenia.
+* Výhodné, ak používateľ môže objednať všetko na pár klikov.
+
+**Predpoklad:** funguje len pri bezproblémovej integrácii (UX nesmie byť kostrbaté).
+
+---
+
+## 2) UX zásady, aby monetizácia neodradila
+
+**Fakty:**
+
+* Hodnotu ukazuj skôr, než ju zamkneš → „teaser“ prémiovej funkcie (napr. vidíš ukážku jedálnička, ale na export potrebuješ premium).
+* Nepoužívaj „dark patterns“ – férové porovnanie free vs. premium.
+* Daj používateľovi možnosť vyskúšať premium na obmedzený čas (trial).
+* Reklamy a partnerstvá integruj tak, aby nenarušili tok varenia.
+* Transparentne vysvetli, čo sa financuje (nový obsah, vývoj).
+
+**Predpoklad:** spokojný free používateľ je lepšia reklama než krátkodobý platca, ktorý sa cíti oklamaný.
+
+---
+
+## 3) Meranie a optimalizácia
+
+**Fakty:**
+
+* Sledovať: konverzia na trial, trial→paid, churn, LTV, ARPU, reakcie používateľov (NPS, recenzie).
+* Testovať A/B: cena, balenie funkcií, dĺžka trialu, miesto zobrazenia paywallu.
+* Guardrails: nesmie klesnúť retencia free používateľov pod definovaný prah (napr. D-7 Retention < 12 %).
+
+**Predpoklad:** menšie, častejšie experimenty sú menej rizikové než jedna veľká zmena monetizácie.
+
+---
+
+## 4) Riziká a kognitívne skreslenia
+
+* **Potvrdzovacie skreslenie:** vidíš len úspech platených používateľov a ignoruješ pokles free komunity.
+* **Ukotvenie na vysokú cenu:** začať príliš vysoko a potom zľavovať môže poškodiť vnímanie hodnoty.
+* **Kratkodobé víťazstvo:** zvýšenie príjmu prvý mesiac môže dlhodobo znížiť retenciu.
+* **Dostupnostná heuristika:** hodnotíš monetizáciu len podľa negatívnych komentárov, pritom väčšina používateľov mlčí.
+
+---
+
+## 5) Pragmatický plán pre MVP
+
+1. **Začať freemium modelom**: základná funkcionalita zdarma, prémiové funkcie (off-line, pokročilé filtre, jedálničky).
+2. **Predplatné s trialom**: 7 dní zdarma, potom mesačne/ročne.
+3. **Affiliate/partnerstvá**: integrácia s nákupnými košíkmi.
+4. **Reklama len natívna**: branded kolekcie receptov, nie invazívne bannery.
+5. **Meranie**: konverzia, churn, retencia free vs. paid, vplyv na Save-Rate.
+
+---
+
+Ak chceš, môžem ti pripraviť **porovnávaciu tabuľku monetizačných modelov** so silnými a slabými stránkami konkrétne pre komunitnú appku s receptami.
+Chceš, aby som ju vytvoril?
+
+
+---------------------
+
+Prompt14: Navrhni plán marketingovej kampane pri spustení aplikácie.  
+
+Odpoveď14:
+Viera, vezmem to ako klasickú **go-to-market stratégiu** pre komunitnú aplikáciu s receptami – od **cieľov a publika**, cez **fázy kampane**, **kanály a obsah**, až po **meranie úspechu** a **riziká**. Pri každom bode rozlíšim **Fakty** (overené princípy marketingu/app launch) a **Predpoklady** (treba overiť podľa vášho rozpočtu a cieľovej skupiny).
+
+---
+
+## 1) Ciele kampane
+
+**Fakty:**
+
+* Rýchlo získať prvú **kritickú masu používateľov**, aby aplikácia pôsobila živá a komunitná.
+* Vytvoriť povedomie o značke a unikátnej hodnote (USP).
+* Získať spätnú väzbu na MVP a zlepšiť retenciu.
+
+**Predpoklady:**
+
+* KPI na 1. mesiac: 5–10k inštalácií, D-1 retention ≥ 30 %, 200+ aktívnych tvorcov receptov.
+
+---
+
+## 2) Cieľové publikum
+
+**Fakty:**
+
+* Domáci kuchári 18–45 rokov.
+* Food blogeri, gastro influenceri.
+* Ľudia s diétami/alergiami (bezlepkové, vegánske).
+
+**Predpoklady:**
+
+* Primárny launch v SR/ČR → komunikácia v slovenčine/češtine; možno presah do nemecky hovoriacich krajín, ak bude obsah pripravený.
+
+---
+
+## 3) Fázy kampane
+
+### **Fáza 1 – Predspustenie (2–4 týždne pred launchom)**
+
+**Fakty:**
+
+* Vybudovať „waitlist“ – e-mailové adresy záujemcov.
+* Teasery na sociálnych sieťach (krátke videá s receptami, screenshoty appky).
+* Outreach k influencerom a food blogerom s early access.
+* SEO blog: články o varení, diétnych tipoch (zacielené kľúčové slová).
+
+**Predpoklady:**
+
+* Partnerstvo s 2–3 veľkými FB skupinami o varení.
+
+---
+
+### **Fáza 2 – Spustenie (týždeň 0)**
+
+**Fakty:**
+
+* Oficiálny announcement (web, sociálne siete, PR články).
+* Influencer live varenie s použitím aplikácie.
+* Referral program: „Pozvi priateľa, získaj 1 mesiac Premium“.
+* Platené kampane: Meta Ads (IG/FB), Google UAC – cielené na food lovers.
+
+**Predpoklady:**
+
+* Launch event (online/offline) s kuchárskou súťažou – víťazný recept dostane promo v appke.
+
+---
+
+### **Fáza 3 – Post-launch (mesiac 1–3)**
+
+**Fakty:**
+
+* Udržať obsahový marketing (min. 3× týždenne nový recept/blog/video).
+* Highlightovanie top tvorcov receptov → posilnenie komunity.
+* A/B testovanie messagingu v reklamách (čo funguje: rýchle recepty vs. zdravé varenie).
+* Priebežné PR – príbehy používateľov, tipy na sezónne jedlá.
+
+**Predpoklady:**
+
+* Lokálne partnerstvá s obchodmi (napr. zľavy na ingrediencie pre používateľov appky).
+
+---
+
+## 4) Kanály a formáty
+
+**Organické:**
+
+* IG/TikTok: krátke „how-to“ recepty (≤ 30 s) + ukážka, že recept je v appke.
+* YouTube Shorts: tipy na varenie, „3 recepty z 5 ingrediencií“.
+* FB skupiny o varení.
+* Newsletter s „Receptom týždňa“ a tipmi.
+
+**Platené:**
+
+* Meta Ads s videami – carousel receptov, cielenie na „cooking interest“.
+* Google UAC (app install campaigns).
+* Influencer collab (story/post + affiliate link).
+
+**PR:**
+
+* Tlačová správa pre lifestyle a gastro médiá.
+* Rozhovory s tvorcami aplikácie.
+
+**Predpoklady:**
+
+* Vstup do Apple App Store a Google Play Featured (optimalizácia ASO).
+
+---
+
+## 5) Meranie úspechu
+
+**Fakty:**
+
+* Inštalácie a CPI.
+* Aktivácia (prvý uložený recept, prvý upload).
+* Retencia D-1, D-7.
+* Cost per Active User.
+* Referral uptake rate.
+* Engagement: Save-Rate, Cook-Proxy Rate.
+
+**Predpoklady:**
+
+* Cieľ: CPI ≤ 1,5 €, Activation Rate ≥ 35 %, D-7 ≥ 20 %.
+
+---
+
+## 6) Riziká a skreslenia
+
+* **Potvrdzovacie skreslenie:** vidíš len pozitívne komentáre z komunity, ale ignoruješ slabú retenciu.
+* **Efekt ukotvenia:** porovnávate sa s veľkými globálnymi appkami, čo vedie k prehnaným očakávaniam rozpočtu.
+* **Dostupnostná heuristika:** sústredenie na kanály, ktoré pozná tím (napr. len IG), a zanedbanie menej „sexy“ kanálov ako SEO alebo newsletter.
+* **„Build it and they will come“ ilúzia:** očakávanie organického rastu bez investície do distribúcie.
+
+---
+
+## 7) Pragmatický plán (ak máš limitovaný rozpočet)
+
+1. **Predspustenie:** Teasery + waitlist + 5–10 microinfluencerov s barter spoluprácou.
+2. **Spustenie:** Meta Ads s videami (1–2 € CPI), referral program, PR články.
+3. **Post-launch:** obsah 3× týždenne, gamifikácia (odmeny za recepty), partnerstvá s potravinovými značkami.
+
+---
+
+Ak chceš, viem ti k tomu pripraviť **detailný kalendár úloh na prvých 90 dní od predspustenia po stabilizáciu**, aby ste vedeli, čo presne kedy spustiť a merať. Chceš, aby som ti ho spísal?
+
+
+-----------------------
+
+Prompt15: Môžeš mi pripomenúť, kto bola cieľová skupina a aké základné funkcie sme chceli na začiatku? 
+
+Odpoveď15:
+Jasné, Viera.
+Keď sme o tom hovorili na začiatku, vyšlo nám toto:
+
+---
+
+## 🎯 Cieľová skupina
+
+**Fakty (potvrdené z pôvodného návrhu):**
+
+* **Domáci kuchári a nadšenci varenia** vo veku približne 18–45 rokov.
+* **Food blogeri a tvorcovia obsahu** zameraní na jedlo.
+* **Ľudia s diétami a špeciálnymi stravovacími potrebami** (bezlepkové, vegánske, low-carb…).
+* **Komunitne orientovaní používatelia**, ktorí radi zdieľajú a hodnotia obsah.
+
+**Predpoklad:**
+Primárne SR/ČR trh, možný neskorší presah do iných jazykov.
+
+---
+
+## 🔧 Základné funkcie
+
+**Fakty (z pôvodného návrhu):**
+
+1. **Registrácia a prihlásenie** – email, sociálne siete, prípadne anonymný režim na prezeranie.
+2. **Pridávanie receptov** – názov, ingrediencie, postup, fotky, tagy (napr. bezlepkové, rýchle jedlo).
+3. **Vyhľadávanie a filtrovanie** – podľa názvu, kategórie, času prípravy, ingrediencií.
+4. **Hodnotenie a komentáre** – systém hviezdičiek alebo palcov, diskusia pod receptom.
+5. **Ukladanie obľúbených receptov** – osobná zbierka používateľa.
+6. **Profil používateľa** – zoznam jeho receptov, fotka, bio.
+7. **Odporúčanie podobných receptov** – na základe ingrediencií alebo správania používateľa.
+
+**Predpoklad:**
+V MVP (prvá verzia) sme nerátali s komplexnými komunitnými prvkami ako chat alebo skupiny, aby sme udržali rozsah projektu realistický.
+
+---
+
+Ak chceš, viem ti teraz urobiť **mapu funkcií MVP → rozšírená verzia**, aby bolo jasné, čo treba mať na spustenie a čo môže počkať.
+Chceš, aby som ju spravil?
+-----------------------------------

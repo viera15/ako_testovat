@@ -1,0 +1,77 @@
+Prompt: Vysvetli mi, bitte, wie funktioniert es healthcare payments v Spojených štátoch?
+
+Odpoveď: 
+Viera,
+pokusím sa ti to vysvetliť krok za krokom, aby bolo jasné, čo sú fakty, čo je predpoklad, a kde sú limity mojej istoty.
+
+---
+
+## 1. Základný princíp
+
+**Potvrdený fakt:**
+V USA zdravotníctvo nie je financované zo všeobecného zdravotného poistenia ako na Slovensku. Funguje ako kombinácia:
+
+* **Súkromného zdravotného poistenia** (väčšina obyvateľov)
+* **Vládnych programov** (Medicare, Medicaid, VA)
+* **Priamych platieb** pacientov (tzv. out-of-pocket)
+
+---
+
+## 2. Typický proces platby (pri bežnom pacientovi so súkromným poistením)
+
+1. **Poskytovateľ zdravotnej starostlivosti** (napr. lekár, nemocnica) poskytne službu.
+2. **Poistenec odovzdá poistnú kartu** – poskytovateľ odošle *claim* (žiadosť o úhradu) poisťovni.
+3. **Poisťovňa vyhodnotí claim** a uhradí časť nákladov podľa poistnej zmluvy.
+4. **Pacient zaplatí zvyšok**:
+
+   * **Copay** (fixná suma za návštevu, napr. 20 USD)
+   * **Coinsurance** (percento z ceny, napr. 20 % po prekročení určitej hranice)
+   * **Deductible** (ročná suma, ktorú musí pacient zaplatiť z vlastného vrecka, kým začne poisťovňa preplácať)
+5. Pacient môže dostať **bill** (faktúru) až niekoľko týždňov po návšteve, keď poisťovňa spracuje claim.
+
+---
+
+## 3. Dôležité pojmy
+
+| Pojem                     | Význam                                                                                       |
+| ------------------------- | -------------------------------------------------------------------------------------------- |
+| **Premium**               | Mesačný poplatok za poistenie                                                                |
+| **Deductible**            | Ročná čiastka, ktorú pacient zaplatí predtým, než poisťovňa začne hradiť náklady             |
+| **Copay**                 | Pevná suma za konkrétnu službu                                                               |
+| **Coinsurance**           | Percento z ceny, ktoré pacient platí po splnení deductible                                   |
+| **Out-of-pocket maximum** | Maximálna suma, ktorú pacient zaplatí v danom roku (po jej dosiahnutí poisťovňa hradí 100 %) |
+
+---
+
+## 4. Alternatívy a výnimky
+
+**Potvrdený fakt:**
+
+* **Medicare** – federálny program pre ľudí nad 65 rokov a niektorých zdravotne postihnutých
+* **Medicaid** – federálno-štátny program pre nízkopríjmových obyvateľov
+* **Veterans Affairs (VA)** – zdravotná starostlivosť pre veteránov
+* **Self-pay** – pacienti bez poistenia platia všetko sami, často za “cash price” alebo po dohode so zľavou
+
+**Predpoklad (na základe praxe, nie zákona):**
+V praxi môže byť systém veľmi neprehľadný – pacienti často nevedia presne, koľko zaplatia, kým nepríde faktúra, pretože ceny sa líšia medzi poskytovateľmi, poistnými plánmi a dokonca aj v rámci tej istej nemocnice.
+
+---
+
+## 5. Problémy a kritika systému
+
+* **Net transparentné ceny** (pacient nevie presne, koľko bude platiť)
+* **Vysoké administratívne náklady**
+* **Závislosť od zamestnávateľa** (mnoho ľudí stratí poistenie, ak príde o prácu)
+* **Vysoké náklady na lieky** (USA má jedny z najvyšších cien na svete)
+
+---
+
+## 6. Limity mojej odpovede
+
+* Vysvetlil som systém v zjednodušenej forme; v praxi existuje mnoho typov poistných plánov a detailov (napr. HMO, PPO, EPO), ktoré menia spôsob úhrady.
+* Aktuálne ceny, presné percentá či konkrétne výnimky sa líšia podľa štátu, poisťovne a konkrétnej nemocnice.
+
+---
+
+Ak chceš, viem ti k tomu pripraviť **porovnanie s európskym modelom** a ukázať, prečo sa v USA používa deductible/copay a u nás nie.
+Chceš, aby som ho hneď doplnil?

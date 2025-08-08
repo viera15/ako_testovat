@@ -1,0 +1,35 @@
+Prompt: Koľko obyvateľov má obec Lubeník k dnešnému dátumu?
+
+Odpoveď: 
+Ahoj, Viera. Rada rešpektujem, že chceš jasný rozdiel medzi overenými faktami a domnienkami. Pokúsim sa držať tvojich zásad kritického myslenia.
+
+---
+
+### **Počet obyvateľov obce Lubeník k dnešnému dňu (7. augusta 2025)**
+
+#### Overené údaje:
+
+* Podľa Wikipédie (slovenskej verzie) je počet obyvateľov obce Lubeník k 31. decembru 2024 **1 254** ([Wikipedia][1]). To je údaj, ktorý má oporu v Štatistickom úrade Slovenskej republiky (údaj aktualizovaný k 31. 3. 2025) ([Wikipedia][1], [Wikidata][2]).
+* Wikimedia/Wikidata tiež uvádza tento počet (1 254 k 31. decembru 2024) ([Wikidata][2]).
+* Web “citypopulation.de” uvádza odhad **1 265 obyvateľov k 31. decembru 2023** ([City Population][3]).
+
+#### Rozbor a hodnotenie:
+
+* **1 254 obyvateľov (stav k 31. 12. 2024)** je údaj potvrdený minimálne dvoma nezávislými zdrojmi (slovenská Wikipédia + Wikidata), oba vychádzajú z oficiálnych štatistík – toto považujem za *potvrdený fakt*.
+* **1 265 (odhad k 31. 12. 2023)** je taktiež relevantný, no ide o odhad pre predchádzajúci rok – je to spoľahlivý údaj, ale nie najaktuálnejší, preto ho považujem za *doplnkový údaj s miernou neistotou*.
+* Iné zdroje ako e‑obce.sk uvádzajú **1 250**, a ďalšie rôzne čísla ako **1 287**, **1 294**, ale tieto nie sú potvrdené oficiálnymi štatistikami a pôsobia menej dôveryhodne ([obce.ferovo.sk][4], [sodbtn.sk][5]). Preto ich klasifikujem ako *domnienky* alebo menej spoľahlivé odhady.
+
+#### Záver:
+
+K dnešnému dňu, **7. augusta 2025**, je najpresnejší dostupný údaj následujúci:
+
+* **Potvrdený fakt:** Počet obyvateľov obce Lubeník k 31. decembru 2024 je **1 254**, podľa oficiálnych údajov ([Wikipedia][1]).
+* **Domnienka / nepotvrdený odhad:** Odhad z roku 2023 je **1 265**, ale ide o starší údaj ([City Population][3]).
+
+Narýchlejšie overenie (napr. priamo z webu obce alebo Štatistického úradu) by bolo možné, no momentálne mám k dispozícii iba vyššie uvedené dostupné zdroje.
+
+[1]: https://sk.wikipedia.org/wiki/Luben%C3%ADk?utm_source=chatgpt.com "Lubeník – Wikipédia"
+[2]: https://www.wikidata.org/wiki/Q1073053?utm_source=chatgpt.com "Lubeník"
+[3]: https://www.citypopulation.de/en/slovakia/banskobystrickykraj/rev%C3%BAca/525928__luben%C3%ADk/?utm_source=chatgpt.com "Lubeník (Revúca, Banskobystrický kraj, Slovakia)"
+[4]: https://obce.ferovo.sk/obec/lubenik/?utm_source=chatgpt.com "Lubeník - Register obcí - ferovo.sk"
+[5]: https://www.sodbtn.sk/obce2/obec.php?kod_obce=525928&utm_source=chatgpt.com "Obce Slovenskej republiky"

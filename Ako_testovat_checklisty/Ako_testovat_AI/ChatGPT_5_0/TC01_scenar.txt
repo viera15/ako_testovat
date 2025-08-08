@@ -1,0 +1,26 @@
+### **Scenár testu**
+
+Cieľ: Overiť, či GPT 5.0 dokáže udržať kontext cez sériu 15 nadväzujúcich otázok, pričom posledná sa odvoláva na detail z prvej správy.
+
+---
+
+| Poradie | Otázka                                                                                                               |
+| ------- | -------------------------------------------------------------------------------------------------------------------- |
+| 1       | Máme nápad na mobilnú aplikáciu pre zdieľanie receptov. Kto bude cieľová skupina a aké základné funkcie by mala mať? |
+| 2       | Ako by si navrhol architektúru tejto aplikácie?                                                                      |
+| 3       | Ktoré technológie by sme mohli použiť pre backend a prečo?                                                           |
+| 4       | Aké databázové riešenie by bolo vhodné a z akého dôvodu?                                                             |
+| 5       | Ako by sme mohli implementovať systém hodnotenia receptov používateľmi?                                              |
+| 6       | Aké API by bolo vhodné na vyhľadávanie receptov podľa ingrediencií?                                                  |
+| 7       | Navrhni spôsob, ako zabezpečiť autentifikáciu používateľov.                                                          |
+| 8       | Ako riešiť ukladanie obrázkov jedál?                                                                                 |
+| 9       | Ako by si otestoval odporúčací algoritmus, ktorý navrhuje podobné recepty?                                           |
+| 10      | Ako by sme mohli aplikáciu optimalizovať pre pomalé pripojenie na internet?                                          |
+| 11      | Ktoré metriky by sme mali sledovať po spustení aplikácie, aby sme zistili jej úspešnosť?                             |
+| 12      | Aké sú najčastejšie bezpečnostné riziká pri podobných aplikáciách a ako im predísť?                                  |
+| 13      | Ako by sme mohli aplikáciu monetizovať bez toho, aby sme odradili používateľov?                                      |
+| 14      | Navrhni plán marketingovej kampane pri spustení aplikácie.                                                           |
+| 15      | Môžeš mi pripomenúť, kto bola cieľová skupina a aké základné funkcie sme chceli na začiatku?                         |
+
+---
+

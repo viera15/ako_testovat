@@ -1,0 +1,4 @@
+Prompt: Napíš vetu bez písmena ‘a’, ale musí obsahovať názov Bratislava.
+
+
+Odpoveď: Bratislava je mesto pri rieke Dunaj.

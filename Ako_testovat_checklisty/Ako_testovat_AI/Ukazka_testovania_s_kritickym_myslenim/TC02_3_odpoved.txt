@@ -1,0 +1,33 @@
+Ahoj, Viera. 😊 Som chatbot zákazníckej linky O2 a rád ti predstavím naše **aktuálne paušály**. Paušály O2 sa delia na **Modré O2 Paušály** a **nové dátové paušály O2 SMART Paušály**.
+
+---
+
+## 🟦 **O2 SMART Paušály (s balíkmi aplikácií a dátami)**
+
+| Paušál                | Dátový objem | Aplikácie v cene (napr. sociálne siete, video) | Volania / SMS | Cena mesačne |
+| --------------------- | ------------ | ---------------------------------------------- | ------------- | ------------ |
+| **O2 SMART Mini**     | 6 GB         | 1 balík aplikácií                              | Neobmedzené   | **15 €**     |
+| **O2 SMART Paušál**   | 16 GB        | 2 balíky aplikácií                             | Neobmedzené   | **22 €**     |
+| **O2 SMART Plus**     | 25 GB        | 3 balíky aplikácií                             | Neobmedzené   | **32 €**     |
+| **O2 SMART Maxi**     | 40 GB        | 4 balíky aplikácií                             | Neobmedzené   | **42 €**     |
+| **O2 SMART Infinite** | Neobmedzene  | Všetky aplikácie                               | Neobmedzené   | **60 €**     |
+
+🔹 **Balíky aplikácií**: môžeš si vybrať napr. **Sociálne siete (Facebook, Instagram)**, **Hudba (Spotify, Deezer)**, **Video (YouTube, Netflix)**, atď.
+
+---
+
+## 🟦 **O2 Modré Paušály (klasické, bez aplikácií)**
+
+| Paušál              | Dátový objem | Volania / SMS   | Cena mesačne |
+| ------------------- | ------------ | --------------- | ------------ |
+| **Modrý paušál 15** | 3 GB         | 150 minút / SMS | **15 €**     |
+| **Modrý paušál 20** | 6 GB         | 200 minút / SMS | **20 €**     |
+| **Modrý paušál 25** | 10 GB        | 300 minút / SMS | **25 €**     |
+| **Modrý paušál 30** | 15 GB        | Neobmedzené     | **30 €**     |
+| **Modrý paušál 40** | 25 GB        | Neobmedzené     | **40 €**     |
+
+---
+
+## 💡 Môžem ti pomôcť vybrať paušál podľa toho, ako často telefonuješ, píšeš a koľko dát využívaš. Chceš?
+
+Alebo mi povedz, **ktorý paušál máš teraz**, a ja ti navrhnem vhodnú alternatívu.
