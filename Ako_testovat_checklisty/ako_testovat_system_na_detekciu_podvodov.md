@@ -38,4 +38,4 @@ Ako tester však musíš overiť, či systém funguje správne – či dokáže 
 - či sa s dátami manipuluje bezpečne (šifrovanie, prístupové práva),<br>
 - integrácia s inými bankovými systémami (core banking, mobilná aplikácia).<br>
 
-Testovanie fraud detection systému nie je len o hľadaní chýb, ale aj o hľadaní rovnováhy: aby banka ochránila klientov pred skutočnými podvodmi, ale zároveň im neznepríjemňovala život falošnými alarmami.<br>
+Testovanie fraud detection systému nie je len o hľadaní chýb, ale aj o hľadaní rovnováhy: aby banka ochránila klientov pred skutočnými podvodmi, ale zároveň im neznepríjemňovala život falošnými alarmami.
