@@ -44,7 +44,6 @@ Nižšie uvedená tabuľka uvádza dva typy súborov. Markdown súbor (.md) je u
 | -|[ako_testovat_tlacove_zostavy.md](Ako_testovat_checklisty\ako_testovat_tlacove_zostavy.md)| [Ako_testovat_tlacove_zostavy.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_tlacove_zostavy.docx)|
 | -|[ako_testovat_notifikacie_v_online_bankovnictve.md](Ako_testovat_checklisty\ako_testovat_notifikacie_v_online_bankovnictve.md)| [Ako_testovat_notifikacie_v_online_bankovnictve.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_notifikacie_v_online_bankovnictve.docx)|
 |- |[ako_testovat_sablonu_emailu.md](Ako_testovat_checklisty\ako_testovat_sablonu_emailu.md) | [Ako_testovat_sablonu_emailu.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_sablonu_emailu.docx) |
-
 | -|[ako_testovat_reporty_podla_filtrov.md](Ako_testovat_checklisty\ako_testovat_reporty_podla_filtrov.md)| [Ako_testovat_reporty_podla_filtrov.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_reporty_podla_filtrov.docx)|
 | **Používateľská skúsenosť a UI**| | |
 | -|[ako_testovat_formular.md](Ako_testovat_checklisty\ako_testovat_formular.md) | [Ako_testovat_formular.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_formular.docx) |
