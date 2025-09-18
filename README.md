@@ -4,42 +4,87 @@ Tento repozitár obsahuje návody, či checklisty ako testovať rôzne testovaci
 Samostatnou kapitolou je **testovanie AI**. Vytvorila som pár manuálnych testovacích príkladov, kde je testovanie v platenej verzii ChatGPT s nastavením Prispôsobením ChatGPT a v bezplatnej verzii bez akýchkoľvek nastavení. Pozrite na rozdiely. 
 Nižšie uvedená tabuľka uvádza dva typy súborov. Markdown súbor (.md) je určený prehliadania textu priamo na GitHube a word súbor (.docx) je určený pre stiahnutie súborov do Wordu. <br><br>
 
-| Markdown súbor | Word súbor na stiahnutie |
-| --- | --- |
-| [ako_testovat_sablonu_emailu.md](Ako_testovat_checklisty\ako_testovat_sablonu_emailu.md) | [Ako_testovat_sablonu_emailu.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_sablonu_emailu.docx) |
-| [ako_testovat_pdf.md](Ako_testovat_checklisty\ako_testovat_pdf.md) | [Ako_testovat_pdf.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_pdf.docx) |
-| [ako_testovat_naplanovane_cron_ulohy.md](Ako_testovat_checklisty\ako_testovat_naplanovane_cron_ulohy.md) | [Ako_testovat_naplanovane_cron_ulohy.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_naplanovane_cron_ulohy.docx) |
-| [ako_testovat_export_do_excelu.md](Ako_testovat_checklisty\ako_testovat_export_do_excelu.md) | [Ako_testovat_export_do_excelu.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_export_do_excelu.docx) |
-| [ako_testovat_formular.md](Ako_testovat_checklisty\ako_testovat_formular.md) | [Ako_testovat_formular.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_formular.docx) |
-| [ako_testovat_skryte_biele_znaky.md](Ako_testovat_checklisty\ako_testovat_skryte_biele_znaky.md) | [Ako_testovat_skryte_biele_znaky.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_skryte_biele_znaky.docx) |
-| [ako_testovat_sql_injection.md](Ako_testovat_checklisty\ako_testovat_sql_injection.md)| [Ako_testovat_sql_injection.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_sql_injection.docx) |
-| [ako_testovat_api_zoznam_poloziek.md](Ako_testovat_checklisty\ako_testovat_api_zoznam_poloziek.md)| [Ako_testovat_api_zoznam_poloziek.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovať_api_zoznam_poloziek.docx) |
-| [ako_testovat_eshop_a_kosik.md](Ako_testovat_checklisty\ako_testovat_eshop_a_kosik.md)| [Ako_testovat_eshop_a_kosik.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_eshop_a_kosik.docx) |
-| [ako_testovat_roly.md](Ako_testovat_checklisty\ako_testovat_roly.md)| [Ako_testovat_roly.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_roly.docx) |
-| [ako_testovat_logovanie_audit.md](Ako_testovat_checklisty\ako_testovat_logovanie_audit.md)| [Ako_testovat_logovanie_audit.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_logovanie_audit.docx) |
-| [ako_testovat_lokalizaciu_aplikacie.md](Ako_testovat_checklisty\ako_testovat_lokalizaciu_aplikacie.md) | [Ako_testovat_lokalizaciu_aplikacie.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_lokalizaciu_aplikacie.docx) |
-| [ako_testovat_soft_delete_zaznam.md](ako_testovat_checklisty\ako_testovat_soft_delete_zaznam.md)| [Ako_testovat_soft_delete_zaznam.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_soft_delete_zaznam.docx)|
-| [ako_testovat_autocomplete.md](Ako_testovat_checklisty\ako_testovat_autocomplete.md)| [Ako_testovat_autocomplete.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_autocomplete.docx)|
-| [ako_testovat_reporty_podla_filtrov.md](Ako_testovat_checklisty\ako_testovat_reporty_podla_filtrov.md)| [Ako_testovat_reporty_podla_filtrov.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_reporty_podla_filtrov.docx)|
-| [ako_testovat_nove_stlpce_v_databaze.md](Ako_testovat_checklisty\ako_testovat_nove_stlpce_v_databaze.md)| [Ako_testovat_nove_stlpce_v_databaze.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_nove_stlpce_v_databaze.docx)|
-| [ako_testovat_prechod_medzi_prostrediami.md](Ako_testovat_checklisty\ako_testovat_prechod_medzi_prostrediami.md)| [Ako_testovat_medzi_prostrediami.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_prechod_medzi_prostrediami.docx)|
-| [ako_testovat_onboarding_noveho_pouzivatela.md](Ako_testovat_checklisty\ako_testovat_onboarding_noveho_pouzivatela.md)| [Ako_testovat_onboarding_noveho_pouzivatela.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_onboarding_noveho_pouzivatela.docx)|
-| [ako_testovat_vizualne_rozdiely.md](Ako_testovat_checklisty\ako_testovat_vizualne_rozdiely.md)| [Ako_testovat_vizualne_rozdiely.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_vizualne_rozdiely.docx)|
-| [ako_testovat_vypadok_externej_sluzby.md](Ako_testovat_checklisty\ako_testovat_vypadok_externej_sluzby.md)| [Ako_testovat_vypadok_externej_sluzby.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_vypadok_externej_sluzby.docx)|
-| [ako_testovat_pristupove_opravnenia_cez_backend_alebo_api.md](ako_testovat_checklisty\ako_testovat_pristupove_opravnenia_cez_backend_alebo_api.md)| [Ako_testovat_pristupove_opravnenia_cez_backend_alebo_api.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_pristupove_opravnenia_cez_backend_alebo_api.docx)|
-| [ako_testovat_zmeny_v_databaze.md](Ako_testovat_checklisty\ako_testovat_zmeny_v_databaze.md)| [Ako_testovat_zmeny_v_databaze.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_zmeny_v_databaze.docx)|
-| [ako_testovat_planovanu_odstavku_systemu.md](Ako_testovat_checklisty\ako_testovat_planovanu_odstavku_systemu.md)| [Ako_testovat_planovanu_odstavku_systemu.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_planovanu_odstavku_systemu.docx)|
-| [ako_testovat_tlacove_zostavy.md](Ako_testovat_checklisty\ako_testovat_tlacove_zostavy.md)| [Ako_testovat_tlacove_zostavy.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_tlacove_zostavy.docx)|
-| [ako_testovat_upload_a_stahovanie_suborov.md](Ako_testovat_checklisty\ako_testovat_upload_a_stahovanie_suborov.md)| [Ako_testovat_upload_a_stahovanie_suborov.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_upload_a_stahovanie_suborov.docx)|
-| [ako_testovat_dvojfaktorovu_autentifikaciu.md](Ako_testovat_checklisty\ako_testovat_dvojfaktorovu_autentifikaciu.md)| [Ako_testovat_dvojfaktorovu_autentifikaciu.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_dvojfaktorovu_autentifikaciu.docx)|
-| [ako_testovat_token_biometria.md](Ako_testovat_checklisty\ako_testovat_prihlasovanie_token_biometria.md)| [Ako_testovat_token_biometria.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_prihlasovanie_token_biometria.docx)|
-| [ako_testovat_obmedzenie_pristupu_k_citlivym_udajom.md](Ako_testovat_checklisty\ako_testovat_obmedzenie_pristupu_k_citlivym_udajom.md)| [Ako_testovat_obmedzenie_pristupu_k_citlivym_udajom.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_obmedzenie_pristupu_k_citlivym_udajom.docx)|
-| [ako_testovat_system_na_detekciu_podvodov.md](Ako_testovat_checklisty\ako_testovat_system_na_detekciu_podvodov.md)| [Ako_testovat_system_na_detekciu_podvodov.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_systém_na_detekciu_podvodov.docx)|
-| [ako_testovat_bankovu_mobilnu_aplikaciu.md](Ako_testovat_checklisty\ako_testovat_bankovu_mobilnu_aplikaciu.md)| [Ako_testovat_bankovu_mobilnu_aplikaciu.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_bankovu_mobilnu_aplikaciu.docx)|
-| [ako_testovat_notifikacie_v_online_bankovnictve.md](Ako_testovat_checklisty\ako_testovat_notifikacie_v_online_bankovnictve.md)| [Ako_testovat_notifikacie_v_online_bankovnictve.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_notifikacie_v_online_bankovnictve.docx)|
-| [ako_testovat_zobrazenie_zostatku.md](Ako_testovat_checklisty\ako_testovat_zobrazenie_zostatku.md)| [Ako_testovat_zobrazenie_zostatku.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_zobrazenie_zostatku.docx)|
-| [ako_testovat_qr_platby_a_skenovanie_faktur.md](Ako_testovat_checklisty\ako_testovat_qr_platby_a_skenovanie_faktur.md)| [Ako_testovat_qr_platby_a_skenovanie_faktur.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_qr_platby_a_skenovanie_faktur.docx)|
-| [ako_testovat_sepa_platby_a_validacie.md](Ako_testovat_checklisty\ako_testovat_sepa_platby_a_validacie.md)| [Ako_testovat_sepa_platby_a_validacie.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_sepa_platby_a_validacie.docx)|
-| [ako_testovat_platobne_limity.md](Ako_testovat_checklisty\ako_testovat_platobne_limity.md)| [Ako_testovat_platobne_limity.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_platobne_limity.docx)|
-| [ako_testovat_opakovane_platby_trvale_prikazy.md](Ako_testovat_checklisty\ako_testovat_opakovane_platby_trvale_prikazy.md)| [Ako_testovat_opakovane_platby_trvale_prikazy.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_opakovane_platby_trvale_prikazy.docx)|
-| [ako_testovat_zahranicne_platby_v_roznych_menach.md](Ako_testovat_checklisty\ako_testovat_zahranicne_platby_v_roznych_menach.md)| [Ako_testovat_zahranicne_platby_v_roznych_menach.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_zahranicne_platby_v_roznych_menach.docx)|
+| Téma-oblasť |Markdown súbor | Word súbor na stiahnutie |
+| ---|--- | --- |
+| **Bezpečnosť, identita a prístupové práva**| | |
+| -|[ako_testovat_dvojfaktorovu_autentifikaciu.md](Ako_testovat_checklisty\ako_testovat_dvojfaktorovu_autentifikaciu.md)| [Ako_testovat_dvojfaktorovu_autentifikaciu.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_dvojfaktorovu_autentifikaciu.docx)|
+| -|[ako_testovat_token_biometria.md](Ako_testovat_checklisty\ako_testovat_prihlasovanie_token_biometria.md)| [Ako_testovat_token_biometria.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_prihlasovanie_token_biometria.docx)|
+| -|[ako_testovat_pristupove_opravnenia_cez_backend_alebo_api.md](ako_testovat_checklisty\ako_testovat_pristupove_opravnenia_cez_backend_alebo_api.md)| [Ako_testovat_pristupove_opravnenia_cez_backend_alebo_api.docx](Ako_testovat_checklisty\ako_testovat_pristupove_opravnenia_cez_backend_alebo_api.md)|
+| -|[ako_testovat_roly.md](Ako_testovat_checklisty\ako_testovat_roly.md)| [Ako_testovat_roly.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_roly.docx)|
+| -|[ako_testovat_obmedzenie_pristupu_k_citlivym_udajom.md](Ako_testovat_checklisty\ako_testovat_obmedzenie_pristupu_k_citlivym_udajom.md)| [Ako_testovat_obmedzenie_pristupu_k_citlivym_udajom.docx](Ako_testovat_checklisty\ako_testovat_obmedzenie_pristupu_k_citlivym_udajom.md)|
+| -|[ako_testovat_soft_delete_zaznam.md](ako_testovat_checklisty\ako_testovat_soft_delete_zaznam.md)| [Ako_testovat_soft_delete_zaznam.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_soft_delete_zaznam.docx)|
+| -|[ako_testovat_sql_injection.md](Ako_testovat_checklisty\ako_testovat_sql_injection.md)| [Ako_testovat_sql_injection.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_sql_injection.docx) |
+| -|[ako_testovat_system_na_detekciu_podvodov.md](Ako_testovat_checklisty\ako_testovat_system_na_detekciu_podvodov.md)| [Ako_testovat_system_na_detekciu_podvodov.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_systém_na_detekciu_podvodov.docx)|
+| **Bankové a platobné procesy**| | |
+| -|[ako_testovat_bankovu_mobilnu_aplikaciu.md](Ako_testovat_checklisty\ako_testovat_bankovu_mobilnu_aplikaciu.md)| [Ako_testovat_bankovu_mobilnu_aplikaciu.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_bankovu_mobilnu_aplikaciu.docx)|
+| -|[ako_testovat_platobne_limity.md](Ako_testovat_checklisty\ako_testovat_platobne_limity.md)| [Ako_testovat_platobne_limity.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_platobne_limity.docx)|
+| -|[ako_testovat_qr_platby_a_skenovanie_faktur.md](Ako_testovat_checklisty\ako_testovat_qr_platby_a_skenovanie_faktur.md)| [Ako_testovat_qr_platby_a_skenovanie_faktur.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_qr_platby_a_skenovanie_faktur.docx)|
+| -|[ako_testovat_sepa_platby_a_validacie.md](Ako_testovat_checklisty\ako_testovat_sepa_platby_a_validacie.md)| [Ako_testovat_sepa_platby_a_validacie.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_sepa_platby_a_validacie.docx)|
+| -|[ako_testovat_zahranicne_platby_v_roznych_menach.md](Ako_testovat_checklisty\ako_testovat_zahranicne_platby_v_roznych_menach.md)| [Ako_testovat_zahranicne_platby_v_roznych_menach.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_zahranicne_platby_v_roznych_menach.docx)|
+| -|[ako_testovat_opakovane_platby_trvale_prikazy.md](Ako_testovat_checklisty\ako_testovat_opakovane_platby_trvale_prikazy.md)| [Ako_testovat_opakovane_platby_trvale_prikazy.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_opakovane_platby_trvale_prikazy.docx)|
+| -|[ako_testovat_zobrazenie_zostatku.md](Ako_testovat_checklisty\ako_testovat_zobrazenie_zostatku.md)| [Ako_testovat_zobrazenie_zostatku.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_zobrazenie_zostatku.docx)|
+| -|[ako_testovat_vypadok_externej_sluzby.md](Ako_testovat_checklisty\ako_testovat_vypadok_externej_sluzby.md)| [Ako_testovat_vypadok_externej_sluzby.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_vypadok_externej_sluzby.docx)|
+| -|[ako_testovat_notifikacie_v_online_bankovnictve.md](Ako_testovat_checklisty\ako_testovat_notifikacie_v_online_bankovnictve.md)| [Ako_testovat_notifikacie_v_online_bankovnictve.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_notifikacie_v_online_bankovnictve.docx)|
+| **Integrácie, API a externé služby**| | |
+| -|[ako_testovat_api_zoznam_poloziek.md](Ako_testovat_checklisty\ako_testovat_api_zoznam_poloziek.md)| [Ako_testovat_api_zoznam_poloziek.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovať_api_zoznam_poloziek.docx) |
+| -|[ako_testovat_export_do_excelu.md](Ako_testovat_checklisty\ako_testovat_export_do_excelu.md) | [Ako_testovat_export_do_excelu.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_export_do_excelu.docx) |
+| -|[ako_testovat_upload_a_stahovanie_suborov.md](Ako_testovat_checklisty\ako_testovat_upload_a_stahovanie_suborov.md)| [Ako_testovat_upload_a_stahovanie_suborov.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_upload_a_stahovanie_suborov.docx)|
+| -|[ako_testovat_naplanovane_cron_ulohy.md](Ako_testovat_checklisty\ako_testovat_naplanovane_cron_ulohy.md) | [Ako_testovat_naplanovane_cron_ulohy.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_naplanovane_cron_ulohy.docx) |
+| -|[ako_testovat_prechod_medzi_prostrediami.md](Ako_testovat_checklisty\ako_testovat_prechod_medzi_prostrediami.md)| [Ako_testovat_medzi_prostrediami.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_prechod_medzi_prostrediami.docx)|
+| -|[ako_testovat_planovanu_odstavku_systemu.md](Ako_testovat_checklisty\ako_testovat_planovanu_odstavku_systemu.md)| [Ako_testovat_planovanu_odstavku_systemu.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_planovanu_odstavku_systemu.docx)|
+| -|[ako_testovat_vypadok_externej_sluzby.md](Ako_testovat_checklisty\ako_testovat_vypadok_externej_sluzby.md)| [Ako_testovat_vypadok_externej_sluzby.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_vypadok_externej_sluzby.docx)|
+| -|[ako_testovat_api_zoznam_poloziek.md](Ako_testovat_checklisty\ako_testovat_api_zoznam_poloziek.md)| [Ako_testovat_api_zoznam_poloziek.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovať_api_zoznam_poloziek.docx) |
+| **Dáta, databáza a logovanie**| | |
+| -|[ako_testovat_nove_stlpce_v_databaze.md](Ako_testovat_checklisty\ako_testovat_nove_stlpce_v_databaze.md)| [Ako_testovat_nove_stlpce_v_databaze.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_nove_stlpce_v_databaze.docx)|
+| -|[ako_testovat_zmeny_v_databaze.md](Ako_testovat_checklisty\ako_testovat_zmeny_v_databaze.md)| [Ako_testovat_zmeny_v_databaze.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_zmeny_v_databaze.docx)|
+| -|[ako_testovat_logovanie_audit.md](Ako_testovat_checklisty\ako_testovat_logovanie_audit.md)| [Ako_testovat_logovanie_audit.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_logovanie_audit.docx) |
+| -| [vseobecne_pravidla_pre_logy.md](Ako_testovat_checklisty\vseobecne_pravidla_pre_logy.md)| |
+| -|[ako_testovat_reporty_podla_filtrov.md](Ako_testovat_checklisty\ako_testovat_reporty_podla_filtrov.md)| [Ako_testovat_reporty_podla_filtrov.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_reporty_podla_filtrov.docx)|
+| **Notifikácie a komunikácia so zákazníkom**| | |
+| -|[ako_testovat_tlacove_zostavy.md](Ako_testovat_checklisty\ako_testovat_tlacove_zostavy.md)| [Ako_testovat_tlacove_zostavy.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_tlacove_zostavy.docx)|
+| -|[ako_testovat_notifikacie_v_online_bankovnictve.md](Ako_testovat_checklisty\ako_testovat_notifikacie_v_online_bankovnictve.md)| [Ako_testovat_notifikacie_v_online_bankovnictve.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_notifikacie_v_online_bankovnictve.docx)|
+|- |[ako_testovat_sablonu_emailu.md](Ako_testovat_checklisty\ako_testovat_sablonu_emailu.md) | [Ako_testovat_sablonu_emailu.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_sablonu_emailu.docx) |
+
+| -|[ako_testovat_reporty_podla_filtrov.md](Ako_testovat_checklisty\ako_testovat_reporty_podla_filtrov.md)| [Ako_testovat_reporty_podla_filtrov.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_reporty_podla_filtrov.docx)|
+| **Používateľská skúsenosť a UI**| | |
+| -|[ako_testovat_formular.md](Ako_testovat_checklisty\ako_testovat_formular.md) | [Ako_testovat_formular.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_formular.docx) |
+| -|[ako_testovat_autocomplete.md](Ako_testovat_checklisty\ako_testovat_autocomplete.md)| [Ako_testovat_autocomplete.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_autocomplete.docx)|
+| -|[ako_testovat_vizualne_rozdiely.md](Ako_testovat_checklisty\ako_testovat_vizualne_rozdiely.md)| [Ako_testovat_vizualne_rozdiely.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_vizualne_rozdiely.docx)|
+| -|[ako_testovat_lokalizaciu_aplikacie.md](Ako_testovat_checklisty\ako_testovat_lokalizaciu_aplikacie.md) | [Ako_testovat_lokalizaciu_aplikacie.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_lokalizaciu_aplikacie.docx) |
+| -|[ako_testovat_skryte_biele_znaky.md](Ako_testovat_checklisty\ako_testovat_skryte_biele_znaky.md) | [Ako_testovat_skryte_biele_znaky.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_skryte_biele_znaky.docx) |
+| -|[ako_testovat_onboarding_noveho_pouzivatela.md](Ako_testovat_checklisty\ako_testovat_onboarding_noveho_pouzivatela.md)| [Ako_testovat_onboarding_noveho_pouzivatela.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_onboarding_noveho_pouzivatela.docx)|
+| -|[ako_testovat_eshop_a_kosik.md](Ako_testovat_checklisty\ako_testovat_eshop_a_kosik.md)| [Ako_testovat_eshop_a_kosik.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_eshop_a_kosik.docx) |
+| -|[ako_testovat_pdf.md](Ako_testovat_checklisty\ako_testovat_pdf.md) | [Ako_testovat_pdf.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_pdf.docx) |
+| -|[ako_testovat_export_do_excelu.md](Ako_testovat_checklisty\ako_testovat_export_do_excelu.md) | [Ako_testovat_export_do_excelu.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_export_do_excelu.docx) |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
