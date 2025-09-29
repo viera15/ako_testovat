@@ -1444,77 +1444,175 @@ Mechanizmus, pri ktorom používateľ výslovne súhlasí so sledovaním svojho 
 **RPA**
 (Robotic Process Automation) Technológia na automatizáciu opakovaných manuálnych úloh pomocou softvérových robotov. V testovaní sa používa buď ako predmet testovania (overujeme správnosť robotov), alebo ako nástroj na automatizáciu testovacích scenárov, najmä tam, kde chýbajú API.
 
-PAY by square
+**PAY by square**
+Štandardizovaný QR kód používaný na Slovensku a v Česku pre platby. Obsahuje údaje ako IBAN, suma, variabilný symbol či poznámka. Tester overuje správne načítanie kódu, kompatibilitu s aplikáciami bánk a validáciu údajov.
 
-Spinner
+**Spinner**
+Grafický prvok (zvyčajne kruhová animácia), ktorý indikuje, že aplikácia načítava alebo spracúva požiadavku. Pri testovaní sa kontroluje, či sa spinner zobrazuje len počas skutočného spracovania a či nezostáva „zaseknutý“.
 
-maintenance mód
+**Maintenance mód**
+Režim údržby, v ktorom je aplikácia dočasne nedostupná. Tester overuje, či sa zobrazuje správna informačná stránka, či sa neodosielajú transakcie a či sa aplikácia po skončení režimu obnoví do funkčného stavu.
 
-fraud detection
+**Fraud detection**
+Systémy na detekciu podvodov sledujú transakcie a správanie používateľov, aby identifikovali podozrivé aktivity. Tester overuje správne nastavenie pravidiel, reakcie systému a integráciu s ďalšími procesmi (napr. blokácia účtu).
 
-IBAN
+**IBAN**
+(International Bank Account Number) medzinárodný formát čísla účtu. Pri testovaní sa kontroluje dĺžka, formát a kontrolná suma podľa krajiny.
 
-SWIFT/BIC
+**SWIFT/BIC**
+(Society for Worldwide Interbank Financial Telecommunication / Bank Identifier Code) – identifikátor banky v medzinárodných prevodoch. Tester overuje validáciu, správnosť párovania k bankám a kompatibilitu s platobnými systémami.
 
-SWIFT/MT
+**SWIFT/MT**
+Správy v staršom formáte „Message Type“, používané v SWIFT sieti (napr. MT940). Tester overuje, či sa správy generujú a spracujú v správnej štruktúre.
 
-Reverzácie
+**Reverzácie**
+Storno transakcie, ktorá bola už spracovaná alebo autorizovaná. Tester overuje správne vykonanie reverzácie, účtovanie a zobrazenie v histórii účtu.
 
-Multicurrency
+**Multicurrency**
+Podpora viacerých mien v systéme. Testovanie zahŕňa kurzy, prevody, zaokrúhľovanie, účtovanie a zobrazovanie zostatkov v rôznych menách.
 
-SEPA
+**SEPA**
+Jednotná oblasť platieb v eurách. Tester kontroluje správnosť polí (IBAN, BIC, suma, dátum), maximálne limity a súlad s pravidlami SEPA schémy.
 
-MCC
+**MCC**
+(Merchant Category Code) štvorciferný kód určujúci typ obchodníka. Pri testovaní sa sleduje správne mapovanie MCC na poplatky, limity alebo blokácie.
 
-PAN
+**PAN**
+(Primary Account Number) číslo platobnej karty. Tester overuje maskovanie, správne formáty a bezpečné spracovanie.
 
-TTFN (time-to-first-notification)
+**TTFN**
+(time-to-first-notification) metrika merajúca čas od udalosti po doručenie prvej notifikácie. V testovaní sa sleduje oneskorenie a spoľahlivosť notifikačného systému.
 
-Offline mode – notifikácie
+**Offline mode – notifikácie**
+Schopnosť aplikácie správne spracovať notifikácie, keď je zariadenie offline, a doručiť ich po opätovnom pripojení. Tester overuje správnu synchronizáciu.
 
-Airplane mode -notifikácie
+**Airplane mode -notifikácie**
+Testovanie správania aplikácie pri zapnutom režime lietadlo. Dôležité je, či sa neodosielajú požiadavky a či sa čakajúce notifikácie doručia po obnovení spojenia.
 
-Idempotentné kľúče (unikátne ID transakcie)
+**Idempotentné kľúče **
+(unikátne ID transakcie) identifikátor, ktorý zaručí, že rovnaká operácia nebude vykonaná viackrát (napr. duplicitná platba). Tester overuje, či server správne rozpozná opakovanú požiadavku.
 
-Dedupikácia na klientoch/servery
+**Dedupikácia na klientoch/servery**
+Mechanizmus zabraňujúci spracovaniu rovnakej požiadavky viackrát. Testuje sa, či duplicity nevznikajú a či nedochádza k strate platných požiadaviek.
 
-DKIM/SPF/DMARC
+**DKIM/SPF/DMARC**
+Bezpečnostné mechanizmy na ochranu e-mailovej komunikácie. Tester kontroluje, či sú správne nastavené DNS záznamy a či správy nie sú označené ako spam.
 
-FCM/APNS tokeny
+**FCM/APNS tokeny**
+Identifikátory zariadení pre push notifikácie (Firebase Cloud Messaging pre Android, Apple Push Notification Service pre iOS). Tester overuje správne prideľovanie a expiráciu tokenov.
 
-D&R (Detection & Response)
+**D&R (Detection & Response)**
+(Detection & Response) bezpečnostný prístup zameraný na rýchlu detekciu incidentov a reakciu na ne. Tester overuje, či sú incidenty logované, vyhodnocované a či existuje reakčný proces.
 
-BBAN
+**BBAN**
+(Basic Bank Account Number) národný formát čísla účtu. Tester overuje správnosť konverzie medzi BBAN a IBAN.
 
-FX – prepočty kurzov
+**FX – prepočty kurzov**
+Foreign Exchange – výmeny mien. Tester kontroluje správne načítanie kurzov, ich aktualizáciu a aplikáciu pri transakciách.
 
-rounding mode
+**Rounding mode**
+Spôsob zaokrúhľovania (nahor, nadol, najbližšie). Tester overuje, či aplikácia používa správny režim podľa legislatívy alebo interných pravidiel.
 
-rate expiry
+**Rate expiry**
+Platnosť výmenného kurzu v čase. Tester overuje, či systém správne odmieta alebo prepočíta transakcie po uplynutí platnosti kurzu.
 
-SHA
+**SHA**
+(Secure Hash Algorithm) rodina kryptografických hashovacích funkcií. Tester overuje implementáciu a kompatibilitu (napr. SHA-256).
 
-BEN
+**BEN/OUR**
+Spôsoby úhrady poplatkov pri zahraničných platbách. BEN – poplatky znáša príjemca, OUR – poplatky znáša odosielateľ. Tester kontroluje, či sa poplatky aplikujú správne.
 
-OUR
+**AML rules**
+(Anti-Money Laundering) pravidlá proti praniu špinavých peňazí. Tester overuje scenáre, pri ktorých sa majú transakcie blokovať alebo hlásiť.
 
-AML rules
+**Anti-fraud**
+Mechanizmy na ochranu pred podvodmi (limity, monitorovanie vzorov správania, blokácie). Tester sleduje, či fungujú podľa pravidiel.
 
-anti-fraud
+**Velocity checks**
+Kontroly rýchlosti – napríklad počet transakcií za určitý čas. Tester overuje, či systém správne blokuje alebo obmedzuje podozrivé správanie.
 
-velocity checks
+**Settlement**
+Vyrovnanie transakcií medzi bankami alebo systémami. Tester overuje správne účtovanie, načasovanie a konsistenciu.
 
-Settlement
+**Cutoff time**
+Časový limit, do ktorého musí byť transakcia zadaná, aby bola spracovaná v ten istý deň. Tester overuje, či systém po prekročení cutoff time správne presunie spracovanie na ďalší deň.
 
-cutoff time
+**Routing fields**
+Polia, ktoré určujú trasovanie transakcie cez rôzne banky alebo siete. Tester overuje, či sa správne vypĺňajú a spracujú.
 
-routing fields
+**POI/PEP**
+(Point of Interest / Politically Exposed Person) – POI sú dôležité miesta alebo body, PEP sú osoby s politickou funkciou. Tester overuje, či sú tieto kategórie správne identifikované a aplikované v pravidlách AML.
 
-POI/PEP
+**Reconciliation**
+Proces porovnania a zosúladenia záznamov medzi dvoma systémami (napr. bankou a clearingovým centrom). Tester kontroluje rozdiely a výnimky.
 
-reconciliation
+**SWIFT/ISO20022 adaptéry**
+Komponenty umožňujúce prevod správ zo starého SWIFT MT formátu do nového ISO 20022 štandardu. Tester overuje správnosť mapovania a kompatibilitu.
 
-SWIFT/ISO20022 adaptéro
+**MT940**
+Štandardizovaný výpis zo SWIFT siete, ktorý obsahuje informácie o transakciách na účte. Tester kontroluje jeho správnu štruktúru a import.
+
+**ISO 4217**
+Medzinárodný štandard kódov mien (napr. EUR, USD). Tester overuje správne používanie a validáciu.
+
+**DKIM/SPF**
+Opätovná zmienka mechanizmov ochrany e-mailov – tester sleduje, či sú implementované bez duplicitných konfliktov.
+
+**Reverzácie**
+Tester overuje konzistenciu pojmu s inými časťami systému – pri duplicitách sa má terminológia zjednotiť.
+
+**Chargeback**
+Proces, pri ktorom klient reklamuje transakciu a peniaze sa vracajú späť cez kartové schémy. Tester sleduje správne spracovanie a komunikáciu s poskytovateľom.
+
+**PAdES**
+(PDF Advanced Electronic Signatures) je štandard pre elektronické podpisy v PDF dokumentoch. Umožňuje vytvárať a validovať podpisy, ktoré sú priamo súčasťou PDF súboru. Tester kontroluje, či podpis spĺňa legislatívne požiadavky a či je dokument po podpise nemodifikovaný.
+
+**XAdES**
+(XML Advanced Electronic Signatures) je štandard pre elektronické podpisy v XML dokumentoch. Obsahuje viacero úrovní (napr. XAdES-BES, XAdES-T), ktoré definujú, aké údaje podpis uchováva (časové pečiatky, certifikáty). Tester overuje správnosť formátu a integritu XML.
+
+**CAdES**
+(CMS Advanced Electronic Signatures) je štandard pre elektronické podpisy v CMS (Cryptographic Message Syntax). Používa sa najmä pri podpise binárnych dát a e-mailov (S/MIME). Tester sleduje kompatibilitu podpisu a validitu certifikátov.
+
+**ASiC**
+(Associated Signature Containers) je formát kontajnera, ktorý spája podpisovaný dokument s elektronickým podpisom alebo časovou pečiatkou. Často sa používa na archiváciu (napr. ASiC-E, ASiC-S). Tester kontroluje, či kontajner obsahuje všetky potrebné časti a či je možné ho validovať.
+
+
+**User case**
+Prípad použitia – opis interakcie používateľa so systémom. Tester z neho vychádza pri návrhu testov.
+
+**SRS (špecifikácia požiadaviek na softvér)**
+Dokument popisujúci funkčné a nefunkčné požiadavky. Slúži ako základ pre vývoj a testovanie.
+
+**ERD**
+(Entity-Relationship Diagram) diagram znázorňujúci vzťahy medzi entitami v databáze. Pomáha testerom pochopiť dátový model.
+
+**Sekvenčný diagram**
+Diagram UML znázorňujúci poradie výmeny správ medzi objektmi. Tester ho využíva pri analýze tokov.
+
+**OWASP**
+(Open Web Application Security Project) nezisková organizácia, ktorá publikuje zoznam najčastejších zraniteľností webových aplikácií (OWASP Top 10).
+
+**Race condition**
+Situácia, keď výsledok závisí od poradia spracovania paralelných operácií. Tester overuje, či systém správne zvláda súbežný prístup.
+
+**ABO**
+Formát platobných príkazov používaný v Českej republike. Tester overuje kompatibilitu a správnosť exportov/importov.
+
+**KYC**
+(Know Your Customer) proces overenia identity klienta. Tester overuje kroky, dokumenty a bezpečnosť.
+
+**Foto liveness**
+Kontrola, či ide o živú osobu pri fotokontrole (napr. mrknutie, otočenie hlavy). Tester overuje, či systém nezlyhá pri fotografii.
+
+**Video liveness**
+Pokročilejšia verzia liveness, pri ktorej sa overuje video namiesto fotky. Tester sleduje presnosť a odolnosť voči podvodom.
+
+**Retry a idempotencia**
+Opakované pokusy o vykonanie operácie kombinované s idempotenciou – aby opakovaná požiadavka neviedla k duplikátu. Tester kontroluje správnu implementáciu opakovaní a odolnosť voči duplicitám.
+
+
+
+
 
 
 
