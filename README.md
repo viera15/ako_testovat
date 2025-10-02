@@ -7,6 +7,7 @@ Nižšie uvedená tabuľka uvádza dva typy súborov. Markdown súbor (.md) je u
 | Téma-oblasť |Markdown súbor | Word súbor na stiahnutie |
 | ---|--- | --- |
 | **Bezpečnosť, identita a prístupové práva**| | |
+| -| [Role_a_prava_v_programoch.md](Ako_testovat_checklisty\Bonusy\Role_a_prava_v_programoch.md)| |
 | -|[ako_testovat_dvojfaktorovu_autentifikaciu.md](Ako_testovat_checklisty\ako_testovat_dvojfaktorovu_autentifikaciu.md)| [Ako_testovat_dvojfaktorovu_autentifikaciu.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_dvojfaktorovu_autentifikaciu.docx)|
 | -|[ako_testovat_token_biometria.md](Ako_testovat_checklisty\ako_testovat_prihlasovanie_token_biometria.md)| [Ako_testovat_token_biometria.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_prihlasovanie_token_biometria.docx)|
 | -|[ako_testovat_pristupove_opravnenia_cez_backend_alebo_api.md](ako_testovat_checklisty\ako_testovat_pristupove_opravnenia_cez_backend_alebo_api.md)| [Ako_testovat_pristupove_opravnenia_cez_backend_alebo_api.docx](Ako_testovat_checklisty\ako_testovat_pristupove_opravnenia_cez_backend_alebo_api.md)|
@@ -17,6 +18,7 @@ Nižšie uvedená tabuľka uvádza dva typy súborov. Markdown súbor (.md) je u
 | -|[ako_testovat_system_na_detekciu_podvodov.md](Ako_testovat_checklisty\ako_testovat_system_na_detekciu_podvodov.md)| [Ako_testovat_system_na_detekciu_podvodov.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_systém_na_detekciu_podvodov.docx)|
 | -| [ako_testovat_limity_pracovnikov_pri_zasahoch_do_udajov.md](Ako_testovat_checklisty\Ako_testovat_limity_pracovnikov_pri_zasahoch_do_udajov.md)| [Ako_testovat_limity_pracovnikov_pri_zasahoch_do_udajov.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_limity_pracovnikov_pri_zasahoch_do_udajov.docx)|
 | **Bankové a platobné procesy**| | |
+| -| [Exoticke_meny.md](Ako_testovat_checklisty\Bonusy\Exoticke_meny.md)| |
 | -|[ako_testovat_bankovu_mobilnu_aplikaciu.md](Ako_testovat_checklisty\ako_testovat_bankovu_mobilnu_aplikaciu.md)| [Ako_testovat_bankovu_mobilnu_aplikaciu.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_bankovu_mobilnu_aplikaciu.docx)|
 | -|[ako_testovat_platobne_limity.md](Ako_testovat_checklisty\ako_testovat_platobne_limity.md)| [Ako_testovat_platobne_limity.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_platobne_limity.docx)|
 | -|[ako_testovat_qr_platby_a_skenovanie_faktur.md](Ako_testovat_checklisty\ako_testovat_qr_platby_a_skenovanie_faktur.md)| [Ako_testovat_qr_platby_a_skenovanie_faktur.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_qr_platby_a_skenovanie_faktur.docx)|
@@ -51,7 +53,7 @@ Nižšie uvedená tabuľka uvádza dva typy súborov. Markdown súbor (.md) je u
 | -|[ako_testovat_nove_stlpce_v_databaze.md](Ako_testovat_checklisty\ako_testovat_nove_stlpce_v_databaze.md)| [Ako_testovat_nove_stlpce_v_databaze.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_nove_stlpce_v_databaze.docx)|
 | -|[ako_testovat_zmeny_v_databaze.md](Ako_testovat_checklisty\ako_testovat_zmeny_v_databaze.md)| [Ako_testovat_zmeny_v_databaze.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_zmeny_v_databaze.docx)|
 | -|[ako_testovat_logovanie_audit.md](Ako_testovat_checklisty\ako_testovat_logovanie_audit.md)| [Ako_testovat_logovanie_audit.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_logovanie_audit.docx) |
-| -| [vseobecne_pravidla_pre_logy.md](Ako_testovat_checklisty\vseobecne_pravidla_pre_logy.md)| |
+| -| [Vseobecne_pravidla_pre_logy.md](Ako_testovat_checklisty\Bonusy\Vseobecne_pravidla_pre_logy.md)| |
 | -|[ako_testovat_reporty_podla_filtrov.md](Ako_testovat_checklisty\ako_testovat_reporty_podla_filtrov.md)| [Ako_testovat_reporty_podla_filtrov.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_reporty_podla_filtrov.docx)|
 | **Notifikácie a komunikácia so zákazníkom**| | |
 | -|[ako_testovat_tlacove_zostavy.md](Ako_testovat_checklisty\ako_testovat_tlacove_zostavy.md)| [Ako_testovat_tlacove_zostavy.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_tlacove_zostavy.docx)|
