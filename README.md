@@ -32,6 +32,7 @@ Nižšie uvedená tabuľka uvádza dva typy súborov. Markdown súbor (.md) je u
 | -| [ako_testovat_prechod_medzi_produktmi.md](Ako_testovat_checklisty\ako_testovat_prechod_medzi_produktmi.md)| [Ako_testovat_prechod_medzi_produktmi.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_prechod_medzi_produktmi.docx)|
 | -| [ako_testovat_crm_banky_prepojenie_so_zmluvami.md](Ako_testovat_checklisty/ako_testovat_crm_banky_prepojenie_so_zmluvami.md)| [Ako_testovat_crm_banky_prepojenie_so_zmluvami.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_crm_banky_prepojenie_so_zmluvami.docx)|
 | -| [ako_testovat_schvalovanie_uverov_workflow_procesov.md](Ako_testovat_checklisty\ako_testovat_schvalovanie_uverov_workflow_procesov.md)| [Ako_testovat_schvalovanie_uverov_workflow_procesov.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_schvalovanie_uverov_workflow_procesov.docx)|
+| -| [ako_testovat_ucty_s_nulovym_zostatkom.md](Ako_testovat_checklisty\ako_testovat_ucty_s_nulovym_zostatkom.md)| [Ako_testovat_ucty_s_nulovym_zostatkom.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_ucty_s_nulovym_zapornym_zostatkom.docx)|
 | **eID a elektronický podpis**| | |
 | -| [ako_testovat_digitalne_overenie_identity.md](Ako_testovat_checklisty\ako_testovat_digitalne_overenie_identity.md)| [Ako_otestovat_digitalne_overenie_identity.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Akotestovat_digitalne_overenie_identity.docx)|
 | **Integrácie, API a externé služby**| | |
