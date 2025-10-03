@@ -1610,6 +1610,71 @@ Pokročilejšia verzia liveness, pri ktorej sa overuje video namiesto fotky. Tes
 **Retry a idempotencia**
 Opakované pokusy o vykonanie operácie kombinované s idempotenciou – aby opakovaná požiadavka neviedla k duplikátu. Tester kontroluje správnu implementáciu opakovaní a odolnosť voči duplicitám.
 
+**Sériový prepočet**
+Postupné spracovanie alebo prepočet transakcií či dát v presne určenom poradí. Tester overuje, či sa transakcie spracujú sekvenčne bez vynechania alebo preskočenia krokov.
+
+**Súbežné transakcie (concurrent)**
+Situácia, keď viac transakcií prebieha naraz a systém musí zabezpečiť ich konzistentné spracovanie. Tester kontroluje riziko race conditions, deadlockov a správnu izoláciu transakcií.
+
+**Reversal/refund**
+Reversal je zvrátenie transakcie ešte pred zúčtovaním, refund je vrátenie peňazí po zúčtovaní. Tester overuje, či sa obe akcie správne zobrazujú v histórii a či účtovanie zodpovedá realite.
+
+**Clearing**
+Proces vyrovnávania finančných operácií medzi bankami alebo spracovateľmi platieb pred samotným zúčtovaním (settlement). Tester overuje, či dáta o clearingu sedia s vykonanými transakciami.
+
+**Card-gateway**
+Platobná brána sprostredkujúca platby kartami medzi obchodníkom, bankou a kartovou spoločnosťou. Tester sleduje správne presmerovanie, validáciu kariet a odozvu brány.
+
+**BIM + GIS**
+Integrácia Building Information Modeling (BIM) a Geografických informačných systémov (GIS). Tester overuje správnosť zobrazovania a prepojenia dát zo stavebných modelov a geografických vrstiev.
+
+**WMS/WFS služby **
+Štandardy **OGC** (Open Geospatial Consortium) pre zdieľanie mapových dát:
+•	**WMS** (Web Map Service) poskytuje mapové obrázky (rastrové dáta).
+•	**WFS** (Web Feature Service) poskytuje vektorové dáta (body, línie, polygóny).
+Tester overuje správne načítanie, formát a kompatibilitu so softvérom.
+
+**3D zobrazenie**
+Vizualizácia objektov alebo dát v trojrozmernom priestore. Tester sleduje funkčnosť 3D modelov, interakcie (otáčanie, zoom) a výkon aplikácie pri väčších dátach.
+
+**WGS84**
+Svetový geodetický systém používaný v GPS. Tester kontroluje správnu interpretáciu súradníc (zemepisná šírka/dĺžka) a prevody na iné systémy.
+
+**S-JTSK**
+Slovenský/Juhoslovanský trigonometrický kartografický systém používaný pre mapy na území SR a ČR. Tester overuje správne prepočty medzi S-JTSK a WGS84.
+
+**UTM**
+(Univerzálny transverzálny Mercator) mapová projekcia rozdelená do zón. Tester overuje správne zobrazovanie údajov podľa príslušnej zóny.
+
+**SHP**
+Formát súborov ESRI Shapefile na ukladanie vektorových geografických dát. Tester sleduje kompatibilitu, integritu dát a import/export do GIS systémov.
+
+**GeoJSON**
+Formát založený na JSON pre ukladanie geografických objektov. Tester overuje správnosť štruktúry, kompatibilitu s knižnicami a validitu súradníc.
+
+**KML**
+(Keyhole Markup Language) formát pre geografické dáta využívaný v Google Earth a podobných aplikáciách. Tester kontroluje správne zobrazenie vrstiev a atribútov.
+
+**GPX**
+(GPS Exchange Format) formát založený na XML pre výmenu GPS trás, bodov a stôp. Tester overuje správne načítanie súradníc a kompatibilitu so zariadeniami.
+
+**Polygon**
+Geometrický útvar v GIS reprezentujúci plochu (napr. parcely, územia). Tester sleduje správne vykreslenie, výpočty plochy a spracovanie priestorových vzťahov.
+
+**PostGIS**
+Rozšírenie databázy PostgreSQL o podporu priestorových dát. Tester overuje funkčnosť priestorových dotazov (napr. bod v polygóne) a výkon pri väčších datasetoch.
+
+**IoT**
+(Internet of Things) sieť prepojených zariadení, ktoré komunikujú medzi sebou (senzory, čidlá, smart zariadenia). Tester sleduje spoľahlivosť prenosu dát, bezpečnosť a škálovanie.
+
+**GML**
+(Geography Markup Language) XML formát pre opis geografických prvkov a ich vzťahov. Tester kontroluje validitu XML schém a kompatibilitu s GIS aplikáciami.
+
+**ECMWF**
+(European Centre for Medium-Range Weather Forecasts) – európske centrum, ktoré prevádzkuje numerické modely pre strednodobé predpovede počasia. Dáta ECMWF sa často využívajú aj v GIS aplikáciách a IoT systémoch. Tester overuje správne načítanie dátových súborov, ich časovú platnosť a vizualizáciu.
+
+**GFS**
+(Global Forecast System) – globálny numerický model predpovede počasia prevádzkovaný v USA (NOAA). Poskytuje otvorené dáta vo viacerých formátoch (napr. GRIB). Tester sleduje správnu interpretáciu dát, porovnanie s inými modelmi a ich integráciu do aplikácií (napr. mapové vrstvy).
 
 
 
