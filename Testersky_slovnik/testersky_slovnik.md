@@ -1676,6 +1676,17 @@ Rozšírenie databázy PostgreSQL o podporu priestorových dát. Tester overuje 
 **GFS**
 (Global Forecast System) – globálny numerický model predpovede počasia prevádzkovaný v USA (NOAA). Poskytuje otvorené dáta vo viacerých formátoch (napr. GRIB). Tester sleduje správnu interpretáciu dát, porovnanie s inými modelmi a ich integráciu do aplikácií (napr. mapové vrstvy).
 
+**Politika retention**
+(Politika uchovávania dát) – pravidlá určujúce, ako dlho sa uchovávajú záznamy, logy alebo osobné údaje. Tester overuje, či sú dáta po uplynutí retenčnej lehoty správne anonymizované alebo zmazané podľa GDPR a interných pravidiel.
+
+**Shadow DOM**
+Časť DOM stromu izolovaná od zvyšku webovej stránky, používaná vo Web Components. Umožňuje zapuzdrenie štýlov a štruktúry. Tester overuje viditeľnosť, interakciu a správne renderovanie prvkov v rámci tieňového DOM-u.
+
+**Web Components**
+Súbor technológií (Custom Elements, Shadow DOM, HTML Templates), ktoré umožňujú vytvárať opakovane použiteľné komponenty vo webových aplikáciách. Tester kontroluje integráciu, kompatibilitu medzi prehliadačmi a správne správanie komponentov.
+
+**WebSockets**
+Protokol umožňujúci obojsmernú (full-duplex) komunikáciu medzi klientom a serverom v reálnom čase. Tester sleduje spoľahlivosť spojenia, odolnosť pri prerušení, oneskorenie a správne odosielanie/prijímanie správ.
 
 
 

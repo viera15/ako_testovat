@@ -17,6 +17,7 @@ Nižšie uvedená tabuľka uvádza dva typy súborov. Markdown súbor (.md) je u
 | -|[ako_testovat_sql_injection.md](Ako_testovat_checklisty\ako_testovat_sql_injection.md)| [Ako_testovat_sql_injection.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_sql_injection.docx) |
 | -|[ako_testovat_system_na_detekciu_podvodov.md](Ako_testovat_checklisty\ako_testovat_system_na_detekciu_podvodov.md)| [Ako_testovat_system_na_detekciu_podvodov.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_systém_na_detekciu_podvodov.docx)|
 | -| [ako_testovat_limity_pracovnikov_pri_zasahoch_do_udajov.md](Ako_testovat_checklisty\Ako_testovat_limity_pracovnikov_pri_zasahoch_do_udajov.md)| [Ako_testovat_limity_pracovnikov_pri_zasahoch_do_udajov.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_limity_pracovnikov_pri_zasahoch_do_udajov.docx)|
+| -| [ako_testovat_zrusenie_uctu_a_vymaz_udajov.md](Ako_testovat_checklisty\ako_testovat_zrusenie_uctu_a_vymaz_udajov.md)| [Ako_testovat_zrusenie_uctu_a_vymaz_udajov.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_zrusenie_uctu_a_vymaz_udajov.docx)|
 | **Bankové a platobné procesy**| | |
 | -| [Exoticke_meny.md](Ako_testovat_checklisty\Bonusy\Exoticke_meny.md)| |
 | -|[ako_testovat_bankovu_mobilnu_aplikaciu.md](Ako_testovat_checklisty\ako_testovat_bankovu_mobilnu_aplikaciu.md)| [Ako_testovat_bankovu_mobilnu_aplikaciu.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_bankovu_mobilnu_aplikaciu.docx)|
