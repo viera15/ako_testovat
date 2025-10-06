@@ -1688,7 +1688,244 @@ Súbor technológií (Custom Elements, Shadow DOM, HTML Templates), ktoré umož
 **WebSockets**
 Protokol umožňujúci obojsmernú (full-duplex) komunikáciu medzi klientom a serverom v reálnom čase. Tester sleduje spoľahlivosť spojenia, odolnosť pri prerušení, oneskorenie a správne odosielanie/prijímanie správ.
 
+**Locator**
+Identifikátor prvku na stránke (napr. ID, XPath, CSS selektor), ktorý umožňuje automatizovanému testu s prvkom interagovať. Tester overuje, či sú lokátory stabilné a nemenné medzi verziami aplikácie.
 
+**XPath**
+Jazyk na vyhľadávanie prvkov v XML/HTML štruktúre. V testovaní sa používa na presné označenie elementov, najmä ak nemajú unikátne ID. Tester kontroluje, či sú XPath výrazy dostatočne špecifické, ale nie krehké.
 
+**CSS selektor**
+Alternatíva k XPath na identifikáciu prvkov podľa štýlov alebo štruktúry HTML. Tester rozhoduje, ktorý prístup je stabilnejší pre daný projekt.
 
+**Headless mód**
+Režim spúšťania testov bez grafického rozhrania (napr. v prehliadači ChromeHeadless). Tester ho využíva pre rýchlejšie a automatizované testy v CI/CD pipeline.
+Wait (explicit/implicit)
+Mechanizmy čakania v automatizácii – explicitný čaká na konkrétnu podmienku, implicitný čaká pevne daný čas. Tester sleduje, aby sa testy nesekali a neboli zbytočne pomalé.
+
+**Selenium WebDriver**
+Najrozšírenejší nástroj na automatizáciu testov webových aplikácií. Tester definuje scenáre v kóde, ktoré simulujú akcie používateľa (klik, zadanie textu, overenie výsledku).
+
+**Playwright**
+Moderný open-source nástroj od Microsoftu pre end-to-end testovanie webových aplikácií. Podporuje viac prehliadačov, paralelné testy, nahrávanie videí a prácu s viacerými záložkami.
+
+**Cypress**
+Framework pre webové testovanie, ktorý beží priamo v prehliadači. Tester ocení rýchlu spätnú väzbu, automatické čakania a interaktívne debugovanie.
+
+**Page Object Model (POM)**
+Vzorec (pattern), ktorý oddeľuje logiku testov od implementácie prvkov na stránke. Tester udržiava testy prehľadné a ľahko upraviteľné aj pri zmenách UI.
+
+**Data-driven testing**
+Testovacia technika, kde sa jeden test spúšťa s rôznymi vstupnými dátami (napr. z CSV alebo Excelu). Umožňuje pokryť viac scenárov bez duplicitného kódu.
+
+**Keyword-driven testing**
+Metodika, kde testovacie kroky sú definované pomocou „kľúčových slov“ (napr. klikni, zadaj, over). Tester vďaka tomu oddeľuje logiku testu od implementácie.
+
+**Fixture**
+Predpripravený stav alebo súbor dát, ktorý test potrebuje pred spustením. Tester ho využíva na opakované nastavenie rovnakých podmienok (napr. prihlásený používateľ).
+
+**Mock/Stub**
+Simulácia závislostí – mock napodobňuje správanie objektu, stub vracia fixné hodnoty. Tester ich používa, keď reálne služby ešte nie sú dostupné.
+
+**Assertion library**
+Knižnica, ktorá poskytuje funkcie ako assertEqual, assertTrue, expect(). Tester overuje očakávaný výsledok v rámci automatizovaného testu.
+
+**Parallel testing**
+Spúšťanie viacerých testov naraz (napr. v rôznych prehliadačoch alebo zariadeniach). Tester sleduje stabilitu a správne rozdelenie zdrojov.
+
+**Test runner**
+Nástroj, ktorý organizuje, spúšťa a reportuje výsledky testov (napr. pytest, Jest, Mocha, NUnit). Tester kontroluje, či sú výsledky správne zaznamenané a logy čitateľné.
+
+**Continuous Integration (CI)**
+Proces, kde sa testy automaticky spúšťajú pri každej zmene kódu. Tester sleduje, či testy prechádzajú pred nasadením a či build nepadá.
+
+**Continuous Delivery (CD)**
+Nadstavba CI – automatizované doručenie testovanej verzie až do produkčného prostredia. Tester sleduje kvalitu pred spustením release.
+
+**Retry mechanism**
+Opakované spustenie testu pri náhodnom zlyhaní (napr. sieťová chyba). Tester kontroluje, či retry nezakrýva reálne chyby.
+
+**Selector flakiness**
+Problém, keď sa lokátory menia alebo sú nejednoznačné, čo vedie k nestabilným testom. Tester identifikuje a stabilizuje selektory (napr. pomocou dátových atribútov).
+
+**CI pipeline**
+(Continuous Integration pipeline) – sekvencia krokov, ktorá automaticky spúšťa build, testy a analýzy po každej zmene v kóde. Tester sleduje, či sa testy spúšťajú v správnom poradí, či sa ukladajú reporty a či sa pipeline nezastaví na chybnom kroku.
+
+**Docker runner**
+Izolované prostredie (kontajner) používané na spúšťanie testov v CI/CD. Tester overuje, či runner obsahuje všetky potrebné závislosti, správne pracuje s volumes a poskytuje opakovateľné výsledky.
+
+**Test hooky**
+Metódy, ktoré sa spúšťajú pred a po testoch – napr. beforeAll(), afterEach(). Tester ich používa na prípravu testovacích dát, inicializáciu prehliadača alebo čistenie prostredia.
+
+**Allure report**
+Nástroj na vizualizáciu výsledkov automatizovaných testov. Poskytuje prehľadné grafy, screenshoty, logy a prepojenia na testovacie prípady. Tester kontroluje, či sa výsledky správne zbierajú a reportujú.
+
+**Headed vs Headless**
+Headed režim spúšťa test s viditeľným prehliadačom, Headless bez GUI. Tester volí režim podľa potreby – Headed na ladenie, Headless pre CI/CD.
+
+**Accessibility tree**
+Štruktúra, ktorú používajú asistívne technológie (napr. čítačky obrazovky) na interpretáciu UI. Tester overuje, či sú elementy správne popísané (ARIA atribúty, labely).
+
+**Parallel shardovanie**
+Rozdelenie testov do viacerých častí (shardov), ktoré sa spúšťajú paralelne na viacerých strojoch. Skracuje čas testovania. Tester sleduje správnu distribúciu a konsistenciu výsledkov.
+
+**Test retry policy**
+Politika opakovania zlyhaných testov – určuje, koľkokrát sa test smie zopakovať, kým sa označí ako neúspešný. Tester sleduje, aby politika neprekrývala reálne chyby.
+
+**Test tagging**
+Označovanie testov podľa typu, priority alebo prostredia (napr. @smoke, @regression). Tester vďaka tagom rýchlo vyberá testy na spustenie.
+
+**Test fixture scope**
+Rozsah platnosti fixture – napr. per-test, per-class alebo per-session. Tester definuje, ako dlho má fixture zostať aktívna a kedy sa má zničiť.
+
+**Cross-browser testing**
+Overovanie správania aplikácie v rôznych prehliadačoch (Chrome, Firefox, Safari, Edge). Tester sleduje rozdiely v renderovaní a funkčnosti.
+
+**Cross-platform testing**
+Testovanie aplikácie na viacerých operačných systémoch alebo zariadeniach (Windows, macOS, Linux, Android, iOS). Tester overuje kompatibilitu a výkon.
+
+**Browser context**
+Izolované prostredie v rámci prehliadača (napr. Playwright podporuje viac kontextov naraz). Tester ho používa na simuláciu viacerých používateľov v jednom teste.
+
+**Test flakiness**
+Nestabilita testov – raz prejdú, inokedy zlyhajú bez zmeny kódu. Tester analyzuje príčiny (synchronizácia, závislosti, dáta) a eliminuje ich.
+
+**Dynamic waits**
+Čakanie, ktoré sa prispôsobuje aktuálnemu stavu aplikácie. Tester kontroluje, či čakacie podmienky reagujú na zmeny v DOM a nepredlžujú testy zbytočne.
+
+**Screenshot capture**
+Zachytenie obrazu obrazovky počas testu – pri chybe alebo ako dôkaz úspechu. Tester sleduje, či sú snímky čitateľné a správne priradené k prípadu.
+
+**Video recording**
+Záznam priebehu testu vo forme videa, používaný pri Playwrighte alebo Cypress-e. Tester ho využíva na analýzu zlyhaní a dokumentáciu.
+
+**Mock server**
+Simulácia backendového rozhrania, ktorá vracia preddefinované odpovede. Tester ju používa, ak API ešte nie je dostupné alebo sa testuje offline scenár.
+
+**Test isolation**
+Zásada, že každý test by mal byť nezávislý od iného. Tester overuje, že testy si neovplyvňujú dáta ani stav aplikácie.
+
+**Selenium Grid**
+Nástroj, ktorý umožňuje spúšťať testy paralelne na viacerých zariadeniach, prehliadačoch a operačných systémoch. Tester overuje, či sa testy správne rozdeľujú, výsledky konsolidujú a či nedochádza ku kolíziám medzi uzlami.
+
+**TestContainers**
+Knižnica (napr. pre Python, Java, .NET), ktorá umožňuje spúšťať databázy, message brokery či iné závislosti v Docker kontajneroch priamo počas testu. Tester overuje izoláciu, rýchlosť štartu a korektnosť konfigurácie.
+
+**CI artifacts**
+(Výstupy pipeline) – výsledné súbory z behu testov, napr. logy, screenshoty, reporty. Tester sleduje, či sa artefakty správne generujú, uchovávajú a dajú spätne stiahnuť.
+
+**Pipeline triggers**
+Udalosti, ktoré spúšťajú CI/CD pipeline (napr. push do vetvy, merge request, cron plánovač). Tester kontroluje, či sa pipeline nespúšťa zbytočne a či reaguje na zmeny v správnych vetvách.
+
+**Flaky test detection**
+Mechanizmus na identifikáciu nestabilných testov, ktoré raz prejdú a inokedy zlyhajú. Tester analyzuje logy, výsledky viacerých behov a používa automatické označovanie flaky testov.
+
+**Monkey testing**
+Náhodné kliknutia, gestá alebo vstupy simulujúce nepredvídateľné správanie používateľa. Tester sleduje stabilitu aplikácie, deteguje pády alebo zablokovania UI.
+
+**Contract testing**
+Testovanie zmluvy medzi dvoma systémami (napr. frontend a backend). Overuje, že API odpovedá v očakávanom formáte a že zmeny na jednej strane nerozbijú integráciu. Tester používa nástroje ako Pact.
+
+**Visual regression testing**
+Automatické porovnávanie snímok obrazovky, aby sa zistilo, či sa UI nezmenilo neočakávane. Tester overuje prah odchýlky a ignoruje šum (napr. timestampy).
+
+**Synthetic users**
+Virtuálni používatelia, ktorí simulujú správanie reálnych ľudí v testovacom prostredí (napr. načítanie stránky, kliky, loginy). Tester sleduje výkon, odozvy a zaťaženie systému.
+
+**Data mocking**
+Vytváranie falošných dát namiesto reálnych z databázy alebo API. Tester používa nástroje na generovanie (napr. Faker, Mockaroo) a sleduje, aby dáta reprezentovali realistické scenáre.
+
+**API assertions**
+Overovanie odpovedí API – kódu odpovede, obsahu JSON, hlavičiek, časov odozvy. Tester používa nástroje ako Postman, pytest, RestAssured či SuperTest.
+
+**Test scheduler**
+Systém, ktorý riadi, kedy sa testy spúšťajú – napr. denne o polnoci, po nasadení buildu alebo po zmenách v repozitári. Tester sleduje správnu frekvenciu a plánovanie.
+
+**CI cache**
+Mechanizmus, ktorý uchováva závislosti alebo buildy medzi behmi pipeline. Skracuje čas testovania. Tester kontroluje, či cache neobsahuje zastarané dáta.
+
+**Blue-green deployment**
+Technika nasadzovania dvoch identických prostredí (blue a green), kde sa nové verzie testujú v jednom z nich. Tester overuje plynulé prepnutie bez výpadku.
+
+**Canary release**
+Postupné nasadzovanie novej verzie len malej časti používateľov. Tester sleduje správanie aplikácie a chyby pred plošným nasadením.
+
+**Rollback**
+Návrat k predchádzajúcej verzii po zlyhaní release. Tester overuje, či rollback prebehne bez straty dát a bez narušenia konzistencie systému.
+
+**Log analysis**
+Analýza logov z testov, aplikácie alebo CI. Tester využíva nástroje ako Kibana, Grafana alebo ElasticSearch na identifikáciu chýb a výkonových problémov.
+
+**Test analytics**
+Zber a vizualizácia metrik testovania (úspešnosť, trvanie, flakiness, pokrytie). Tester sleduje trendy a používa ich na optimalizáciu testov.
+
+**Environment variables**
+Premenné prostredia definujúce konfiguráciu testov (napr. URL, tokeny, credentials). Tester kontroluje, či nie sú uložené v kóde a správne sa načítavajú.
+
+**Secret management**
+Bezpečné ukladanie hesiel, API kľúčov a tokenov. Tester sleduje, že tajomstvá nie sú uložené v repozitári a sú načítané z bezpečného trezoru (napr. HashiCorp Vault, GitHub Secrets).
+
+**Performance testing**
+Testovanie výkonu aplikácie – zisťuje, ako rýchlo systém reaguje pri bežnej záťaži. Tester sleduje metriky ako čas odozvy, využitie CPU, pamäte či databázové dotazy.
+
+**Load testing**
+Záťažové testovanie – overuje správanie systému pri vysokom, ale očakávanom zaťažení. Tester postupne zvyšuje počet požiadaviek alebo používateľov a sleduje, kde nastáva degradácia výkonu.
+
+**Stress testing**
+Extrémne testovanie nad rámec bežného používania s cieľom zistiť, kde sa systém „zlomí“. Tester overuje, či aplikácia pri zlyhaní padne kontrolovane a obnoví sa po odľahčení.
+
+**Spike testing**
+Typ záťažového testu, ktorý simuluje náhle zvýšenie počtu používateľov (napr. po marketingovej kampani). Tester sleduje, či systém zvládne prudký nárast požiadaviek.
+Soak testing
+Dlhodobé testovanie stability (napr. 24–72 hodín). Tester sleduje úniky pamäte, degradáciu výkonu a kumulatívne chyby počas dlhého behu.
+
+**Capacity testing**
+Overuje, aký maximálny počet používateľov alebo transakcií systém zvládne bez výpadku. Tester vytvára model rastu záťaže a sleduje hranice kapacity.
+
+**Benchmark**
+Referenčný test, ktorý porovnáva výkon rôznych verzií aplikácie alebo konfigurácií. Tester sleduje zmeny medzi buildmi a vyhodnocuje regresie výkonu.
+
+**Bottleneck**
+Úzke miesto systému – komponent, ktorý spomaľuje celkový výkon (napr. databáza, API, fronta). Tester využíva profilovacie nástroje na identifikáciu úzkych miest.
+
+**JMeter**
+Open-source nástroj pre load a performance testing. Tester konfiguruje počet vlákien, scenáre a reportuje výsledky.
+
+**k6**
+Moderný nástroj pre skriptovateľné výkonnostné testy (JavaScript syntax). Tester ho používa na integráciu s CI/CD pipeline a vizualizáciu metrík.
+
+**Gatling**
+Framework na záťažové testovanie v Scale, používaný v CI prostrediach. Tester píše scenáre ako kód a generuje HTML reporty s grafmi.
+
+**Synthetic monitoring**
+Monitorovanie systému pomocou „falošných“ používateľov, ktorí pravidelne vykonávajú testovacie akcie (napr. prihlásenie, nákup). Tester sleduje dostupnosť a čas odozvy v reálnom čase.
+
+**Real user monitoring (RUM)**
+Zber údajov o správaní skutočných používateľov v produkcii. Tester porovnáva výsledky s testovacími metrikami, aby overil reálnu výkonnosť.
+
+**Error handling**
+Mechanizmy, ktoré zachytávajú a spracovávajú chyby. Tester overuje, či sú chyby logované, či majú zrozumiteľné hlášky a či neunikajú interné informácie.
+
+**Graceful degradation**
+Schopnosť systému fungovať aj pri čiastočnom výpadku (napr. ak nefunguje časť služby, ostatné moduly bežia ďalej). Tester overuje správanie pri chybových stavoch.
+
+**Failover**
+Automatické prepnutie na záložné prostredie alebo server pri výpadku. Tester overuje čas prepnutia a konzistenciu dát medzi uzlami.
+
+**Chaos engineering**
+Metodika, pri ktorej sa zámerne vnášajú chyby do systému (napr. výpadky sietí, uzlov), aby sa overila jeho odolnosť. Tester používa nástroje ako Chaos Monkey alebo Gremlin.
+ 
+**Circuit breaker**
+Vzorec, ktorý dočasne preruší volanie služby, ak opakovane zlyháva. Tester overuje, či sa breaker správne aktivuje, sleduje obnovu po uplynutí času a správne logovanie.
+
+**Retry policy (pre služby)**
+Nastavenie, ako často a s akým oneskorením sa má služba pokúsiť o opakované volanie po zlyhaní. Tester overuje, či retry nezvyšuje záťaž alebo nevedie k duplikáciám.
+
+**Alerting**
+Systém upozornení na základe prahových hodnôt (napr. vysoká latencia, výpadok endpointu). Tester overuje, či sa alerty spúšťajú korektne a či ich notifikácie prichádzajú správnym adresátom.
+
+**Observability**
+Schopnosť systému poskytovať dostatok dát na pochopenie svojho správania. Tester sleduje metriky, logy a trace dáta, aby mohol rýchlo diagnostikovať problém.
+
+**Distributed tracing**
+Zaznamenávanie priebehu požiadaviek naprieč viacerými službami (napr. OpenTelemetry, Jaeger). Tester overuje, či trace obsahuje všetky kroky a či sa dá spätne dohľadať chyba.
 
