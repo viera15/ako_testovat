@@ -71,6 +71,9 @@ Nižšie uvedená tabuľka uvádza dva typy súborov. Markdown súbor (.md) je u
 | -|[ako_testovat_eshop_a_kosik.md](Ako_testovat_checklisty\ako_testovat_eshop_a_kosik.md)| [Ako_testovat_eshop_a_kosik.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_eshop_a_kosik.docx) |
 | -|[ako_testovat_pdf.md](Ako_testovat_checklisty\ako_testovat_pdf.md) | [Ako_testovat_pdf.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_pdf.docx) |
 | -|[ako_testovat_export_do_excelu.md](Ako_testovat_checklisty\ako_testovat_export_do_excelu.md) | [Ako_testovat_export_do_excelu.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_export_do_excelu.docx) |
+| -| [ako_testovat_online_rezervaciu_izby.md](Ako_testovat_checklisty\ako_testovat_online_rezervaciu_izby.md)| [Ako_testovat_online_rezervaciu_izby.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_online_rezervaciu_izby.docx)|
+| **Hotely a cestovanie**| | |
+| -| [ako_testovat_online_rezervaciu_izby.md](Ako_testovat_checklisty\ako_testovat_online_rezervaciu_izby.md)| [Ako_testovat_online_rezervaciu_izby.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_online_rezervaciu_izby.docx)|
 
 
 
