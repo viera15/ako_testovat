@@ -74,6 +74,7 @@ Nižšie uvedená tabuľka uvádza dva typy súborov. Markdown súbor (.md) je u
 | -| [ako_testovat_online_rezervaciu_izby.md](Ako_testovat_checklisty\ako_testovat_online_rezervaciu_izby.md)| [Ako_testovat_online_rezervaciu_izby.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_online_rezervaciu_izby.docx)|
 | **Hotely a cestovanie**| | |
 | -| [ako_testovat_online_rezervaciu_izby.md](Ako_testovat_checklisty\ako_testovat_online_rezervaciu_izby.md)| [Ako_testovat_online_rezervaciu_izby.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_online_rezervaciu_izby.docx)|
+| -| [ako_testovat_storno_podmienky.md](Ako_testovat_checklisty\ako_testovat_storno_podmienky.md)| [Ako_testovat_storno_podmienky.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_storno_podmienky.docx)|
 
 
 
