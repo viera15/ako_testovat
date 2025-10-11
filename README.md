@@ -76,7 +76,9 @@ Nižšie uvedená tabuľka uvádza dva typy súborov. Markdown súbor (.md) je u
 | -| [ako_testovat_online_rezervaciu_izby.md](Ako_testovat_checklisty\ako_testovat_online_rezervaciu_izby.md)| [Ako_testovat_online_rezervaciu_izby.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_online_rezervaciu_izby.docx)|
 | -| [ako_testovat_storno_podmienky.md](Ako_testovat_checklisty\ako_testovat_storno_podmienky.md)| [Ako_testovat_storno_podmienky.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_storno_podmienky.docx)|
 | -| [ako_testovat_dynamicke_ceny.md](Ako_testovat_checklisty\ako_testovat_dynamicke_ceny.md)| [Ako_testovat_dynamicke_ceny.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_dynamicke_ceny.docx)|
-
+| -| [ako_testovat_priradenie_izby_podla_parametrov.md](Ako_testovat_checklisty\ako_testovat_priradenie_izby_podla_parametrov.md)| [Ako_testovat_priradenie_izby_podla_parametrov.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_priradenie_izby_podla_parametrov.docx)|
+| **Dokumentácia a používateľské príručky**| | |
+| -| [cisla_datumy_formaty.md](Ako_testovat_checklisty\Bonusy\cisla_datumy_formaty.md)| |
 
 
 
