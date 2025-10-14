@@ -6,6 +6,9 @@ Nižšie uvedená tabuľka uvádza dva typy súborov. Markdown súbor (.md) je u
 
 | Téma-oblasť |Markdown súbor | Word súbor na stiahnutie |
 | ---|--- | --- |
+| |
+| |**Všeobecné témy**|
+| |
 | **Bezpečnosť, identita a prístupové práva**| | |
 | -| [Role_a_prava_v_programoch.md](Ako_testovat_checklisty\Bonusy\Role_a_prava_v_programoch.md)| |
 | -|[ako_testovat_dvojfaktorovu_autentifikaciu.md](Ako_testovat_checklisty\ako_testovat_dvojfaktorovu_autentifikaciu.md)| [Ako_testovat_dvojfaktorovu_autentifikaciu.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_dvojfaktorovu_autentifikaciu.docx)|
@@ -18,26 +21,6 @@ Nižšie uvedená tabuľka uvádza dva typy súborov. Markdown súbor (.md) je u
 | -|[ako_testovat_system_na_detekciu_podvodov.md](Ako_testovat_checklisty\ako_testovat_system_na_detekciu_podvodov.md)| [Ako_testovat_system_na_detekciu_podvodov.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_systém_na_detekciu_podvodov.docx)|
 | -| [ako_testovat_limity_pracovnikov_pri_zasahoch_do_udajov.md](Ako_testovat_checklisty\Ako_testovat_limity_pracovnikov_pri_zasahoch_do_udajov.md)| [Ako_testovat_limity_pracovnikov_pri_zasahoch_do_udajov.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_limity_pracovnikov_pri_zasahoch_do_udajov.docx)|
 | -| [ako_testovat_zrusenie_uctu_a_vymaz_udajov.md](Ako_testovat_checklisty\ako_testovat_zrusenie_uctu_a_vymaz_udajov.md)| [Ako_testovat_zrusenie_uctu_a_vymaz_udajov.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_zrusenie_uctu_a_vymaz_udajov.docx)|
-| **Bankové a platobné procesy**| | |
-| -| [Exoticke_meny.md](Ako_testovat_checklisty\Bonusy\Exoticke_meny.md)| |
-| -|[ako_testovat_bankovu_mobilnu_aplikaciu.md](Ako_testovat_checklisty\ako_testovat_bankovu_mobilnu_aplikaciu.md)| [Ako_testovat_bankovu_mobilnu_aplikaciu.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_bankovu_mobilnu_aplikaciu.docx)|
-| -|[ako_testovat_platobne_limity.md](Ako_testovat_checklisty\ako_testovat_platobne_limity.md)| [Ako_testovat_platobne_limity.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_platobne_limity.docx)|
-| -|[ako_testovat_qr_platby_a_skenovanie_faktur.md](Ako_testovat_checklisty\ako_testovat_qr_platby_a_skenovanie_faktur.md)| [Ako_testovat_qr_platby_a_skenovanie_faktur.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_qr_platby_a_skenovanie_faktur.docx)|
-| -|[ako_testovat_sepa_platby_a_validacie.md](Ako_testovat_checklisty\ako_testovat_sepa_platby_a_validacie.md)| [Ako_testovat_sepa_platby_a_validacie.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_sepa_platby_a_validacie.docx)|
-| -|[ako_testovat_zahranicne_platby_v_roznych_menach.md](Ako_testovat_checklisty\ako_testovat_zahranicne_platby_v_roznych_menach.md)| [Ako_testovat_zahranicne_platby_v_roznych_menach.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_zahranicne_platby_v_roznych_menach.docx)|
-| -|[ako_testovat_opakovane_platby_trvale_prikazy.md](Ako_testovat_checklisty\ako_testovat_opakovane_platby_trvale_prikazy.md)| [Ako_testovat_opakovane_platby_trvale_prikazy.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_opakovane_platby_trvale_prikazy.docx)|
-| -|[ako_testovat_zobrazenie_zostatku.md](Ako_testovat_checklisty\ako_testovat_zobrazenie_zostatku.md)| [Ako_testovat_zobrazenie_zostatku.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_zobrazenie_zostatku.docx)|
-| -|[ako_testovat_vypadok_externej_sluzby.md](Ako_testovat_checklisty\ako_testovat_vypadok_externej_sluzby.md)| [Ako_testovat_vypadok_externej_sluzby.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_vypadok_externej_sluzby.docx)|
-| -|[ako_testovat_notifikacie_v_online_bankovnictve.md](Ako_testovat_checklisty\ako_testovat_notifikacie_v_online_bankovnictve.md)| [Ako_testovat_notifikacie_v_online_bankovnictve.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_notifikacie_v_online_bankovnictve.docx)|
-| -| [ako_testovat_prehlad_poplatkov_a_urokov.md](Ako_testovat_checklisty\ako_testovat_prehlad_poplatkov_a_urokov.md)| [Ako_testovat_prehlad_poplatkov_a_urokov.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_prehlad_poplatkov_a_urokov.docx)|
-| -| [ako_testovat_generovanie_mesacnych_vypisov.md](Ako_testovat_checklisty\ako_testovat_generovanie_mesacnych_vypisov.md)| [Ako_testovat_generovanie_mesacnych_vypisov.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_generovanie_mesacnych_vypisov.docx)|
-| -| [ako_testovat_vykaz_o_pohyboch_na_uctoch.md](Ako_testovat_checklisty\ako_testovat_vykaz_o_pohyboch_na_ucte.md)| [Ako_testovat_vykaz_o_pohyboch_na_uctoch.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_vykaz_o_pohyboch_na_ucte.docx)|
-| -| [ako_testovat_onboarding_noveho_klienta_bankovej_aplikacii.md](Ako_testovat_checklisty\ako_testovat_onboarding_noveho_klienta_v_bankovej_aplikacii.md)| [Ako_testovat_onboarding_noveho_klienta_v_bankovej_aplikacii.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_onboarding_noveho_klienta_v_bankovej_aplikacii.docx)|
-| -| [ako_testovat_prechod_medzi_produktmi.md](Ako_testovat_checklisty\ako_testovat_prechod_medzi_produktmi.md)| [Ako_testovat_prechod_medzi_produktmi.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_prechod_medzi_produktmi.docx)|
-| -| [ako_testovat_crm_banky_prepojenie_so_zmluvami.md](Ako_testovat_checklisty/ako_testovat_crm_banky_prepojenie_so_zmluvami.md)| [Ako_testovat_crm_banky_prepojenie_so_zmluvami.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_crm_banky_prepojenie_so_zmluvami.docx)|
-| -| [ako_testovat_schvalovanie_uverov_workflow_procesov.md](Ako_testovat_checklisty\ako_testovat_schvalovanie_uverov_workflow_procesov.md)| [Ako_testovat_schvalovanie_uverov_workflow_procesov.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_schvalovanie_uverov_workflow_procesov.docx)|
-| -| [ako_testovat_ucty_s_nulovym_zostatkom.md](Ako_testovat_checklisty\ako_testovat_ucty_s_nulovym_zostatkom.md)| [Ako_testovat_ucty_s_nulovym_zostatkom.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_ucty_s_nulovym_zapornym_zostatkom.docx)|
-| -| [ako_testovat_limity_pracovnikov_pri_zasahoch_do_udajov.md](Ako_testovat_checklisty\Ako_testovat_limity_pracovnikov_pri_zasahoch_do_udajov.md)| [Ako_testovat_limity_pracovnikov_pri_zasahoch_do_udajov.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_limity_pracovnikov_pri_zasahoch_do_udajov.docx)|
 | **eID a elektronický podpis**| | |
 | -| [ako_testovat_digitalne_overenie_identity.md](Ako_testovat_checklisty\ako_testovat_digitalne_overenie_identity.md)| [Ako_otestovat_digitalne_overenie_identity.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Akotestovat_digitalne_overenie_identity.docx)|
 | **Integrácie, API a externé služby**| | |
@@ -72,14 +55,39 @@ Nižšie uvedená tabuľka uvádza dva typy súborov. Markdown súbor (.md) je u
 | -|[ako_testovat_pdf.md](Ako_testovat_checklisty\ako_testovat_pdf.md) | [Ako_testovat_pdf.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_pdf.docx) |
 | -|[ako_testovat_export_do_excelu.md](Ako_testovat_checklisty\ako_testovat_export_do_excelu.md) | [Ako_testovat_export_do_excelu.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_export_do_excelu.docx) |
 | -| [ako_testovat_online_rezervaciu_izby.md](Ako_testovat_checklisty\ako_testovat_online_rezervaciu_izby.md)| [Ako_testovat_online_rezervaciu_izby.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_online_rezervaciu_izby.docx)|
+| **Dokumentácia a používateľské príručky**| | |
+| -| [cisla_datumy_formaty.md](Ako_testovat_checklisty\Bonusy\cisla_datumy_formaty.md)| |
+| |
+| |**Konkrétne oblasti**|
+| |
+| **Bankové a platobné procesy**| | |
+| -| [Exoticke_meny.md](Ako_testovat_checklisty\Bonusy\Exoticke_meny.md)| |
+| -|[ako_testovat_bankovu_mobilnu_aplikaciu.md](Ako_testovat_checklisty\ako_testovat_bankovu_mobilnu_aplikaciu.md)| [Ako_testovat_bankovu_mobilnu_aplikaciu.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_bankovu_mobilnu_aplikaciu.docx)|
+| -|[ako_testovat_platobne_limity.md](Ako_testovat_checklisty\ako_testovat_platobne_limity.md)| [Ako_testovat_platobne_limity.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_platobne_limity.docx)|
+| -|[ako_testovat_qr_platby_a_skenovanie_faktur.md](Ako_testovat_checklisty\ako_testovat_qr_platby_a_skenovanie_faktur.md)| [Ako_testovat_qr_platby_a_skenovanie_faktur.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_qr_platby_a_skenovanie_faktur.docx)|
+| -|[ako_testovat_sepa_platby_a_validacie.md](Ako_testovat_checklisty\ako_testovat_sepa_platby_a_validacie.md)| [Ako_testovat_sepa_platby_a_validacie.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_sepa_platby_a_validacie.docx)|
+| -|[ako_testovat_zahranicne_platby_v_roznych_menach.md](Ako_testovat_checklisty\ako_testovat_zahranicne_platby_v_roznych_menach.md)| [Ako_testovat_zahranicne_platby_v_roznych_menach.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_zahranicne_platby_v_roznych_menach.docx)|
+| -|[ako_testovat_opakovane_platby_trvale_prikazy.md](Ako_testovat_checklisty\ako_testovat_opakovane_platby_trvale_prikazy.md)| [Ako_testovat_opakovane_platby_trvale_prikazy.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_opakovane_platby_trvale_prikazy.docx)|
+| -|[ako_testovat_zobrazenie_zostatku.md](Ako_testovat_checklisty\ako_testovat_zobrazenie_zostatku.md)| [Ako_testovat_zobrazenie_zostatku.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_zobrazenie_zostatku.docx)|
+| -|[ako_testovat_vypadok_externej_sluzby.md](Ako_testovat_checklisty\ako_testovat_vypadok_externej_sluzby.md)| [Ako_testovat_vypadok_externej_sluzby.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_vypadok_externej_sluzby.docx)|
+| -|[ako_testovat_notifikacie_v_online_bankovnictve.md](Ako_testovat_checklisty\ako_testovat_notifikacie_v_online_bankovnictve.md)| [Ako_testovat_notifikacie_v_online_bankovnictve.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_notifikacie_v_online_bankovnictve.docx)|
+| -| [ako_testovat_prehlad_poplatkov_a_urokov.md](Ako_testovat_checklisty\ako_testovat_prehlad_poplatkov_a_urokov.md)| [Ako_testovat_prehlad_poplatkov_a_urokov.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_prehlad_poplatkov_a_urokov.docx)|
+| -| [ako_testovat_generovanie_mesacnych_vypisov.md](Ako_testovat_checklisty\ako_testovat_generovanie_mesacnych_vypisov.md)| [Ako_testovat_generovanie_mesacnych_vypisov.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_generovanie_mesacnych_vypisov.docx)|
+| -| [ako_testovat_vykaz_o_pohyboch_na_uctoch.md](Ako_testovat_checklisty\ako_testovat_vykaz_o_pohyboch_na_ucte.md)| [Ako_testovat_vykaz_o_pohyboch_na_uctoch.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_vykaz_o_pohyboch_na_ucte.docx)|
+| -| [ako_testovat_onboarding_noveho_klienta_bankovej_aplikacii.md](Ako_testovat_checklisty\ako_testovat_onboarding_noveho_klienta_v_bankovej_aplikacii.md)| [Ako_testovat_onboarding_noveho_klienta_v_bankovej_aplikacii.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_onboarding_noveho_klienta_v_bankovej_aplikacii.docx)|
+| -| [ako_testovat_prechod_medzi_produktmi.md](Ako_testovat_checklisty\ako_testovat_prechod_medzi_produktmi.md)| [Ako_testovat_prechod_medzi_produktmi.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_prechod_medzi_produktmi.docx)|
+| -| [ako_testovat_crm_banky_prepojenie_so_zmluvami.md](Ako_testovat_checklisty/ako_testovat_crm_banky_prepojenie_so_zmluvami.md)| [Ako_testovat_crm_banky_prepojenie_so_zmluvami.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_crm_banky_prepojenie_so_zmluvami.docx)|
+| -| [ako_testovat_schvalovanie_uverov_workflow_procesov.md](Ako_testovat_checklisty\ako_testovat_schvalovanie_uverov_workflow_procesov.md)| [Ako_testovat_schvalovanie_uverov_workflow_procesov.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_schvalovanie_uverov_workflow_procesov.docx)|
+| -| [ako_testovat_ucty_s_nulovym_zostatkom.md](Ako_testovat_checklisty\ako_testovat_ucty_s_nulovym_zostatkom.md)| [Ako_testovat_ucty_s_nulovym_zostatkom.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_ucty_s_nulovym_zapornym_zostatkom.docx)|
+| -| [ako_testovat_limity_pracovnikov_pri_zasahoch_do_udajov.md](Ako_testovat_checklisty\Ako_testovat_limity_pracovnikov_pri_zasahoch_do_udajov.md)| [Ako_testovat_limity_pracovnikov_pri_zasahoch_do_udajov.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_limity_pracovnikov_pri_zasahoch_do_udajov.docx)|
 | **Hotely a cestovanie**| | |
 | -| [ako_testovat_online_rezervaciu_izby.md](Ako_testovat_checklisty\ako_testovat_online_rezervaciu_izby.md)| [Ako_testovat_online_rezervaciu_izby.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_online_rezervaciu_izby.docx)|
 | -| [ako_testovat_storno_podmienky.md](Ako_testovat_checklisty\ako_testovat_storno_podmienky.md)| [Ako_testovat_storno_podmienky.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_storno_podmienky.docx)|
 | -| [ako_testovat_dynamicke_ceny.md](Ako_testovat_checklisty\ako_testovat_dynamicke_ceny.md)| [Ako_testovat_dynamicke_ceny.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_dynamicke_ceny.docx)|
 | -| [ako_testovat_priradenie_izby_podla_parametrov.md](Ako_testovat_checklisty\ako_testovat_priradenie_izby_podla_parametrov.md)| [Ako_testovat_priradenie_izby_podla_parametrov.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_priradenie_izby_podla_parametrov.docx)|
 | -| [ako_testovat_loyalty_programy_a_zlavove_kupony.md](Ako_testovat_checklisty\ako_testovat_loyalty_programy_a_zlavove_kupony.md)| [Ako_testovat_loyalty_programy_a_zlavove_kupony.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_loyalty_programy_a_zlavove_kupony.docx)|
-| **Dokumentácia a používateľské príručky**| | |
-| -| [cisla_datumy_formaty.md](Ako_testovat_checklisty\Bonusy\cisla_datumy_formaty.md)| |
+| **Doprava a logistika**| | |
+| -| [ako_testovat_rezervacny_system_leteniek.md](Ako_testovat_checklisty\ako_testovat_rezervacny_system_leteniek.md)| [Ako_testovat_rezervacny_system_leteniek.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_rezervacny_system_leteniek.docx)|
 
 
 
