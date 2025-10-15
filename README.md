@@ -88,6 +88,7 @@ Nižšie uvedená tabuľka uvádza dva typy súborov. Markdown súbor (.md) je u
 | -| [ako_testovat_loyalty_programy_a_zlavove_kupony.md](Ako_testovat_checklisty\ako_testovat_loyalty_programy_a_zlavove_kupony.md)| [Ako_testovat_loyalty_programy_a_zlavove_kupony.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_loyalty_programy_a_zlavove_kupony.docx)|
 | **Doprava a logistika**| | |
 | -| [ako_testovat_rezervacny_system_leteniek.md](Ako_testovat_checklisty\ako_testovat_rezervacny_system_leteniek.md)| [Ako_testovat_rezervacny_system_leteniek.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_rezervacny_system_leteniek.docx)|
+| -| [ako_testovat_vlakove_a_autobusové_lísky.md](Ako_testovat_checklisty\ako_testovat_vlakove_a_autobusove_listky.md)| [Ako_testovat_vlakove_a_autobusove_listky.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_vlakove_a_autobusove_listky.docx)|
 
 
 
