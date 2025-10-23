@@ -138,3 +138,47 @@ Pri testovaní formátov údajov sa zamerať na:
 3. **Validáciu:** vstupné polia akceptujú len správny formát podľa jazyka.
 4. **Konverziu:** pri prechode medzi systémami sa formát nesmie poškodiť.
 5. **Zobrazenie:** správna typografia vo výstupoch (úvodzovky, pomlčky, symboly).
+
+
+# Porovnanie typov míľ
+
+## 1. Základné typy
+
+| Typ míle | Použitie | Dĺžka v kilometroch | Dĺžka v metroch | Poznámky |
+|-----------|-----------|---------------------|-----------------|-----------|
+| **Statútová (anglická, imperial mile)** | Veľká Británia, USA (bežné vzdialenosti) | **1,609344 km** | 1 609,344 m | Základný typ, používaný v cestnej doprave, GPS v USA. |
+| **Americká míľa** | USA, dopravné značenie, šport | **≈ 1,609344 km** | 1 609,344 m | Rovnaká ako britská, líši sa len historicky názvom. |
+| **Námorná míľa (nautical mile)** | Lodná a letecká navigácia | **1,852 km** | 1 852 m | Odvodená od 1 oblúkovej minúty zemepisnej šírky. Používa sa v GPS, mapách, letectve. |
+| **Geografická míľa (geographical mile)** | Zemepisné výpočty, kartografia | **1,8553 km** | 1 855,3 m | Založená na dĺžke jednej oblúkovej minúty po rovníku. |
+| **Talianska míľa (miglio italiano)** | Historická, antická | **1,479 km** | 1 479 m | Používaná v antickom Ríme; rôzne lokálne verzie. |
+| **Škandinávska míľa („mil“) ** | Švédsko, Nórsko (moderná verzia) | **10 km** | 10 000 m | Dnes oficiálne definovaná ako 10 km, používa sa v hovorovej reči a bežeckých pretekoch. |
+| **Rímska míľa (mille passus)** | Staroveký Rím | **1,479 km** | 1 479 m | „Tisíc krokov“ (1 000 × dvojkrok), základ mnohých historických definícií. |
+
+---
+
+## 2. Prepočty
+
+- **1 námorná míľa = 1,15078 statútovej míle**  
+- **1 statútová míľa = 0,8684 námornej míle**  
+- **1 míľa ≈ 1,61 km**  
+- **1 km ≈ 0,621 míle**
+
+---
+
+## 3. Kde sa používajú
+
+| Oblasť | Používaná míľa | Príklad |
+|---------|----------------|----------|
+| **Cestná doprava (USA, UK)** | Statútová / americká | vzdialenosť Los Angeles – San Diego: ~ 120 mi |
+| **Letecká a námorná navigácia** | Námorná | vzdialenosť prepočítaná z GPS súradníc |
+| **Škandinávia (hovorovo)** | Škandinávska (10 km) | „Bežal som 1 mil“ = 10 km |
+| **Historické merania** | Rímska, talianska | archeologické a kartografické pramene |
+
+---
+
+## 4. Zhrnutie
+
+Pri testovaní a konverziách v systémoch (GIS, letecké plány, športové aplikácie) je dôležité rozlišovať, aký typ míle systém používa.  
+Rozdiel medzi statútovou a námornou míľou predstavuje až **15 % odchýlku**, čo môže významne ovplyvniť výpočty vzdialeností.
+
+
