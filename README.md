@@ -56,6 +56,7 @@ Nižšie uvedená tabuľka uvádza dva typy súborov. Markdown súbor (.md) je u
 | -|[ako_testovat_export_do_excelu.md](Ako_testovat_checklisty\ako_testovat_export_do_excelu.md) | [Ako_testovat_export_do_excelu.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_export_do_excelu.docx) |
 | -| [ako_testovat_online_rezervaciu_izby.md](Ako_testovat_checklisty\ako_testovat_online_rezervaciu_izby.md)| [Ako_testovat_online_rezervaciu_izby.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_online_rezervaciu_izby.docx)|
 | -| [ako_testovat_viacjazycnu_lokalizaciu_stranok_cestovky.md](Ako_testovat_checklisty\ako_testovat_viacjazycnu_lokalizaciu_stranok_cestovky.md)| [Ako_testovat_viacjazycnu_lokalizaciu_stranok_cestovky.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_viacjazycnu_lokalizaciu_stranok_cestovky.docx)|
+| -| [ako_testovat_kombinovane_sluzby.md](Ako_testovat_checklisty\ako_testovat_kombinovane_sluzby.md)| [Ako_testovat_kombinovane_sluzby.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_kombinovane_sluzby.docx)|
 | **Dokumentácia a používateľské príručky**| | |
 | -| [cisla_datumy_formaty.md](Ako_testovat_checklisty\Bonusy\cisla_datumy_formaty.md)| |
 | |
@@ -90,6 +91,7 @@ Nižšie uvedená tabuľka uvádza dva typy súborov. Markdown súbor (.md) je u
 | -| [ako_testovat_zmenu_alebo_prebookovanie_dopravy.md](Ako_testovat_checklisty\ako_testovat_zmenu_alebo_prebookovanie_dopravy.md)| [Ako_testovat_zmenu_alebo_prebookovanie_dopravy.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_zmenu_alebo_prebookovanie_dopravy.docx)|
 | -| [ako_testovat_viacjazycnu_lokalizaciu_stranok_cestovky.md](Ako_testovat_checklisty\ako_testovat_viacjazycnu_lokalizaciu_stranok_cestovky.md)| [Ako_testovat_viacjazycnu_lokalizaciu_stranok_cestovky.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_viacjazycnu_lokalizaciu_stranok_cestovky.docx)|
 | -| [ako_testovat_zobrazovanie_cien_v_roznych_menach.md](Ako_testovat_checklisty\ako_testovat_zobrazovanie_cien_v_roznych_menach.md)| [Ako_testovat_zobrazovanie_cien_v_roznych_menach.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_zobrazovanie_cien_v_roznych_menach.docx)|
+| -| [ako_testovat_kombinovane_sluzby.md](Ako_testovat_checklisty\ako_testovat_kombinovane_sluzby.md)| [Ako_testovat_kombinovane_sluzby.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_kombinovane_sluzby.docx)|
 | **Doprava a logistika**| | |
 | -| [ako_testovat_rezervacny_system_leteniek.md](Ako_testovat_checklisty\ako_testovat_rezervacny_system_leteniek.md)| [Ako_testovat_rezervacny_system_leteniek.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_rezervacny_system_leteniek.docx)|
 | -| [ako_testovat_vlakove_a_autobusové_lísky.md](Ako_testovat_checklisty\ako_testovat_vlakove_a_autobusove_listky.md)| [Ako_testovat_vlakove_a_autobusove_listky.docx](Ako_testovat_checklisty\Na_stiahnutie_docx_subory\Ako_testovat_vlakove_a_autobusove_listky.docx)|
